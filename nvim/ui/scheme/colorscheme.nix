@@ -1,0 +1,4 @@
+{ ... }:
+{
+options.colorsheme = "nebulous";
+}

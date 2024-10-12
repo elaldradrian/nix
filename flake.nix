@@ -27,10 +27,9 @@ pkgs.p7zip
 
       imports = [
        nixvim.nixDarwinModules.nixvim
-       ./nvim
       ];
 
-  programs.nixvim = {
+  programs.nixvim = (import ./nvim { pkgs = pkgs; }) // {
     enable = true;
     viAlias = true;
     vimAlias = true;
@@ -44,7 +43,9 @@ onActivation.cleanup = "uninstall";
         casks = [
           "brave-browser"
           "1Password"
-          
+          "scroll-reverser"
+	  "microsoft-teams"
+	  "microsoft-outlook"
         ];
       };
 
@@ -72,7 +73,6 @@ fonts.packages = [ pkgs.fira-code ];
         screensaver.askForPasswordDelay = 10;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
 	".GlobalPreferences"."com.apple.mouse.scaling" = .1;
-        NSGlobalDomain."com.apple.swipescrolldirection" = false; # Natural scroll
 	NSGlobalDomain.NSScrollAnimationEnabled = false;
       };
     };
