@@ -4,14 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nix-darwin,
       nixvim,
@@ -40,12 +37,12 @@
           nix.settings.experimental-features = "nix-command flakes";
 
           imports = [
-            inputs.nixvim.nixDarwinModules.nixvim
+            nixvim.nixDarwinModules.nixvim
           ];
 
           programs = {
             fish.enable = true;
-            nixvim = {
+            nixvim = import ./nvim // {
               enable = true;
               viAlias = true;
               vimAlias = true;

@@ -1,14 +1,13 @@
 {
   imports = [
-     ./autocmd.nix
-     ./common.nix
-     ./keymap.nix
+    ./common.nix
+    ./keymap.nix
 
-     ./completion
-     ./lsp
-     ./mini
-     ./treesitter
-     ./ui
-     ./util
+    ./completion
+    ./lsp
+    ./mini
+    ./treesitter
+    ./ui
+    ./util
   ];
 }
