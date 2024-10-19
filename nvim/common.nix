@@ -1,4 +1,3 @@
-{ ... }: 
 {
   performance = {
     byteCompileLua = {
@@ -30,7 +29,7 @@
   };
   opts = {
     # Enable relative line numbers
-    number = false;
+    number = true;
     relativenumber = true;
 
     # Set tabs to 2 spaces
@@ -116,8 +115,8 @@
     # We don't need to see things like INSERT anymore
     showmode = false;
 
-fillchars = {
-  eob = " ";
-  };
+    fillchars = {
+      eob = " ";
+    };
   };
 }

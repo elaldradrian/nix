@@ -1,4 +1,3 @@
-{ ... }:
 {
   plugins.mini.modules.clue = {
     window = {

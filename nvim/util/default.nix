@@ -1,9 +1,13 @@
-{ ... }:
 {
   imports = [
-    ./oil.nix
-    ./which-key.nix
-    ./auto-save.nix
     ./auto-session.nix
+    ./autoclose.nix
+    ./flash.nix
+    ./grapple.nix
+    ./neogit.nix
+    ./octo.nix
+    ./oil.nix
+    ./telescope.nix
+    ./todo-commnets.nix
   ];
 }

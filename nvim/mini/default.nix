@@ -5,10 +5,11 @@
   };
 
   imports = [
-    ./icons.nix
-    # ./bracketed.nix
+    ./bracketed.nix
     ./clue.nix
+    ./diff.nix
     ./hipatterns.nix
+    ./icons.nix
     ./indent-scope.nix
     ./surround.nix
   ];

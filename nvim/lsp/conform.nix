@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 {
   plugins.conform-nvim = {
     enable = true;
@@ -9,6 +10,11 @@
       };
       notify_on_error = true;
 
+      formatters = {
+        nixfmt = {
+          command = lib.getExe pkgs.nixfmt-rfc-style;
+        };
+      };
       formatters_by_ft = {
         html = [
           [

@@ -1,10 +1,10 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   plugins.treesitter = {
     enable = true;
 
-grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;    settings = {
-
+    grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+    settings = {
       indent = {
         enable = true;
       };
@@ -14,6 +14,6 @@ grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;    settings = {
     };
 
     folding = true;
-        nixvimInjections = true;
+    nixvimInjections = true;
   };
 }
