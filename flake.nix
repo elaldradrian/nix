@@ -58,14 +58,15 @@
               "scroll-reverser"
               "microsoft-teams"
               "microsoft-outlook"
+              "nikitabobko/tap/aerospace"
             ];
           };
 
           fonts.packages = [ pkgs.fira-code ];
 
           security.pam.enableSudoTouchIdAuth = true;
+
           users = {
-            knownUsers = [ "rune" ];
             users."rune" = {
               uid = 501;
               shell = pkgs.fish;
@@ -78,7 +79,6 @@
             keyboard = {
               enableKeyMapping = true;
               remapCapsLockToEscape = true;
-              remapCapsLockToControl = true;
             };
             defaults = {
               dock.autohide = true;
@@ -88,7 +88,7 @@
               finder.FXPreferredViewStyle = "clmv";
               screensaver.askForPasswordDelay = 10;
               NSGlobalDomain.AppleInterfaceStyle = "Dark";
-              ".GlobalPreferences"."com.apple.mouse.scaling" = 0.1;
+              ".GlobalPreferences"."com.apple.mouse.scaling" = 1.0;
               NSGlobalDomain.NSScrollAnimationEnabled = false;
             };
           };
