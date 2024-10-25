@@ -8,9 +8,7 @@
     };
   };
   clipboard = {
-    # Use system clipboard
     register = "unnamedplus";
-
     providers = {
       wl-copy = {
         enable = true;
@@ -28,9 +26,10 @@
     };
   };
   opts = {
-    # Enable relative line numbers
     number = true;
     relativenumber = true;
+
+    title = true;
 
     # Set tabs to 2 spaces
     tabstop = 2;
@@ -63,20 +62,9 @@
     ignorecase = true;
     smartcase = true; # Don't ignore case with capitals
 
-    # Decrease updatetime
-    updatetime = 50; # faster completion (4000ms default)
-
-    # Set completeopt to have a better completion experience
-    completeopt = [
-      "menuone"
-      "noselect"
-      "noinsert"
-    ]; # mostly just for cmp
-
     # Enable persistent undo history
-    swapfile = false;
+    swapfile = true;
     autoread = true;
-    backup = false;
     undofile = true;
 
     # Enable 24-bit colors
@@ -101,9 +89,6 @@
 
     # Place a column line
     # colorcolumn = "80";
-
-    # Reduce which-key timeout to 10ms
-    timeoutlen = 10;
 
     # Set encoding type
     encoding = "utf-8";

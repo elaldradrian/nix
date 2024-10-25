@@ -1,17 +1,43 @@
+{ pkgs, ... }:
 {
   plugins = {
-    lsp-format = {
-      enable = true;
-    };
     lsp = {
       enable = true;
       inlayHints = true;
       servers = {
+        bicep = {
+          enable = true;
+          package = pkgs.bicep;
+          cmd = [ "${pkgs.bicep}/bin/bicep" ];
+        };
         html.enable = true;
         lua_ls.enable = true;
-        nixd.enable = true;
+        # TODO: use instead of nil_ls
+        # nixd = {
+        #   enable = true;
+        #   extraOptions = {
+        #     offset_encoding = "utf-8";
+        #   };
+        # };
+        nil_ls.enable = true;
         jsonls.enable = true;
         yamlls.enable = true;
+        gradle_ls = {
+          enable = true;
+          package = pkgs.vscode-extensions.vscjava.vscode-gradle;
+          cmd = [
+            "java"
+            "-jar"
+            "${pkgs.vscode-extensions.vscjava.vscode-gradle}/share/vscode/extensions/vscjava.vscode-gradle/lib/gradle-language-server.jar"
+          ];
+          settings = {
+            init_options = {
+              settings = {
+                gradleWrapperEnabled = true;
+              };
+            };
+          };
+        };
       };
       keymaps = {
         silent = true;
@@ -67,27 +93,28 @@
       };
     };
   };
-  extraConfigLua = ''
-    local _border = "rounded"
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover, {
-        border = _border
-      }
-    )
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help, {
-        border = _border
-      }
-    )
-
-    vim.diagnostic.config{
-      float={border=_border}
-    };
-
-    require('lspconfig.ui.windows').default_options = {
-      border = _border
-    }
-  '';
+  # extraConfigLua = # Lua
+  #   ''
+  #     local _border = "rounded"
+  #
+  #     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  #       vim.lsp.handlers.hover, {
+  #         border = _border
+  #       }
+  #     )
+  #
+  #     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  #       vim.lsp.handlers.signature_help, {
+  #         border = _border
+  #       }
+  #     )
+  #
+  #     vim.diagnostic.config{
+  #       float={border=_border}
+  #     };
+  #
+  #     require('lspconfig.ui.windows').default_options = {
+  #       border = _border
+  #     }
+  #   '';
 }

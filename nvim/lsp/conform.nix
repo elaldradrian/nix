@@ -1,57 +1,64 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    prettierd
+    shfmt
+    stylua
+    nixfmt-rfc-style
+    google-java-format
+  ];
+
   plugins.conform-nvim = {
     enable = true;
     settings = {
-
-      format_on_save = {
+      format_after_save = {
         lspFallback = true;
-        timeoutMs = 500;
+        async = true;
       };
+
       notify_on_error = true;
 
       formatters = {
-        nixfmt = {
-          command = lib.getExe pkgs.nixfmt-rfc-style;
+        npm_groovy_lint = {
+          command = "npm-groovy-lint";
+          stdin = false;
+          args = [
+            "--rulesets"
+            "'Indentation{\"spacesPerIndentLevel\":2,\"severity\":\"warning\"}'"
+            "--rulesetsoverridetype"
+            "appendConfig"
+            "--fix"
+            "--nolintafter"
+            "--failon"
+            "none"
+            "$FILENAME"
+          ];
         };
       };
       formatters_by_ft = {
-        html = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        css = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        javascript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        typescript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
+        "_" = [ "trim_whitespace" ];
+        css = [ "prettierd" ];
+        graphql = [ "prettierd" ];
+        handlebars = [ "prettierd" ];
+        html = [ "prettierd" ];
+        javascript = [ "prettierd" ];
+        javascriptreact = [ "prettierd" ];
+        json = [ "prettierd" ];
+        jsonc = [ "prettierd" ];
+        less = [ "prettierd" ];
+        markdown = [ "prettierd" ];
+        markdownd = [ "prettierd" ];
+        scss = [ "prettierd" ];
+        typescript = [ "prettierd" ];
+        typescriptreact = [ "prettierd" ];
+        vue = [ "prettierd" ];
+        yaml = [ "prettierd" ];
+
         lua = [ "stylua" ];
         nix = [ "nixfmt" ];
-        markdown = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        yaml = [
-          "yamllint"
-          "yamlfmt"
-        ];
+        java = [ "google-java-format" ];
+        groovy = [ "npm_groovy_lint" ];
+        sh = [ "shfmt" ];
       };
     };
   };
