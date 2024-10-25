@@ -5,7 +5,7 @@
   };
 
   imports = [
-    # ./bracketed.nix
+    ./bracketed.nix
     ./clue.nix
     ./diff.nix
     ./hipatterns.nix
