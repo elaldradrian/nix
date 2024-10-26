@@ -1,5 +1,6 @@
 {
   imports = [
+    ./autoCmd.nix
     ./common.nix
     ./keymap.nix
 

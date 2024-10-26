@@ -141,39 +141,6 @@
     # }
     {
       mode = "n";
-      key = "<C-d>";
-      action = "<C-d>zz";
-      options = {
-        desc = "Allow C-d and C-u to keep the cursor in the middle";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-u>";
-      action = "<C-u>zz";
-      options = {
-        desc = "Allow C-d and C-u to keep the cursor in the middle";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "n";
-      action = "nzzzv";
-      options = {
-        desc = "Allow search terms to stay in the middle ";
-      };
-    }
-    {
-      mode = "n";
-      key = "N";
-      action = "Nzzzv";
-      options = {
-        desc = "Allow search terms to stay in the middle ";
-      };
-    }
-    {
-      mode = "n";
       key = "<Tab>";
       action = "<CMD>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<CR>";
       options = {

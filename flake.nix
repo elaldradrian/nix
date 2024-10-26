@@ -30,11 +30,20 @@
             pkgs.slack
             pkgs.fish
             pkgs.p7zip
+            pkgs.postman
+            pkgs.docker
+            pkgs.colima
+            # pkgs.aerospace
           ];
 
           services.nix-daemon.enable = true;
 
-          nix.settings.experimental-features = "nix-command flakes";
+          nix = {
+            useDaemon = true;
+            settings = {
+              experimental-features = "nix-command flakes";
+            };
+          };
 
           imports = [
             nixvim.nixDarwinModules.nixvim
@@ -42,6 +51,7 @@
 
           programs = {
             fish.enable = true;
+            direnv.enable = true;
             nixvim = import ./nvim // {
               enable = true;
               viAlias = true;
@@ -52,6 +62,7 @@
           homebrew = {
             enable = true;
             onActivation.cleanup = "uninstall";
+            taps = [ "nikitabobko/tap" ];
             casks = [
               "brave-browser"
               "1Password"
@@ -59,6 +70,7 @@
               "microsoft-teams"
               "microsoft-outlook"
               "nikitabobko/tap/aerospace"
+              "microsoft-azure-storage-explorer"
             ];
           };
 
@@ -86,10 +98,11 @@
               dock.show-recents = false;
               finder.AppleShowAllExtensions = true;
               finder.FXPreferredViewStyle = "clmv";
-              screensaver.askForPasswordDelay = 10;
               NSGlobalDomain.AppleInterfaceStyle = "Dark";
               ".GlobalPreferences"."com.apple.mouse.scaling" = 1.0;
               NSGlobalDomain.NSScrollAnimationEnabled = false;
+              screensaver.askForPasswordDelay = 10;
+              loginwindow.PowerOffDisabledWhileLoggedIn = true;
             };
           };
         };
