@@ -33,7 +33,7 @@
       key = "<leader>k";
       action = "<CMD> Grapple toggle_tags <CR>";
       options = {
-        desc = "Grapple Toggle tag";
+        desc = "Grapple Show tags";
       };
     }
     {
@@ -42,22 +42,6 @@
       action = "<CMD> Grapple toggle_scopes <CR>";
       options = {
         desc = "Grapple Toggle scopes";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>j";
-      action = "<CMD> Grapple cycle forward <CR>";
-      options = {
-        desc = "Grapple Cycle forward";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>J";
-      action = "<CMD> Grapple cycle backward <CR>";
-      options = {
-        desc = "Grapple Cycle backward";
       };
     }
     {

@@ -23,22 +23,27 @@
           };
         };
         globalstatus = true;
-        disabled_filetypes = {
-          statusline = [
-            "dashboard"
-            "alpha"
-            "starter"
-          ];
-        };
       };
-      inactive_sections = {
-        lualine_x = [
-          "filename"
-          "filetype"
+      tabline = {
+        lualine_a = [
+          {
+            __unkeyed = "grapple";
+            separator.left = "";
+            separator.right = "";
+          }
         ];
+        lualine_b = [
+          {
+            __unkeyed.__raw = "function() return require(\"lspsaga.symbol.winbar\").get_bar() end";
+            separator.left = "";
+            separator.right = "";
+          }
+        ];
+
       };
       sections = {
         lualine_a = [
+          # { __unkeyed = "grapple"; }
           {
             __unkeyed = "mode";
             fmt = "string.lower";
@@ -67,7 +72,7 @@
         ];
         lualine_c = [
           {
-            __unkeyed = "diagnostic";
+            __unkeyed = "diagnostics";
             symbols = {
               error = " ";
               warn = " ";
@@ -81,11 +86,15 @@
             separator.right = "";
           }
         ];
-        lualine_x = [ "" ];
+        lualine_x = [
+          {
+            __unkeyed.__raw = "function() return require(\"noice\").api.status.mode.get() end";
+            cond.__raw = "function() return package.loaded[\"noice\"] and require(\"noice\").api.status.mode.has() end";
+          }
+        ];
         lualine_y = [
           {
             __unkeyed = "filetype";
-            icon_only = true;
             separator.left = "";
             separator.right = "";
           }
