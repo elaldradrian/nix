@@ -23,17 +23,20 @@
             hostPlatform = "aarch64-darwin";
           };
 
-          environment.systemPackages = [
-            pkgs.wezterm
-            pkgs.git
-            pkgs.gh
-            pkgs.slack
-            pkgs.fish
-            pkgs.p7zip
-            pkgs.postman
-            pkgs.docker
-            pkgs.colima
-            # pkgs.aerospace
+          environment.systemPackages = with pkgs; [
+            wezterm
+            git
+            gh
+            slack
+            fish
+            # fishPlugins.fzf-fish
+            fishPlugins.z
+            p7zip
+            postman
+            docker
+            colima
+            node2nix
+            # aerospace
           ];
 
           services.nix-daemon.enable = true;

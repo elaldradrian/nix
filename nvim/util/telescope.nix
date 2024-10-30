@@ -45,40 +45,22 @@
       "<leader><space>" = {
         action = "find_files";
         options = {
-          desc = "Find project files";
+          desc = "Find Project File";
         };
       };
-      "<leader>:" = {
-        action = "command_history";
-        options = {
-          desc = "Command History";
-        };
-      };
-      "<leader>b" = {
-        action = "buffers";
-        options = {
-          desc = "+buffer";
-        };
-      };
-      # "<leader>ff" = {
-      #   action = "find_files";
-      #   options = {
-      #     desc = "Find project files";
-      #   };
-      # };
-      "<leader>fr" = {
+      "<leader>/" = {
         action = "live_grep";
         options = {
-          desc = "Find text";
+          desc = "Live Grep Project";
         };
       };
-      "<leader>fe" = {
+      "<leader><Tab>" = {
         action = "resume";
         options = {
           desc = "Resume";
         };
       };
-      "<leader>fg" = {
+      "<leader>fr" = {
         action = "oldfiles";
         options = {
           desc = "Recent";
@@ -90,7 +72,7 @@
           desc = "Buffers";
         };
       };
-      "<C-p>" = {
+      "<leader>fg" = {
         action = "git_files";
         options = {
           desc = "Search git files";
@@ -114,10 +96,10 @@
           desc = "Auto Commands";
         };
       };
-      "<leader>sb" = {
+      "/" = {
         action = "current_buffer_fuzzy_find";
         options = {
-          desc = "Buffer";
+          desc = "Fuzzy Current Buffer";
         };
       };
       "<leader>sc" = {
@@ -174,12 +156,6 @@
           desc = "Options";
         };
       };
-      "<leader>uC" = {
-        action = "colorscheme";
-        options = {
-          desc = "Colorscheme preview";
-        };
-      };
     };
   };
   keymaps = [
@@ -199,17 +175,17 @@
             require("telescope.builtin").find_files({ cwd = vim.fn.expand("%:p:h") })
           end
       '';
-      options.desc = "Search file cwd";
+      options.desc = "Search File Cwd";
     }
     {
       mode = "n";
-      key = "<leader>fR";
+      key = "<leader>sg";
       action.__raw = ''
         function()
            require("telescope.builtin").live_grep({ cwd = vim.fn.expand("%:p:h") })
           end
       '';
-      options.desc = "Grep cwd";
+      options.desc = "Grep Cwd";
     }
   ];
 }
