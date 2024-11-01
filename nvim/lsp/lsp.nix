@@ -1,4 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, system, ... }:
+let
+  nodePackages = import ../../node2nix {
+    inherit pkgs system;
+    nodejs = pkgs.nodejs;
+  };
+in
 {
   plugins = {
     lsp = {
@@ -22,6 +28,11 @@
         nil_ls.enable = true;
         jsonls.enable = true;
         yamlls.enable = true;
+        vtsls = {
+          enable = true;
+          package = nodePackages."@vtsls/language-server";
+        };
+        eslint.enable = true;
         gradle_ls = {
           enable = true;
           package = pkgs.vscode-extensions.vscjava.vscode-gradle;

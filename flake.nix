@@ -34,6 +34,7 @@
             p7zip
             postman
             docker
+            docker-compose
             colima
             node2nix
             # aerospace
