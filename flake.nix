@@ -37,6 +37,7 @@
             docker-compose
             colima
             node2nix
+            dbeaver-bin
             # aerospace
           ];
 

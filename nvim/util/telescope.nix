@@ -43,9 +43,9 @@
     };
     keymaps = {
       "<leader><space>" = {
-        action = "find_files";
+        action = "git_files";
         options = {
-          desc = "Find Project File";
+          desc = "Search git files";
         };
       };
       "<leader>/" = {
@@ -72,10 +72,10 @@
           desc = "Buffers";
         };
       };
-      "<leader>fg" = {
-        action = "git_files";
+      "<leader>fp" = {
+        action = "find_files";
         options = {
-          desc = "Search git files";
+          desc = "Find Project File";
         };
       };
       "<leader>gc" = {

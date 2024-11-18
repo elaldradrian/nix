@@ -23,10 +23,10 @@
           command = "npm-groovy-lint";
           stdin = false;
           args = [
-            "--rulesets"
-            "'Indentation{\"spacesPerIndentLevel\":2,\"severity\":\"warning\"}'"
-            "--rulesetsoverridetype"
-            "appendConfig"
+            # "--rulesets"
+            # "'Indentation{\"spacesPerIndentLevel\":2,\"severity\":\"warning\"}'"
+            # "--rulesetsoverridetype"
+            # "appendConfig"
             "--fix"
             "--nolintafter"
             "--failon"
