@@ -3,6 +3,8 @@
     ./scheme
 
     ./dressing.nix
+    ./lspkind.nix
+    ./lspsaga.nix
     ./gitblame.nix
     ./illuminate.nix
     ./indent-blankline.nix
