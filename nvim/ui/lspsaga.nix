@@ -98,7 +98,6 @@
     #     silent = true;
     #   };
     # }
-
     {
       mode = "n";
       key = "gI";
@@ -108,7 +107,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "gT";
@@ -118,7 +116,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "K";
@@ -128,7 +125,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>cw";
@@ -148,7 +144,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>ca";
@@ -158,7 +153,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>cd";
@@ -168,7 +162,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "[d";
@@ -178,11 +171,58 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "]d";
       action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+      options = {
+        desc = "Previous Diagnostic";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "[e";
+      action.__raw = # lua
+        ''
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+        '';
+      options = {
+        desc = "Next Diagnostic";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "]e";
+      action.__raw = # lua
+        ''
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+        '';
+      options = {
+        desc = "Previous Diagnostic";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "[w";
+      action.__raw = # lua
+        ''
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+        '';
+      options = {
+        desc = "Next Diagnostic";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "]w";
+      action.__raw = # lua
+        ''
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+        '';
       options = {
         desc = "Previous Diagnostic";
         silent = true;
