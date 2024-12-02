@@ -33,6 +33,8 @@ in
           package = nodePackages."@vtsls/language-server";
         };
         eslint.enable = true;
+        sqls.enable = true;
+        kotlin_language_server.enable = true;
         gradle_ls = {
           enable = true;
           package = pkgs.vscode-extensions.vscjava.vscode-gradle;
