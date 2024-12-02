@@ -96,7 +96,7 @@
           desc = "Auto Commands";
         };
       };
-      "/" = {
+      "<leader>sb>" = {
         action = "current_buffer_fuzzy_find";
         options = {
           desc = "Fuzzy Current Buffer";
