@@ -1,124 +1,66 @@
 {
-  description = "Example Darwin system flake";
+  description = "Runes flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    hm.url = "github:nix-community/home-manager";
+    hm.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    {
-      self,
-      nix-darwin,
-      nixvim,
-      ...
-    }:
-    let
-      configuration =
-        { pkgs, ... }:
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+
+      imports = [
+        ./hosts
+        ./pre-commit-hooks.nix
+      ];
+
+      perSystem =
         {
-          nixpkgs = {
-            config.allowUnfree = true;
-            hostPlatform = "aarch64-darwin";
-          };
-
-          environment.systemPackages = with pkgs; [
-            wezterm
-            git
-            gh
-            slack
-            fish
-            # fishPlugins.fzf-fish
-            fishPlugins.z
-            p7zip
-            postman
-            docker
-            docker-compose
-            colima
-            node2nix
-            dbeaver-bin
-            # aerospace
-          ];
-
-          services.nix-daemon.enable = true;
-
-          nix = {
-            useDaemon = true;
-            settings = {
-              experimental-features = "nix-command flakes";
-            };
-          };
-
-          imports = [
-            nixvim.nixDarwinModules.nixvim
-          ];
-
-          programs = {
-            fish.enable = true;
-            direnv.enable = true;
-            nixvim = import ./nvim // {
-              enable = true;
-              viAlias = true;
-              vimAlias = true;
-            };
-          };
-
-          homebrew = {
-            enable = true;
-            onActivation.cleanup = "uninstall";
-            taps = [ "nikitabobko/tap" ];
-            casks = [
-              "brave-browser"
-              "1Password"
-              "scroll-reverser"
-              "microsoft-teams"
-              "microsoft-outlook"
-              "nikitabobko/tap/aerospace"
-              "microsoft-azure-storage-explorer"
+          config,
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          devShells.default = pkgs.mkShell {
+            packages = [
+              pkgs.nixfmt-rfc-style
+              pkgs.git
+              pkgs.nh
             ];
+            name = "dots";
+            DIRENV_LOG_FORMAT = "";
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
           };
 
-          fonts.packages = [ pkgs.fira-code ];
+          formatter = pkgs.nixfmt-rfc-style;
 
-          security.pam.enableSudoTouchIdAuth = true;
-
-          users = {
-            users."rune" = {
-              uid = 501;
-              shell = pkgs.fish;
-            };
-          };
-
-          system = {
-            stateVersion = 5;
-            configurationRevision = self.rev or self.dirtyRev or null;
-            keyboard = {
-              enableKeyMapping = true;
-              remapCapsLockToEscape = true;
-            };
-            defaults = {
-              dock.autohide = true;
-              dock.mru-spaces = false;
-              dock.show-recents = false;
-              finder.AppleShowAllExtensions = true;
-              finder.FXPreferredViewStyle = "clmv";
-              NSGlobalDomain.AppleInterfaceStyle = "Dark";
-              ".GlobalPreferences"."com.apple.mouse.scaling" = 1.0;
-              NSGlobalDomain.NSScrollAnimationEnabled = false;
-              screensaver.askForPasswordDelay = 10;
-              loginwindow.PowerOffDisabledWhileLoggedIn = true;
+          apps.nvim = {
+            type = "app";
+            program = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+              module = ./packages/nvim;
             };
           };
         };
-    in
-    {
-      darwinConfigurations."rune-mac" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
-      };
-
-      packages.aarch64-darwin.nvim = nixvim.legacyPackages."aarch64-darwin".makeNixvimWithModule {
-        module = ./nvim;
-      };
     };
 }
