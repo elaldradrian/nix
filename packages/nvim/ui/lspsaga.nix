@@ -185,7 +185,9 @@
       key = "[e";
       action.__raw = # lua
         ''
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+          function()
+            require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+          end
         '';
       options = {
         desc = "Next Diagnostic";
@@ -197,7 +199,9 @@
       key = "]e";
       action.__raw = # lua
         ''
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+          function()
+            require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+          end
         '';
       options = {
         desc = "Previous Diagnostic";
@@ -209,7 +213,9 @@
       key = "[w";
       action.__raw = # lua
         ''
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+          function()
+            require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+          end
         '';
       options = {
         desc = "Next Diagnostic";
@@ -221,7 +227,9 @@
       key = "]w";
       action.__raw = # lua
         ''
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+          function()
+            require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+          end
         '';
       options = {
         desc = "Previous Diagnostic";

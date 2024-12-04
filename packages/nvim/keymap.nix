@@ -148,19 +148,19 @@
       };
     }
   ];
-  extraConfigLua = # Lua
-    ''
-      function ToggleLineNumber()
-        if vim.wo.number then
-          vim.wo.number = false
-        else
-          vim.wo.number = true
-          vim.wo.relativenumber = false
-        end
-      end
-
-      function ToggleWrap()
-        vim.wo.wrap = not vim.wo.wrap
-      end
-    '';
+  # extraConfigLua = # Lua
+  #   ''
+  #     function ToggleLineNumber()
+  #       if vim.wo.number then
+  #         vim.wo.number = false
+  #       else
+  #         vim.wo.number = true
+  #         vim.wo.relativenumber = false
+  #       end
+  #     end
+  #
+  #     function ToggleWrap()
+  #       vim.wo.wrap = not vim.wo.wrap
+  #     end
+  #   '';
 }
