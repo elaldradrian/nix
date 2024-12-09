@@ -5,14 +5,16 @@
     ./dressing.nix
     ./lspkind.nix
     ./lspsaga.nix
-    ./gitblame.nix
+    ./git-sign.nix
     ./illuminate.nix
-    ./indent-blankline.nix
+    ./hlchunk.nix
     ./lualine.nix
     ./markview.nix
     ./noice.nix
     ./notify.nix
     ./rainbow-delimiters.nix
     ./trouble.nix
+    ./which-key.nix
+    ./oil-git-status.nix
   ];
 }

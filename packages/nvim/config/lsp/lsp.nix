@@ -1,10 +1,11 @@
 {
+  self,
   pkgs,
   system,
   ...
 }:
 let
-  nodePackages = import ../../node2nix {
+  nodePackages = import ../../../node2nix {
     inherit pkgs system;
     nodejs = pkgs.nodejs;
   };
@@ -22,14 +23,24 @@ in
         };
         html.enable = true;
         lua_ls.enable = true;
-        # TODO: use instead of nil_ls
-        # nixd = {
-        #   enable = true;
-        #   extraOptions = {
-        #     offset_encoding = "utf-8";
-        #   };
-        # };
-        nil_ls.enable = true;
+        nixd = {
+          # Nix LS
+          enable = true;
+          settings =
+            let
+              flake = ''(builtins.getFlake "${self}")'';
+              system = ''''${builtins.currentSystem}'';
+            in
+            {
+              nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+              options = rec {
+                flake-parts.expr = "${flake}.debug.options";
+                nixos.expr = "${flake}.nixosConfigurations.desktop.options";
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+                nixvim.expr = "${flake}.packages.${system}.nvim.options";
+              };
+            };
+        };
         jsonls.enable = true;
         yamlls.enable = true;
         vtsls = {

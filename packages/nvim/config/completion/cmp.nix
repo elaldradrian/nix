@@ -29,11 +29,6 @@
           priority = 400;
         }
         {
-          name = "luasnip";
-          groupIndex = 3;
-          priority = 300;
-        }
-        {
           name = "buffer";
           groupIndex = 2;
           priority = 200;
@@ -42,6 +37,11 @@
           name = "rg";
           groupIndex = 3;
           priority = 100;
+        }
+        {
+          name = "luasnip";
+          groupIndex = 3;
+          priority = 300;
         }
       ];
       filetype = {

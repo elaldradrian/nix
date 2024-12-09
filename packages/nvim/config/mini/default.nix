@@ -6,11 +6,12 @@
 
   imports = [
     ./bracketed.nix
-    ./clue.nix
+    # ./clue.nix
     ./diff.nix
     ./hipatterns.nix
     ./icons.nix
-    ./indent-scope.nix
+    ./move.nix
     ./surround.nix
+    ./trailspace.nix
   ];
 }

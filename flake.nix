@@ -30,13 +30,13 @@
       imports = [
         ./hosts
         ./pre-commit-hooks.nix
+        ./packages/nvim/flake-module.nix
       ];
 
       perSystem =
         {
           config,
           pkgs,
-          system,
           ...
         }:
         {
@@ -48,19 +48,14 @@
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
+            shellHook = # Bash
+              ''
+                ${config.pre-commit.installationScript}
+              '';
           };
 
           formatter = pkgs.nixfmt-rfc-style;
-
-          apps.nvim = {
-            type = "app";
-            program = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-              module = ./packages/nvim;
-            };
-          };
         };
+      debug = true;
     };
 }
