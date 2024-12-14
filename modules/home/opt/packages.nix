@@ -13,6 +13,7 @@
     p7zip
     gh
     fzf
+    fd
     jq
     yq
     kubectl
