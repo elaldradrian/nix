@@ -23,7 +23,7 @@
     {
       mode = "n";
       key = "<leader>m";
-      action = "<CMD> Grapple toggle <CR>";
+      action = "<CMD>lua require('grapple').toggle({ name = vim.fn.expand('%:t') })<CR>";
       options = {
         desc = "Grapple Toggle tag";
       };
@@ -74,6 +74,46 @@
       action = "<CMD> Grapple select index=4<CR>";
       options = {
         desc = "Grapple Select 4";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = {
+        desc = "Grapple Select 5";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = {
+        desc = "Grapple Select 6";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = {
+        desc = "Grapple Select 7";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = {
+        desc = "Grapple Select 8";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = {
+        desc = "Grapple Select 9";
       };
     }
   ];

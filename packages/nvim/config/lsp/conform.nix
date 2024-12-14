@@ -6,6 +6,7 @@
     stylua
     nixfmt-rfc-style
     google-java-format
+    xmlformat
   ];
 
   plugins.conform-nvim = {
@@ -49,10 +50,14 @@
         markdown = [ "prettierd" ];
         markdownd = [ "prettierd" ];
         scss = [ "prettierd" ];
-        typescript = [ "prettierd" ];
+        typescript = [
+          "prettierd"
+          "eslint_d"
+        ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];
         yaml = [ "prettierd" ];
+        xml = [ "xmlformat" ];
 
         lua = [ "stylua" ];
         nix = [ "nixfmt" ];

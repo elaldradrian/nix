@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 {
   home.packages = with pkgs; [
     wezterm
+    zoxide
 
     nodejs
     node2nix
@@ -12,6 +13,7 @@
     p7zip
     gh
     fzf
+    fd
     jq
     yq
     kubectl
@@ -21,6 +23,7 @@
     docker
     docker-compose
 
+    self.packages.${pkgs.system}.nvim
     slack
     dbeaver-bin
     postman

@@ -1,36 +1,83 @@
 {
+  self,
   pkgs,
   system,
   ...
 }:
 let
-  nodePackages = import ../../node2nix {
+  nodePackages = import ../../../node2nix {
     inherit pkgs system;
     nodejs = pkgs.nodejs;
   };
+  bicepLsp = pkgs.stdenv.mkDerivation rec {
+    pname = "bicep-langserver";
+    version = "0.32.4";
+
+    src = pkgs.fetchzip {
+      url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
+      sha256 = "sha256-/lzu9cUEwo/4v5mEwVrLEwbY1p69mrekjU0nxRY/+FQ=";
+      stripRoot = false;
+    };
+
+    buildInputs = with pkgs; [
+      which
+      dotnetCorePackages.dotnet_8.sdk
+    ];
+
+    installPhase = # Bash
+      ''
+        mkdir -p $out/lib $out/bin
+        cp -r * $out/lib/
+
+        echo '#!/bin/sh' > $out/bin/bicep-langserver
+        echo "exec $(which dotnet) $out/lib/Bicep.LangServer.dll \"\$@\"" >> $out/bin/bicep-langserver
+        chmod +x $out/bin/bicep-langserver
+      '';
+
+    meta = with pkgs.lib; {
+      description = "Bicep Language Server for LSP support";
+      homepage = "https://github.com/Azure/bicep";
+      license = licenses.mit;
+    };
+  };
 in
 {
+
   plugins = {
+    helm.enable = true;
     lsp = {
       enable = true;
       inlayHints = true;
       servers = {
         bicep = {
           enable = true;
-          package = pkgs.bicep;
-          cmd = [ "${pkgs.bicep}/bin/bicep" ];
+          package = bicepLsp;
+          cmd = [
+            "${bicepLsp}/bin/bicep-langserver"
+          ];
         };
         html.enable = true;
         lua_ls.enable = true;
-        # TODO: use instead of nil_ls
-        # nixd = {
-        #   enable = true;
-        #   extraOptions = {
-        #     offset_encoding = "utf-8";
-        #   };
-        # };
-        nil_ls.enable = true;
+        nixd = {
+          # Nix LS
+          enable = true;
+          settings =
+            let
+              flake = ''(builtins.getFlake "${self}")'';
+              system = ''''${builtins.currentSystem}'';
+            in
+            {
+              nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+              options = rec {
+                flake-parts.expr = "${flake}.debug.options";
+                nixos.expr = "${flake}.nixosConfigurations.desktop.options";
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+                nixvim.expr = "${flake}.packages.${system}.nvim.options";
+              };
+            };
+        };
         jsonls.enable = true;
+        helm_ls.enable = true;
         yamlls.enable = true;
         vtsls = {
           enable = true;
@@ -93,45 +140,7 @@ in
             desc = "Rename";
           };
         };
-        # diagnostic = {
-        #   "<leader>cd" = {
-        #     action = "open_float";
-        #     desc = "Line Diagnostics";
-        #   };
-        #   "[d" = {
-        #     action = "goto_next";
-        #     desc = "Next Diagnostic";
-        #   };
-        #   "]d" = {
-        #     action = "goto_prev";
-        #     desc = "Previous Diagnostic";
-        #   };
-        # };
       };
     };
   };
-  # extraConfigLua = # Lua
-  #   ''
-  #     local _border = "rounded"
-  #
-  #     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  #       vim.lsp.handlers.hover, {
-  #         border = _border
-  #       }
-  #     )
-  #
-  #     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  #       vim.lsp.handlers.signature_help, {
-  #         border = _border
-  #       }
-  #     )
-  #
-  #     vim.diagnostic.config{
-  #       float={border=_border}
-  #     };
-  #
-  #     require('lspconfig.ui.windows').default_options = {
-  #       border = _border
-  #     }
-  #   '';
 }
