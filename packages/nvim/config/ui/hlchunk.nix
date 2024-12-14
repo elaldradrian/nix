@@ -21,24 +21,18 @@
           enable = true,
           style =
             {
-              { fg = colors.Red },
               { fg = colors.Cyan },
-              { fg = colors.Magenta },
-              { fg = colors.Yellow },
-              { fg = colors.Blus },
-              { fg = colors.Orange },
-              { fg = colors.Green },
+              { fg = colors.Red },
             }
         },
         indent = {
-          enable = true
-        },
-        blank = {
-          enable = true
+          enable = true,
+          use_treesitter = true
         },
         line_num = {
           enable = true,
-          style = colors.Cyan
+          style = colors.Cyan,
+          use_treesitter = true
         }
       })
     '';
