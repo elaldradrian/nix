@@ -8,5 +8,4 @@
     folding = true;
     nixvimInjections = true;
   };
-  plugins.sleuth.enable = true;
 }
