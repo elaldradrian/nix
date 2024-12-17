@@ -11,23 +11,6 @@
         desc = "Clear search";
       };
     }
-    # Center view
-    {
-      mode = "n";
-      key = "<C-d>";
-      action = "<C-d>zz";
-      options = {
-        desc = "Allow C-d and C-u to keep the cursor in the middle";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-u>";
-      action = "<C-u>zz";
-      options = {
-        desc = "Allow C-d and C-u to keep the cursor in the middle";
-      };
-    }
     # Change window
     {
       mode = "n";
