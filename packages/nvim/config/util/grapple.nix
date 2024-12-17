@@ -13,11 +13,12 @@
     })
   ];
 
-  extraConfigLua = ''
-    require('grapple').setup({
-      scope = "git_branch",
-    })
-  '';
+  extraConfigLua = # Lua
+    ''
+      require('grapple').setup({
+        scope = "git_branch",
+      })
+    '';
 
   keymaps = [
     {
