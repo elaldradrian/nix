@@ -20,13 +20,45 @@
         desc = "Allow C-d and C-u to keep the cursor in the middle";
       };
     }
-
     {
       mode = "n";
       key = "<C-u>";
       action = "<C-u>zz";
       options = {
         desc = "Allow C-d and C-u to keep the cursor in the middle";
+      };
+    }
+    # Change window
+    {
+      mode = "n";
+      key = "<C-left>";
+      action = "<C-w>h";
+      options = {
+        desc = "Go to Left Window";
+      };
+    }
+    {
+      mode = "n";
+      key = "<C-down>";
+      action = "<C-w>j";
+      options = {
+        desc = "Go to Lower Window";
+      };
+    }
+    {
+      mode = "n";
+      key = "<C-up>";
+      action = "<C-w>k";
+      options = {
+        desc = "Go to Upper Window";
+      };
+    }
+    {
+      mode = "n";
+      key = "<C-right>";
+      action = "<C-w>l";
+      options = {
+        desc = "Go to Right Window";
       };
     }
     # Categories
