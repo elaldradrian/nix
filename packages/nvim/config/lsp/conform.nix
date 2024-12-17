@@ -38,32 +38,34 @@
       };
       formatters_by_ft = {
         "_" = [ "trim_whitespace" ];
+        bicep = {
+          lsp_format = "prefer";
+        };
         css = [ "prettierd" ];
         graphql = [ "prettierd" ];
+        groovy = [ "npm_groovy_lint" ];
         handlebars = [ "prettierd" ];
         html = [ "prettierd" ];
+        java = [ "google-java-format" ];
         javascript = [ "prettierd" ];
         javascriptreact = [ "prettierd" ];
         json = [ "prettierd" ];
         jsonc = [ "prettierd" ];
         less = [ "prettierd" ];
+        lua = [ "stylua" ];
         markdown = [ "prettierd" ];
         markdownd = [ "prettierd" ];
+        nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
+        sh = [ "shfmt" ];
         typescript = [
           "prettierd"
           "eslint_d"
         ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];
-        yaml = [ "prettierd" ];
         xml = [ "xmlformat" ];
-
-        lua = [ "stylua" ];
-        nix = [ "nixfmt" ];
-        java = [ "google-java-format" ];
-        groovy = [ "npm_groovy_lint" ];
-        sh = [ "shfmt" ];
+        yaml = [ "prettierd" ];
       };
     };
   };
