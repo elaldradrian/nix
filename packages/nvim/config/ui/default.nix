@@ -8,10 +8,10 @@
     ./guess-indent.nix
     ./hlchunk.nix
     ./illuminate.nix
-    ./lspkind.nix
     ./lspsaga.nix
     ./lualine.nix
     ./markview.nix
+    ./neoscroll.nix
     ./noice.nix
     ./notify.nix
     ./oil-git-status.nix
