@@ -40,6 +40,10 @@
         };
     in
     {
+      k3s-1 = mkHost {
+        hostname = "k3s-1";
+        user = "rune";
+      };
       rune-laptop = mkHost {
         hostname = "rune-laptop";
         user = "rune";
