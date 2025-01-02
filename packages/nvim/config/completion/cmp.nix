@@ -44,6 +44,13 @@
           priority = 300;
         }
       ];
+      formatting = {
+        fields = [
+          "abbr"
+          "menu"
+          "kind"
+        ];
+      };
       filetype = {
         gitcommit = {
           sources = [
@@ -54,34 +61,9 @@
           ];
         };
       };
-      cmdline =
-        let
-          common = {
-            mapping.__raw = # lua
-              ''
-                cmp.mapping.preset.cmdline({
-                  ["<C-space>"] = cmp.mapping.complete(),
-                })
-              '';
-            sources = [ { name = "buffer"; } ];
-          };
-        in
-        {
-          "/" = common;
-          "?" = common;
-          ":" = {
-            inherit (common) mapping;
-            sources = [
-              {
-                name = "path";
-                option.trailing_slash = true;
-              }
-              { name = "cmdline"; }
-            ];
-          };
-        };
       mapping = {
         "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
         "<C-down>" = "cmp.mapping.select_next_item()";
         "<C-up>" = "cmp.mapping.select_prev_item()";
         "<C-e>" = "cmp.mapping.abort()";

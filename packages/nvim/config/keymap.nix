@@ -44,6 +44,48 @@
         desc = "Go to Right Window";
       };
     }
+    # Resize window
+    {
+      mode = "n";
+      key = "<S-left>";
+      action = "<cmd>vertical resize -2<cr>";
+      options = {
+        desc = "Decrease Window Width";
+      };
+    }
+    {
+      mode = "n";
+      key = "<S-down>";
+      action = "<cmd>resize -2<cr>";
+      options = {
+        desc = "Decrease Window Height";
+      };
+    }
+    {
+      mode = "n";
+      key = "<S-up>";
+      action = "<cmd>resize +2<cr>";
+      options = {
+        desc = "Increase Window Height";
+      };
+    }
+    {
+      mode = "n";
+      key = "<S-right>";
+      action = "<cmd>vertical resize +2<cr>";
+      options = {
+        desc = "Increase Window Width";
+      };
+    }
+    # Close window
+    {
+      mode = "n";
+      key = "<C-q>";
+      action = "<C-w>q";
+      options = {
+        desc = "Close Window";
+      };
+    }
     # Categories
     {
       mode = "n";

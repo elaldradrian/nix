@@ -2,11 +2,12 @@
 {
   extraPackages = with pkgs; [
     prettierd
+    eslint_d
     shfmt
     stylua
     nixfmt-rfc-style
     google-java-format
-    xmlformat
+    libxml2
   ];
 
   plugins.conform-nvim = {
@@ -64,7 +65,7 @@
         ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];
-        xml = [ "xmlformat" ];
+        xml = [ "xmllint" ];
         yaml = [ "prettierd" ];
       };
     };

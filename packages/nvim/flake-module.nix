@@ -29,5 +29,6 @@
         inherit (self'.packages) nvim;
         name = "My custom neovim";
       };
+      debug = true;
     };
 }

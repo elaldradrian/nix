@@ -26,7 +26,7 @@
       key = "<leader>m";
       action = "<CMD>lua require('grapple').toggle({ name = vim.fn.expand('%:t') })<CR>";
       options = {
-        desc = "Grapple Toggle tag";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -34,7 +34,7 @@
       key = "<leader>k";
       action = "<CMD> Grapple toggle_tags <CR>";
       options = {
-        desc = "Grapple Show tags";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -42,7 +42,7 @@
       key = "<leader>K";
       action = "<CMD> Grapple toggle_scopes <CR>";
       options = {
-        desc = "Grapple Toggle scopes";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -50,7 +50,7 @@
       key = "<leader>1";
       action = "<CMD> Grapple select index=1<CR>";
       options = {
-        desc = "Grapple Select 1";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -58,7 +58,7 @@
       key = "<leader>2";
       action = "<CMD> Grapple select index=2<CR>";
       options = {
-        desc = "Grapple Select 2";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -66,7 +66,7 @@
       key = "<leader>3";
       action = "<CMD> Grapple select index=3<CR>";
       options = {
-        desc = "Grapple Select 3";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -74,7 +74,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 4";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -82,7 +82,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 5";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -90,7 +90,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 6";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -98,7 +98,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 7";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -106,7 +106,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 8";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
     {
@@ -114,7 +114,7 @@
       key = "<leader>4";
       action = "<CMD> Grapple select index=4<CR>";
       options = {
-        desc = "Grapple Select 9";
+        desc = "which_key_ignore"; # "Grapple Toggle tag";
       };
     }
   ];
