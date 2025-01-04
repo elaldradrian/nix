@@ -48,6 +48,9 @@ in
             natural_scroll = "enabled";
             scroll_factor = "0.7";
           };
+          "type:keyboard" = {
+            xkb_options = "caps:escape";
+          };
         };
 
         output = {
