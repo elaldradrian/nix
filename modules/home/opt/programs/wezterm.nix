@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-  config = lib.mkIf config.features.desktop.enable {
+  config = lib.mkIf config.opt.features.desktop.enable {
     programs.wezterm = {
       enable = true;
       colorSchemes = {

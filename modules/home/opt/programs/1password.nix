@@ -4,7 +4,7 @@ let
   onePassPath = "~/.1password/agent.sock";
 in
 {
-  config = lib.mkIf config.programs."1password".enable {
+  config = lib.mkIf config.opt.programs."1password".enable {
     programs.ssh = {
       enable = true;
       extraConfig = ''
