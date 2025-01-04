@@ -1,10 +1,9 @@
 {
   imports = [
+    ./options.nix
     ./packages.nix
+    ./programs
     ./programs.nix
     ./wayland.nix
-    ./programs
-    # ./services.nix
-    # ./session.nix
   ];
 }

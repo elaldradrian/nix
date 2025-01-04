@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -14,22 +16,21 @@ let
   '';
 in
 {
-  services = {
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+  config = lib.mkIf config.opt.features.desktop.enable {
+    services = {
+      greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+          };
         };
       };
+      gnome.gnome-keyring.enable = true;
     };
-    gnome.gnome-keyring.enable = true;
-  };
 
-  environment.etc."greetd/environments".text = ''
-    sway
-    fish
-    bash
-    startxfce4
-  '';
+    environment.etc."greetd/environments".text = ''
+      sway
+    '';
+  };
 }

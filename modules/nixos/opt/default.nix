@@ -1,8 +1,9 @@
 {
   imports = [
     ./font.nix
+    ./options.nix
     ./packages.nix
-    ./services.nix
     ./programs
+    ./services.nix
   ];
 }

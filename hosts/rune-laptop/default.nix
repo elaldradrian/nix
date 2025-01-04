@@ -9,4 +9,8 @@
   ];
 
   networking.hostName = "rune-laptop";
+
+  core.programs.polkit.enable = true;
+
+  opt.features.desktop.enable = true;
 }
