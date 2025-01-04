@@ -7,8 +7,10 @@
     ./options.nix
     ./programs.nix
     ./security.nix
+    ./ssh.nix
     ./system.nix
     ./time.nix
     ./user.nix
+    ./vm-guest.nix
   ];
 }

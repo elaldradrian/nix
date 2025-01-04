@@ -7,7 +7,13 @@
 
   networking.hostName = "k3s-1";
 
-  core.programs.polkit.enable = true;
+  core = {
+    features = {
+      ssh.enable = true;
+      vm-guest.enable = true;
+    };
+    programs.polkit.enable = false;
+  };
 
-  opt.features.desktop.enable = true;
+  opt.features.desktop.enable = false;
 }

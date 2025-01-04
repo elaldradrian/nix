@@ -10,7 +10,13 @@
 
   networking.hostName = "rune-laptop";
 
-  core.programs.polkit.enable = true;
+  core = {
+    features = {
+      ssh.enable = false;
+      vm-guest.enable = false;
+    };
+    programs.polkit.enable = true;
+  };
 
   opt.features.desktop.enable = true;
 }
