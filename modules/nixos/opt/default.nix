@@ -1,9 +1,9 @@
 {
   imports = [
+    ./font.nix
     ./options.nix
     ./packages.nix
     ./programs
-    ./programs.nix
-    ./wayland.nix
+    ./services.nix
   ];
 }
