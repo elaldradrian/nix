@@ -31,7 +31,7 @@ let
     yq
     kubectl
     ripgrep
-    ceph-client
+    # ceph-client
   ];
 in
 {
