@@ -4,6 +4,5 @@
     ./packages.nix
     ./programs
     ./programs.nix
-    ./wayland.nix
   ];
 }

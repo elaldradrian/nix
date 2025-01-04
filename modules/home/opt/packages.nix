@@ -7,6 +7,8 @@
 let
   desktop = with pkgs; [
     brave
+    pulseaudio
+    xorg.xeyes
   ];
 
   devUtils = with pkgs; [
