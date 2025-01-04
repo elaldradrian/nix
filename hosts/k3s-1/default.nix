@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.hm.darwinModule
+    inputs.hm.nixosModule
     ./hardware-configuration.nix
   ];
 
