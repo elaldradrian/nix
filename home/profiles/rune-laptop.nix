@@ -4,5 +4,5 @@
     "${self}/modules/home"
   ];
 
-  home.homeDirectory = "/Users/rune";
+  home.homeDirectory = "/home/rune";
 }

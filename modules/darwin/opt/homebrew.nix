@@ -2,7 +2,6 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "uninstall";
-    # taps = [ "nikitabobko/tap" ];
     casks = [
       "brave-browser"
       "1Password"
@@ -10,7 +9,6 @@
       "microsoft-teams"
       "microsoft-outlook"
       "microsoft-azure-storage-explorer"
-      # "nikitabobko/tap/aerospace"
     ];
   };
 }

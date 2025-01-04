@@ -1,8 +1,7 @@
 { pkgs, self, ... }:
 {
   home.packages = with pkgs; [
-    wezterm
-    zoxide
+    brave
 
     nodejs
     node2nix
@@ -18,14 +17,15 @@
     yq
     kubectl
     ripgrep
+    ceph-client
 
-    colima
+    # colima
     docker
     docker-compose
 
     self.packages.${pkgs.system}.nvim
-    slack
-    dbeaver-bin
-    postman
+    # slack
+    # dbeaver-bin
+    # postman
   ];
 }

@@ -1,8 +1,8 @@
 let
-  default =
-    [
-    ];
-
+  default = [
+    ./core/default.nix
+    ./opt/default.nix
+  ];
 in
 {
   inherit default;
