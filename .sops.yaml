@@ -5,6 +5,7 @@
 keys:
   - &k3s-1 age1exvwh5t9mga7am4ejajq2fggygrryuqs86q82wx2x76escv0l37qq9pka3
   - &k3s-2 age15xg47ssp4s3cr3zmvh3gsvqdkupf3gcmn6t7l3cdluzr7a487crs584f3n
+  - &k3s-3 age1zucr9wh0m3pwh9ru04j7dy0gw6ywf2yhnxjp4dl5r53ksvwrdprq8ms3d0
   - &rune-laptop age1fn434n9cah636023wyxc0mhlxlqn4c4kly6lnpy8vrp0sc63xgaqmkkjm8
 creation_rules:
   - path_regex: secrets/k3s/[^/]+\.(yaml|json|env|ini)$
@@ -13,3 +14,4 @@ creation_rules:
           - *rune-laptop
           - *k3s-1
           - *k3s-2
+          - *k3s-3
