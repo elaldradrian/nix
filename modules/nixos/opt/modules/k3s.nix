@@ -13,9 +13,6 @@
       serverAddr = config.opt.features.k3s.serverAddr;
     };
     networking = {
-      dhcpcd.extraConfig = ''
-        nohook lookup-hostname
-      '';
       firewall = {
         allowedTCPPorts = [
           6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
