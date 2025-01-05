@@ -48,6 +48,10 @@
         hostname = "k3s-1";
         user = "rune";
       };
+      k3s-2 = mkHost {
+        hostname = "k3s-2";
+        user = "rune";
+      };
     };
 
   flake.darwinConfigurations =
