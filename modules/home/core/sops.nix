@@ -1,6 +1,7 @@
 {
   self,
   config,
+  hostname,
   inputs,
   ...
 }:
@@ -8,12 +9,12 @@
   imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
   sops = {
-    defaultSopsFile = "${self}/secrets/${config.networking.hostName}/secrets.json";
+    defaultSopsFile = "${self}/secrets/${hostname}/secrets.json";
     defaultSopsFormat = "json";
 
     age = {
       generateKey = true;
-      keyFile = "~/.sops-nix/keys.txt";
+      keyFile = "${config.home.homeDirectory}/.sops-nix/keys.txt";
     };
   };
 }

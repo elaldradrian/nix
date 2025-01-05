@@ -7,5 +7,5 @@ keys:
 creation_rules:
   - path_regex: secrets/k3s-1/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-      age:
-        - *k3s-1
+      - age:
+          - *k3s-1

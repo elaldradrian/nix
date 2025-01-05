@@ -11,15 +11,16 @@
 
       homeImports = import "${self}/home";
 
-      specialArgs = {
-        inherit inputs self;
-      };
-
       mkHost =
         {
           hostname,
           user ? null,
         }:
+        let
+          specialArgs = {
+            inherit inputs self;
+          } // { hostname = hostname; };
+        in
         nixosSystem {
           inherit specialArgs;
           modules = default ++ [
@@ -56,15 +57,16 @@
 
       homeImports = import "${self}/home";
 
-      specialArgs = {
-        inherit inputs self;
-      };
-
       mkHost =
         {
           hostname,
           user ? null,
         }:
+        let
+          specialArgs = {
+            inherit inputs self;
+          } // { hostname = hostname; };
+        in
         darwinSystem {
           inherit specialArgs;
           modules = default ++ [

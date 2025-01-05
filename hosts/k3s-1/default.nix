@@ -1,11 +1,11 @@
-{ inputs, ... }:
+{ inputs, hostname, ... }:
 {
   imports = [
     inputs.hm.nixosModule
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "k3s-1";
+  networking.hostName = hostname;
 
   core = {
     features = {

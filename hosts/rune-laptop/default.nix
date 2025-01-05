@@ -1,5 +1,6 @@
 {
   inputs,
+  hostname,
   ...
 }:
 {
@@ -8,7 +9,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "rune-laptop";
+  networking.hostName = hostname;
 
   core = {
     features = {
