@@ -18,7 +18,7 @@
   opt.features = {
     desktop.enable = false;
     k3s = {
-      enable = false;
+      enable = true;
       clusterInit = false;
       serverAddr = "https://k3s-1:6443";
     };
