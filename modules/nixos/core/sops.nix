@@ -12,7 +12,7 @@
     defaultSopsFormat = "json";
 
     age = {
-      generateKey = true;
+      generateKey = false;
       keyFile = "/home/rune/.config/sops/age/keys.txt";
     };
 
