@@ -15,5 +15,12 @@
     programs.polkit.enable = false;
   };
 
-  opt.features.desktop.enable = false;
+  opt.features = {
+    desktop.enable = false;
+    k3s = {
+      enable = true;
+      clusterInit = true;
+      serverAddr = "";
+    };
+  };
 }

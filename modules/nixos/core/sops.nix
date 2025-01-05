@@ -6,7 +6,7 @@
   ...
 }:
 {
-  imports = [ inputs.sops-nix.homeManagerModules.sops ];
+  imports = [ inputs.sops-nix.nixosModules.sops ];
 
   sops = {
     defaultSopsFile = "${self}/secrets/${hostname}/secrets.json";

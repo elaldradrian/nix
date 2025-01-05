@@ -2,7 +2,7 @@
   imports = [
     ./options.nix
     ./packages.nix
-    ./programs
+    ./modules
     ./programs.nix
   ];
 }
