@@ -27,8 +27,8 @@
           2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
           2380 # k3s, etcd peers: required if using a "High Availability Embedded etcd" configuration
         ];
+        allowedUDPPorts = [ 8472 ]; # k3s, flannel
       };
-      allowedUDPPorts = [ 8472 ]; # k3s, flannel
     };
   };
 }
