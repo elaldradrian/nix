@@ -4,7 +4,13 @@
 # for a more complex example.
 keys:
   - &k3s-1 age1exvwh5t9mga7am4ejajq2fggygrryuqs86q82wx2x76escv0l37qq9pka3
+  - &rune-laptop age1fn434n9cah636023wyxc0mhlxlqn4c4kly6lnpy8vrp0sc63xgaqmkkjm8
 creation_rules:
+  - path_regex: secrets/k3s/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-laptop
+          - *k3s-1
   - path_regex: secrets/k3s-1/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:

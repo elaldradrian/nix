@@ -34,6 +34,8 @@ let
     kubectl
     ripgrep
     # ceph-client
+    age
+    sops
   ];
 in
 {

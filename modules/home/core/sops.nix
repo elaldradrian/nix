@@ -14,7 +14,7 @@
 
     age = {
       generateKey = true;
-      keyFile = "${config.home.homeDirectory}/.sops-nix/keys.txt";
+      keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     };
   };
 }

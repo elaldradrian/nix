@@ -48,8 +48,6 @@
               nixfmt-rfc-style
               git
               nh
-              sops
-              age
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";

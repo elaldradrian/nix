@@ -9,7 +9,10 @@
     services = {
       greetd = {
         enable = true;
-        settings.default_session.command = "${pkgs.greetd.tuigreet}/tuigreet --cmd sway";
+        settings.default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+          user = "greeter";
+        };
       };
       gnome.gnome-keyring.enable = true;
     };
