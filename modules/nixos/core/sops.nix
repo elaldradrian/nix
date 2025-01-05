@@ -16,5 +16,9 @@
       generateKey = true;
       keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     };
+
+    secrets.k3s-token = {
+      sopsFile = "${self}/secrets/k3s/secret.json";
+    };
   };
 }
