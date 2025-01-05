@@ -20,7 +20,7 @@
     k3s = {
       enable = true;
       clusterInit = false;
-      serverAddr = "https://k3s-1:6443";
+      serverAddr = "https://10.17.16.20:6443";
     };
   };
 }
