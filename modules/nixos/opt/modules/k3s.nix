@@ -11,6 +11,9 @@
       tokenFile = config.sops.secrets.k3s-token.path;
       clusterInit = config.opt.features.k3s.clusterInit;
       serverAddr = config.opt.features.k3s.serverAddr;
+      extraFlags = toString [
+        "--debug"
+      ];
     };
     networking.firewall = {
       allowedTCPPorts = [
