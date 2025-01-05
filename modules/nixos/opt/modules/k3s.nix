@@ -8,7 +8,7 @@
     services.k3s = {
       enable = true;
       role = "server";
-      token = config.sops.secrets.k3s-token.content;
+      tokenFile = config.sops.secrets.k3s-token.path;
       clusterInit = config.opt.features.k3s.clusterInit;
       serverAddr = config.opt.features.k3s.serverAddr;
     };
