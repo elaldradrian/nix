@@ -17,6 +17,8 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -42,10 +44,12 @@
         }:
         {
           devShells.default = pkgs.mkShell {
-            packages = [
-              pkgs.nixfmt-rfc-style
-              pkgs.git
-              pkgs.nh
+            packages = with pkgs; [
+              nixfmt-rfc-style
+              git
+              nh
+              sops
+              age
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
