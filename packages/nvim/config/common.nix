@@ -13,6 +13,7 @@
       plugins = true;
     };
   };
+
   clipboard = {
     register = "unnamedplus";
     providers = {

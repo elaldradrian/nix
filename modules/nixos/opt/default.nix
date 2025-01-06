@@ -3,7 +3,7 @@
     ./font.nix
     ./options.nix
     ./packages.nix
-    ./programs
+    ./modules
     ./services.nix
   ];
 }

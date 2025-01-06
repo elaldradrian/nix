@@ -7,6 +7,8 @@
 let
   desktop = with pkgs; [
     brave
+    pulseaudio
+    xorg.xeyes
   ];
 
   devUtils = with pkgs; [
@@ -31,7 +33,9 @@ let
     yq
     kubectl
     ripgrep
-    ceph-client
+    # ceph-client
+    age
+    sops
   ];
 in
 {

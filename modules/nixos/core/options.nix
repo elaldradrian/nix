@@ -1,4 +1,10 @@
 { lib, ... }:
 {
-  options.core.programs.polkit.enable = lib.mkEnableOption "Enable Polkit";
+  options.core = with lib; {
+    features = {
+      ssh.enable = mkEnableOption "Enable SSH";
+      vm-guest.enable = mkEnableOption "Enable VM Guest";
+    };
+    programs.polkit.enable = mkEnableOption "Enable Polkit";
+  };
 }

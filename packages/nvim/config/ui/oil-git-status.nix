@@ -9,6 +9,7 @@
         rev = "a7ea816bac0cc3b8b4c3605e2f2b87960be60a05";
         hash = "sha256-IXjpuzWipF7Pjp4N92ZuNKktYNe5oTYzyCykqkmNRkg=";
       };
+      dependencies = [ pkgs.vimPlugins.oil-nvim ];
     })
   ];
 

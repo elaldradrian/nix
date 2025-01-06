@@ -42,15 +42,26 @@ in
           }
         ];
 
+        input = {
+          "type:touchpad" = {
+            tap = "enabled";
+            natural_scroll = "enabled";
+            scroll_factor = "0.7";
+          };
+          "type:keyboard" = {
+            xkb_options = "caps:escape";
+          };
+        };
+
         output = {
-          "DP-5" = {
+          "eDP-1" = {
             position = "0,0";
           };
-          "DP-6" = {
-            position = "2560,360";
+          "DP-5" = {
+            position = "2880,0";
           };
-          "eDP-1" = {
-            position = "-2560,0";
+          "DP-6" = {
+            position = "5440,360";
           };
         };
 
@@ -82,6 +93,15 @@ in
       extraConfig = ''
         bindswitch --reload --locked lid:on exec "[ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ] && swaymsg output eDP-1 disable"
         bindswitch --reload --locked lid:off output eDP-1 enable
+
+        # Brightness
+        bindsym XF86MonBrightnessDown exec light -U 10
+        bindsym XF86MonBrightnessUp exec light -A 10
+
+        # Volume
+        bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
+        bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
+        bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
       '';
     };
   };

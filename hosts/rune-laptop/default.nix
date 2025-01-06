@@ -1,5 +1,6 @@
 {
   inputs,
+  hostname,
   ...
 }:
 {
@@ -8,9 +9,18 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "rune-laptop";
+  networking.hostName = hostname;
 
-  core.programs.polkit.enable = true;
+  core = {
+    features = {
+      ssh.enable = false;
+      vm-guest.enable = false;
+    };
+    programs.polkit.enable = true;
+  };
 
-  opt.features.desktop.enable = true;
+  opt.features = {
+    desktop.enable = true;
+    k3s.enable = false;
+  };
 }

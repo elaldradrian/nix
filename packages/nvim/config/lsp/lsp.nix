@@ -21,7 +21,7 @@ let
 
     buildInputs = with pkgs; [
       which
-      dotnetCorePackages.dotnet_8.sdk
+      dotnet-sdk
     ];
 
     installPhase = # Bash

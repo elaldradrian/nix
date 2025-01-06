@@ -1,7 +1,7 @@
 {
   imports = [
     ./1password.nix
-    ./waybar.nix
-    ./wezterm.nix
+    ./k3s.nix
+    ./light.nix
   ];
 }

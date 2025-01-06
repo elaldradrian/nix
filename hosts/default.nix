@@ -1,6 +1,5 @@
 {
   self,
-  lib,
   inputs,
   ...
 }:
@@ -12,15 +11,16 @@
 
       homeImports = import "${self}/home";
 
-      specialArgs = {
-        inherit inputs self;
-      };
-
       mkHost =
         {
           hostname,
           user ? null,
         }:
+        let
+          specialArgs = {
+            inherit inputs self;
+          } // { hostname = hostname; };
+        in
         nixosSystem {
           inherit specialArgs;
           modules = default ++ [
@@ -44,6 +44,18 @@
         hostname = "rune-laptop";
         user = "rune";
       };
+      k3s-1 = mkHost {
+        hostname = "k3s-1";
+        user = "rune";
+      };
+      k3s-2 = mkHost {
+        hostname = "k3s-2";
+        user = "rune";
+      };
+      k3s-3 = mkHost {
+        hostname = "k3s-3";
+        user = "rune";
+      };
     };
 
   flake.darwinConfigurations =
@@ -53,15 +65,16 @@
 
       homeImports = import "${self}/home";
 
-      specialArgs = {
-        inherit inputs self;
-      };
-
       mkHost =
         {
           hostname,
           user ? null,
         }:
+        let
+          specialArgs = {
+            inherit inputs self;
+          } // { hostname = hostname; };
+        in
         darwinSystem {
           inherit specialArgs;
           modules = default ++ [
