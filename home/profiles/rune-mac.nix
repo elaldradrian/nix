@@ -11,6 +11,7 @@
       desktop.enable = false;
       devUtils.enable = true;
       docker.enable = true;
+      ssh.work-profile.enable = true;
     };
     programs = {
       nvim.enable = true;
