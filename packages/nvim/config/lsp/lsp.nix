@@ -135,10 +135,10 @@ in
           #   action = "workspace_symbol";
           #   desc = "Workspace Symbol";
           # };
-          "<leader>cr" = {
-            action = "rename";
-            desc = "Rename";
-          };
+          # "<leader>cr" = {
+          #   action = "rename";
+          #   desc = "Rename";
+          # };
         };
       };
     };
