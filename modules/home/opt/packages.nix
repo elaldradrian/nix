@@ -17,7 +17,7 @@ let
     python3
   ];
 
-  docker = with pkgs.docker; [
+  docker = with pkgs; [
     docker
     docker-compose
   ];
