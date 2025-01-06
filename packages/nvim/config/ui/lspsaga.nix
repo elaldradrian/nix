@@ -42,15 +42,7 @@
       enable = false;
     };
     rename = {
-      autoSave = false;
-      keys = {
-        exec = "<CR>";
-        quit = [
-          "<C-k>"
-          "<Esc>"
-        ];
-        select = "x";
-      };
+      autoSave = true;
     };
     outline = {
       autoClose = true;
