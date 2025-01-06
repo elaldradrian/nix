@@ -97,6 +97,14 @@
     }
     {
       mode = "n";
+      key = "<leader>h";
+      action = "+http";
+      options = {
+        desc = "+http";
+      };
+    }
+    {
+      mode = "n";
       key = "<leader>s";
       action = "+search";
       options = {
@@ -206,17 +214,9 @@
         desc = "Toggle Line Wrap";
       };
     }
-    # {
-    #   mode = "n";
-    #   key = "J";
-    #   action = "mzJ`z";
-    #   options = {
-    #     desc = "Allow cursor to stay in the same place after appending to current line";
-    #   };
-    # }
     {
       mode = "n";
-      key = "<Tab>";
+      key = "<leader><CR>";
       action = "<CMD>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<CR>";
       options = {
         desc = "Next buffer";
