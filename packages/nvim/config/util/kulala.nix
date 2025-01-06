@@ -1,5 +1,12 @@
 {
-  plugins.kulala.enable = true;
+  plugins.kulala = {
+    enable = true;
+    settings = {
+      default_view = "headers_body";
+      display_mode = "float";
+      winbar = true;
+    };
+  };
   keymaps = [
     {
       mode = "n";
