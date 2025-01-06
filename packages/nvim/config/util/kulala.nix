@@ -2,9 +2,9 @@
   plugins.kulala = {
     enable = true;
     settings = {
+      display_mode = "split";
       default_view = "headers_body";
-      display_mode = "float";
-      winbar = true;
+      debug = true;
     };
   };
   keymaps = [
@@ -23,6 +23,24 @@
       action = "<cmd>lua require('kulala').toggle_view()<cr>";
       options = {
         desc = "Toggle between body and headers";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>hi";
+      action = "<cmd>lua require('kulala').inspect()<cr>";
+      options = {
+        desc = "Inspect the current request";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>hs";
+      action = "<cmd>lua require('kulala').show_stats()<cr>";
+      options = {
+        desc = "Show stat for the last request";
         silent = true;
       };
     }
