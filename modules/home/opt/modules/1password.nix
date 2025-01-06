@@ -10,23 +10,22 @@ in
       extraConfig =
         if config.opt.features.ssh.work-profile.enable then
           ''
-            Host *
-              IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-              User git
-              IdentityFile ~/.ssh/work.pub
-              IdentitiesOnly yes
-
-            Host private
-              HostName github.com
-              User git
-              IdentityFile ~/.ssh/private.pub
-              IdentitiesOnly yes
+            IdentityAgent ${onePassPath}
+            User git
+            IdentityFile ~/.ssh/work.pub
+            IdentitiesOnly yes
           ''
         else
           ''
-            Host *
-              IdentityAgent ${onePassPath}
+            IdentityAgent ${onePassPath}
           '';
+      matchBlocks.private = {
+        host = "private";
+        identitiesOnly = true;
+        user = "git";
+        hostname = "github.com";
+        identityFile = "~/.ssh/private.pub";
+      };
     };
   };
 }
