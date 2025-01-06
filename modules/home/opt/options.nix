@@ -5,6 +5,7 @@
       desktop.enable = mkEnableOption "Enable desktop features";
       devUtils.enable = mkEnableOption "Enable development utilities";
       docker.enable = mkEnableOption "Enable Docker";
+      ssh.work-profile.enable = mkEnableOption "Enable SSH work profile";
     };
     programs = {
       nvim.enable = mkEnableOption "Enable Neovim";

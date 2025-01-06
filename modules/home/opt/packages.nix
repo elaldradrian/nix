@@ -5,24 +5,23 @@
   ...
 }:
 let
-  desktop = with pkgs; [
+  desktopPkgs = with pkgs; [
     brave
     pulseaudio
-    xorg.xeyes
   ];
 
-  devUtils = with pkgs; [
+  devUtilPkgs = with pkgs; [
     nodejs
     node2nix
     python3
   ];
 
-  docker = with pkgs.docker; [
+  dockerPkgs = with pkgs; [
     docker
     docker-compose
   ];
 
-  commonPackages = with pkgs; [
+  commonPkgs = with pkgs; [
     btop
     dig
     p7zip
@@ -40,10 +39,10 @@ let
 in
 {
   home.packages =
-    commonPackages
-    ++ (if config.opt.features.desktop.enable then desktop else [ ])
-    ++ (if config.opt.features.devUtils.enable then devUtils else [ ])
-    ++ (if config.opt.features.docker.enable then docker else [ ])
+    commonPkgs
+    ++ (if config.opt.features.desktop.enable then desktopPkgs else [ ])
+    ++ (if config.opt.features.devUtils.enable then devUtilPkgs else [ ])
+    ++ (if config.opt.features.docker.enable then dockerPkgs else [ ])
     ++ (if config.opt.programs.nvim.enable then [ self.packages.${pkgs.system}.nvim ] else [ ])
     ++ (if config.opt.programs.colima.enable then [ pkgs.colima ] else [ ])
     ++ (if config.opt.programs.slack.enable then [ pkgs.slack ] else [ ])
