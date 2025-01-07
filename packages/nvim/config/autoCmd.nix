@@ -3,18 +3,13 @@
     {
       desc = "Check if we need to reload the file when it changed";
       event = [
+        "BufEnter"
+        "CursorHold"
+        "CursorHoldI"
         "FocusGained"
-        "TermClose"
-        "TermLeave"
       ];
-      callback.__raw = # lua
-        ''
-          function()
-              if vim.o.buftype ~= "nofile" then
-                vim.cmd("checktime")
-              end
-            end
-        '';
+      pattern = "*";
+      command = "if mode() != 'c' | checktime | endif";
     }
     {
       desc = "Highlight on yank";
