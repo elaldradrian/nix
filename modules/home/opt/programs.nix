@@ -1,8 +1,10 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 {
+  nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
   programs = {
     fish = {
       enable = true;
@@ -42,6 +44,10 @@
       enable = true;
       userEmail = "rune@dahl-billeskov.com";
       userName = "Rune Dahl Billeskov";
+    };
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-bin;
     };
   };
 }
