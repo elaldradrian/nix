@@ -43,6 +43,7 @@
     };
     rename = {
       autoSave = true;
+      inSelect = false;
     };
     outline = {
       autoClose = true;
