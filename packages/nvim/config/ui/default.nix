@@ -10,6 +10,7 @@
     ./illuminate.nix
     ./lspsaga.nix
     ./lualine.nix
+    ./marks.nix
     ./markview.nix
     ./neoscroll.nix
     ./noice.nix
