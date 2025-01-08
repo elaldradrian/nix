@@ -13,8 +13,10 @@
     defaultSopsFormat = "json";
 
     age = {
-      generateKey = true;
-      keyFile = "/${config.home.homeDirectory}/.config/sops/age/keys.txt";
+      generateKey = false;
+      keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     };
+
+    secrets.github_token = { };
   };
 }
