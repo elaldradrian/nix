@@ -8,6 +8,7 @@
     nixfmt-rfc-style
     google-java-format
     libxml2
+    markdownlint-cli2
   ];
 
   plugins.conform-nvim = {
@@ -54,8 +55,14 @@
         jsonc = [ "prettierd" ];
         less = [ "prettierd" ];
         lua = [ "stylua" ];
-        markdown = [ "prettierd" ];
-        markdownd = [ "prettierd" ];
+        markdown = [
+          "prettierd"
+          "markdownlint-cli2"
+        ];
+        markdownd = [
+          "prettierd"
+          "markdownlint-cli2"
+        ];
         nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
         sh = [ "shfmt" ];

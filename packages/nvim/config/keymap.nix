@@ -86,61 +86,7 @@
         desc = "Close Window";
       };
     }
-    # Categories
-    {
-      mode = "n";
-      key = "<leader>f";
-      action = "+find/file";
-      options = {
-        desc = "+file/file";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>h";
-      action = "+http";
-      options = {
-        desc = "+http";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>s";
-      action = "+search";
-      options = {
-        desc = "+search";
-      };
-    }
-    {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>g";
-      action = "+git";
-      options = {
-        desc = "+git";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>u";
-      action = "+ui";
-      options = {
-        desc = "+ui";
-      };
-    }
-    {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>c";
-      action = "+code";
-      options = {
-        desc = "+code";
-      };
-    }
+    # Move between windows
     {
       mode = "n";
       key = "<C-h>";
@@ -177,6 +123,7 @@
         desc = "Move to window right";
       };
     }
+    # Save
     {
       mode = "n";
       key = "<C-s>";
@@ -196,6 +143,7 @@
         desc = "Quit all";
       };
     }
+    # Toggle line numbers
     {
       mode = "n";
       key = "<leader>ul";
