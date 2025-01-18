@@ -1,3 +1,0 @@
-{
-  plugins.markview.enable = true;
-}

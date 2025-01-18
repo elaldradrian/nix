@@ -158,18 +158,18 @@
     {
       mode = "n";
       key = "[d";
-      action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
+      action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       options = {
-        desc = "Next Diagnostic";
+        desc = "Previous Diagnostic";
         silent = true;
       };
     }
     {
       mode = "n";
       key = "]d";
-      action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+      action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
       options = {
-        desc = "Previous Diagnostic";
+        desc = "Next Diagnostic";
         silent = true;
       };
     }

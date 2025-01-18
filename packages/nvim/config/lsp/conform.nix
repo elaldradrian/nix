@@ -8,6 +8,8 @@
     nixfmt-rfc-style
     google-java-format
     libxml2
+    markdownlint-cli2
+    ormolu
   ];
 
   plugins.conform-nvim = {
@@ -36,6 +38,9 @@
             "$FILENAME"
           ];
         };
+        ormolu = {
+          command = "ormolu";
+        };
       };
       formatters_by_ft = {
         "_" = [ "trim_whitespace" ];
@@ -54,8 +59,14 @@
         jsonc = [ "prettierd" ];
         less = [ "prettierd" ];
         lua = [ "stylua" ];
-        markdown = [ "prettierd" ];
-        markdownd = [ "prettierd" ];
+        markdown = [
+          "prettierd"
+          "markdownlint-cli2"
+        ];
+        markdownd = [
+          "prettierd"
+          "markdownlint-cli2"
+        ];
         nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
         sh = [ "shfmt" ];
