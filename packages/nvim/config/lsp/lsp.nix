@@ -1,14 +1,14 @@
 {
   self,
   pkgs,
-  system,
+  # system,
   ...
 }:
 let
-  nodePackages = import ../../../node2nix {
-    inherit pkgs system;
-    nodejs = pkgs.nodejs;
-  };
+  # nodePackages = import ../../../node2nix {
+  #   inherit pkgs system;
+  #   nodejs = pkgs.nodejs;
+  # };
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
     version = "0.32.4";
@@ -78,11 +78,16 @@ in
         };
         jsonls.enable = true;
         helm_ls.enable = true;
-        yamlls.enable = true;
-        vtsls = {
+        hls = {
           enable = true;
-          package = nodePackages."@vtsls/language-server";
+          installGhc = true;
         };
+        yamlls.enable = true;
+        # vtsls = {
+        #   enable = true;
+        #   package = nodePackages."@vtsls/language-server";
+        # };
+        ts_ls.enable = true;
         eslint.enable = true;
         sqls.enable = true;
         kotlin_language_server.enable = true;

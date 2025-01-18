@@ -9,6 +9,7 @@
     google-java-format
     libxml2
     markdownlint-cli2
+    ormolu
   ];
 
   plugins.conform-nvim = {
@@ -36,6 +37,9 @@
             "none"
             "$FILENAME"
           ];
+        };
+        ormolu = {
+          command = "ormolu";
         };
       };
       formatters_by_ft = {
