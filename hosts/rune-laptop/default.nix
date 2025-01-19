@@ -24,6 +24,8 @@
       desktop.enable = true;
       k3s.enable = false;
     };
-    programs.steam.enable = true;
+    programs.steam = {
+      enable = true;
+    };
   };
 }
