@@ -5,5 +5,6 @@
     ./packages.nix
     ./modules
     ./programs.nix
+    ./tmux.nix
   ];
 }
