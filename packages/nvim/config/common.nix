@@ -22,6 +22,7 @@
       };
     };
   };
+
   diagnostics = {
     update_in_insert = true;
     severity_sort = true;
@@ -32,6 +33,9 @@
       severity.__raw = "vim.diagnostic.severity.WARN";
     };
   };
+
+  filetype.extension.http = "http";
+
   opts = {
     number = true;
     relativenumber = true;

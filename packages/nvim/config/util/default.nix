@@ -9,6 +9,7 @@
     ./octo.nix
     ./oil.nix
     ./telescope.nix
+    ./tmux.nix
     ./todo-commnets.nix
   ];
 }
