@@ -8,6 +8,8 @@ let
   desktopPkgs = with pkgs; [
     brave
     pulseaudio
+    wineWowPackages.stagingFull
+    winetricks
   ];
 
   devUtilPkgs = with pkgs; [
