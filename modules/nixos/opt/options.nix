@@ -12,5 +12,10 @@
         };
       };
     };
+    programs = {
+      steam = {
+        enable = mkEnableOption "Enable Steam";
+      };
+    };
   };
 }

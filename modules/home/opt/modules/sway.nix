@@ -11,10 +11,14 @@ in
   config = lib.mkIf config.opt.features.desktop.enable {
     wayland.windowManager.sway = {
       enable = true;
-      wrapperFeatures.gtk = true;
+      wrapperFeatures = {
+        base = true;
+        gtk = true;
+      };
+      xwayland = true;
       config = {
         modifier = mod;
-        terminal = lib.getExe pkgs.wezterm;
+        terminal = lib.getExe pkgs.kitty;
         defaultWorkspace = "workspace number 1";
 
         focus.followMouse = "no";
@@ -58,27 +62,27 @@ in
             position = "0,0";
           };
           "DP-5" = {
-            position = "2880,0";
+            position = "1440,0";
           };
           "DP-6" = {
-            position = "5440,360";
+            position = "4000,0";
           };
         };
 
-        workspaceOutputAssign = [
-          {
-            output = "DP-5";
-            workspace = "1";
-          }
-          {
-            output = "DP-6";
-            workspace = "2";
-          }
-          {
-            output = "eDP-1";
-            workspace = "3";
-          }
-        ];
+        # workspaceOutputAssign = [
+        #   {
+        #     output = "DP-5";
+        #     workspace = "1";
+        #   }
+        #   {
+        #     output = "DP-6";
+        #     workspace = "2";
+        #   }
+        #   {
+        #     output = "eDP-1";
+        #     workspace = "3";
+        #   }
+        # ];
 
         keybindings =
           let

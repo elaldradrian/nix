@@ -19,8 +19,13 @@
     programs.polkit.enable = true;
   };
 
-  opt.features = {
-    desktop.enable = true;
-    k3s.enable = false;
+  opt = {
+    features = {
+      desktop.enable = true;
+      k3s.enable = false;
+    };
+    programs.steam = {
+      enable = true;
+    };
   };
 }
