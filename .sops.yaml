@@ -6,7 +6,7 @@ keys:
   - &k3s-1 age1exvwh5t9mga7am4ejajq2fggygrryuqs86q82wx2x76escv0l37qq9pka3
   - &k3s-2 age15xg47ssp4s3cr3zmvh3gsvqdkupf3gcmn6t7l3cdluzr7a487crs584f3n
   - &k3s-3 age1zucr9wh0m3pwh9ru04j7dy0gw6ywf2yhnxjp4dl5r53ksvwrdprq8ms3d0
-  - &rune-laptop age1fn434n9cah636023wyxc0mhlxlqn4c4kly6lnpy8vrp0sc63xgaqmkkjm8
+  - &rune-laptop age1v7wmx3zdmm6erjyff8xfsdxghvtf4u9heah2x86z6rang3e869zs7rj04h
   - &rune-mac age15xr4upz6h5elfnuz2uhd8q5zwvt8kulqh93sp3ysw2at68qk8p5qm4fevh
 
 creation_rules:
