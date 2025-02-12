@@ -1,4 +1,8 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  ...
+}:
 {
   flake = {
     # The nixvim module used to build `packages.<system>.nvim`
