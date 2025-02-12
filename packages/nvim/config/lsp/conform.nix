@@ -9,7 +9,6 @@
     google-java-format
     libxml2
     markdownlint-cli2
-    ormolu
   ];
 
   plugins.conform-nvim = {
@@ -38,9 +37,6 @@
             "$FILENAME"
           ];
         };
-        ormolu = {
-          command = "ormolu";
-        };
       };
       formatters_by_ft = {
         "_" = [ "trim_whitespace" ];
@@ -52,6 +48,9 @@
         groovy = [ "npm_groovy_lint" ];
         handlebars = [ "prettierd" ];
         html = [ "prettierd" ];
+        haskell = {
+          lsp_format = "prefer";
+        };
         java = [ "google-java-format" ];
         javascript = [ "prettierd" ];
         javascriptreact = [ "prettierd" ];

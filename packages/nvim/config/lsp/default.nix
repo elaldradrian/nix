@@ -2,7 +2,7 @@
   imports = [
     ./conform.nix
     ./jdtls.nix
-    ./lint.nix
+    # ./lint.nix
     ./lsp.nix
   ];
 }
