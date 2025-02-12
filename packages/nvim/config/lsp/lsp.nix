@@ -59,20 +59,17 @@ in
         html.enable = true;
         lua_ls.enable = true;
         nixd = {
-          # Nix LS
           enable = true;
           settings =
             let
               flake = ''(builtins.getFlake "${self}")'';
-              system = ''''${builtins.currentSystem}'';
             in
             {
               nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
-              options = rec {
+              options = {
                 flake-parts.expr = "${flake}.debug.options";
-                nixos.expr = "${flake}.nixosConfigurations.desktop.options";
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
-                nixvim.expr = "${flake}.packages.${system}.nvim.options";
+                # darwin.expr = "${flake}.darwinConfigurations.rune-mac.options";
+                # home-manager.expr = "${darwin.expr}.homeConfigurations.rune-mac.options";
               };
             };
         };
@@ -80,7 +77,7 @@ in
         helm_ls.enable = true;
         hls = {
           enable = true;
-          installGhc = true;
+          installGhc = false;
         };
         yamlls.enable = true;
         # vtsls = {
