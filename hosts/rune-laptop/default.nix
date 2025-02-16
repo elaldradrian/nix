@@ -15,6 +15,7 @@
     features = {
       ssh.enable = false;
       vm-guest.enable = false;
+      vpn.enable = true;
     };
     programs.polkit.enable = true;
   };
@@ -23,6 +24,7 @@
     features = {
       desktop.enable = true;
       k3s.enable = false;
+      docker.enable = true;
     };
     programs.steam = {
       enable = true;

@@ -23,6 +23,8 @@
         clusterInit = true;
         serverAddr = "";
       };
+      vpn.enable = false;
+      docker.enable = false;
     };
     programs.steam.enable = false;
   };
