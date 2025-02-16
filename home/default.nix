@@ -2,6 +2,9 @@
   rune-laptop = [
     ./profiles/rune-laptop.nix
   ];
+  rune-workstation = [
+    ./profiles/rune-workstation.nix
+  ];
   rune-mac = [
     ./profiles/rune-mac.nix
   ];
