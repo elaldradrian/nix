@@ -2,7 +2,8 @@
 {
   options.opt = with lib; {
     features = {
-      desktop.enable = mkEnableOption "Enable desktop features";
+      desktop.enable = mkEnableOption "Enable desktop";
+      docker.enable = mkEnableOption "Enable docker";
       k3s = {
         enable = mkEnableOption "Enable k3s";
         clusterInit = mkEnableOption "Initialize k3s cluster";

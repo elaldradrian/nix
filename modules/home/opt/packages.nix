@@ -8,6 +8,7 @@ let
   desktopPkgs = with pkgs; [
     brave
     pulseaudio
+    pulsemixer
     wineWowPackages.stagingFull
     winetricks
   ];
@@ -16,6 +17,7 @@ let
     nodejs
     node2nix
     python3
+    argocd
   ];
 
   dockerPkgs = with pkgs; [

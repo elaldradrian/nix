@@ -23,6 +23,8 @@
         clusterInit = false;
         serverAddr = "https://10.17.16.20:6443";
       };
+      vpn.enable = false;
+      docker.enable = false;
     };
     programs.steam.enable = false;
   };
