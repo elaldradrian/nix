@@ -1,7 +1,6 @@
 {
   imports = [
-    ./scheme
-
+    ./csvview.nix
     ./diffview.nix
     ./dressing.nix
     ./git-sign.nix
@@ -17,6 +16,7 @@
     ./notify.nix
     ./oil-git-status.nix
     ./rainbow-delimiters.nix
+    ./scheme
     ./trouble.nix
     ./which-key.nix
   ];

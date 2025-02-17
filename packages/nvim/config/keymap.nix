@@ -156,7 +156,7 @@
     {
       mode = "n";
       key = "<leader>uw";
-      action = ":lua ToggleWrap()<cr>";
+      action = ":set wrap!<cr>";
       options = {
         silent = true;
         desc = "Toggle Line Wrap";
@@ -168,6 +168,33 @@
       action = "<CMD>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<CR>";
       options = {
         desc = "Next buffer";
+      };
+    }
+    # up and down
+    {
+      mode = [
+        "n"
+        "x"
+      ];
+      key = "<Down>";
+      action = "v:count == 0 ? 'gj' : 'j'";
+      options = {
+        silent = true;
+        desc = "Move down";
+        expr = true;
+      };
+    }
+    {
+      mode = [
+        "n"
+        "x"
+      ];
+      key = "<Up>";
+      action = "v:count == 0 ? 'gk' : 'k'";
+      options = {
+        silent = true;
+        desc = "Move up";
+        expr = true;
       };
     }
   ];
