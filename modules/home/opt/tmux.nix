@@ -9,6 +9,7 @@
     baseIndex = 1;
     clock24 = true;
     keyMode = "vi";
+    newSession = true;
     shell = lib.getExe pkgs.fish;
     shortcut = "t";
     escapeTime = 0;
@@ -20,6 +21,7 @@
       set -g xterm-keys on
       set -as terminal-features 'xterm*:extkeys'
       set -s extended-keys on
+      set-option -g renumber-windows on
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
@@ -40,6 +42,10 @@
       bind-key -T copy-mode-vi 'C-up' select-pane -U
       bind-key -T copy-mode-vi 'C-right' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
     '';
   };
 }
