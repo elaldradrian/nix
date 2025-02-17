@@ -58,31 +58,13 @@ in
         };
 
         output = {
-          "eDP-1" = {
+          "DP-5" = {
             position = "0,0";
           };
-          "DP-5" = {
-            position = "1440,0";
-          };
           "DP-6" = {
-            position = "4000,0";
+            position = "2560,0";
           };
         };
-
-        # workspaceOutputAssign = [
-        #   {
-        #     output = "DP-5";
-        #     workspace = "1";
-        #   }
-        #   {
-        #     output = "DP-6";
-        #     workspace = "2";
-        #   }
-        #   {
-        #     output = "eDP-1";
-        #     workspace = "3";
-        #   }
-        # ];
 
         keybindings =
           let

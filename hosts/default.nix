@@ -44,6 +44,10 @@
         hostname = "rune-laptop";
         user = "rune";
       };
+      rune-workstation = mkHost {
+        hostname = "rune-workstation";
+        user = "rune";
+      };
       k3s-1 = mkHost {
         hostname = "k3s-1";
         user = "rune";
