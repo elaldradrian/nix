@@ -1,29 +1,32 @@
 {
   config,
   lib,
+  homeDir,
   ...
 }:
 {
   config = lib.mkIf (config.opt.features.devUtils.enable && config.opt.features.work-machine.enable) {
     sops = {
       secrets.github_token = { };
-      secrets.artifactory_email = { };
+      secrets.work_email = { };
       secrets.artifactory_token = { };
+      secrets.artifactory_url = { };
 
-      templates.github_token = {
-        path = "${config.home.homeDirectory}/.npmrc";
+      templates.npmrc = {
+        path = "${homeDir}/.npmrc";
         content = lib.generators.toINIWithGlobalSection { } {
           globalSection = {
-            prefix = "${config.home.homeDirectory}/.npm-packages";
+            prefix = "${homeDir}/.npm-packages";
             "//npm.pkg.github.com/:_authToken" = config.sops.placeholder.github_token;
             "@bd-b0100:registry" = "https://npm.pkg.github.com/";
 
             "always-auth" = "true";
-            "email" = config.sops.placeholder.artifactory_email;
+            "email" = config.sops.placeholder.work_email;
+            "perfer-offline" = "true";
 
             "//registry.bankdata.dev/artifactory/api/npm/rel-npm/:_authToken" =
               config.sops.placeholder.artifactory_token;
-            "@mz-js:registry" = "https://registry.bankdata.dev/artifactory/api/npm/rel-npm/";
+            "registry" = config.sops.placeholder.artifactory_url;
           };
         };
       };

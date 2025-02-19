@@ -28,11 +28,11 @@
         lualine_a = [
           {
             __unkeyed = "grapple";
-            separator.left = "";
+            separator.left = ">";
             separator.right = "";
           }
         ];
-        lualine_b = [
+        lualine_c = [
           {
             __unkeyed.__raw = "function() return require(\"lspsaga.symbol.winbar\").get_bar() end";
             separator.left = "";
