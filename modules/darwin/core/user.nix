@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
-  users.users."rune" = {
+  users.users."${user}" = {
     uid = 501;
     shell = pkgs.fish;
-    home = "/Users/rune";
+    home = "/Users/${user}";
   };
 }

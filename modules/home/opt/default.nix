@@ -1,10 +1,13 @@
 {
   imports = [
+    ./programs
+    ./direnv.nix
+    ./fish.nix
     ./options.nix
     ./packages.nix
-    ./modules
-    ./programs.nix
-    ./tmux.nix
+    ./services.nix
     ./session.nix
+    ./tmux.nix
+    ./zoxide.nix
   ];
 }

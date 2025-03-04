@@ -60,13 +60,13 @@
           desc = "Resume";
         };
       };
-      "<leader>fr" = {
+      "<leader><CR>" = {
         action = "oldfiles";
         options = {
           desc = "Recent";
         };
       };
-      "<leader>fb" = {
+      "<leader>o" = {
         action = "buffers";
         options = {
           desc = "Buffers";

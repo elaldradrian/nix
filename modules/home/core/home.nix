@@ -1,6 +1,7 @@
+{ user, ... }:
 {
   home = {
-    username = "rune";
-    stateVersion = "24.05";
+    username = user;
+    stateVersion = "25.05";
   };
 }

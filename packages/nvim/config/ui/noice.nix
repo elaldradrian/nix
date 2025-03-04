@@ -10,6 +10,14 @@
         };
         view = "mini";
       }
+      {
+        filter = {
+          event = "lsp";
+          kind = "progress";
+          find = "Processing";
+        };
+        skip = true;
+      }
     ];
   };
 }

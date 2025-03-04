@@ -1,6 +1,6 @@
 {
   self,
-  config,
+  homeDir,
   hostname,
   inputs,
   ...
@@ -14,7 +14,7 @@
 
     age = {
       generateKey = false;
-      keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+      keyFile = "${homeDir}/.config/sops/age/keys.txt";
     };
   };
 }

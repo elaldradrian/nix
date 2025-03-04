@@ -4,8 +4,6 @@
     "${self}/modules/home"
   ];
 
-  home.homeDirectory = "/home/rune";
-
   opt = {
     features = {
       desktop.enable = true;
