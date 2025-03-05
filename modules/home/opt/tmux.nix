@@ -27,27 +27,30 @@
       # See: https://github.com/christoomey/vim-tmux-navigator
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
           | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
-      bind-key -n 'C-left'  if-shell "$is_vim" { send-keys C-left  } { if-shell -F '#{pane_at_left}'   {} { select-pane -L } }
-      bind-key -n 'C-down'  if-shell "$is_vim" { send-keys C-down  } { if-shell -F '#{pane_at_bottom}' {} { select-pane -D } }
-      bind-key -n 'C-up'    if-shell "$is_vim" { send-keys C-up    } { if-shell -F '#{pane_at_top}'    {} { select-pane -U } }
-      bind-key -n 'C-right' if-shell "$is_vim" { send-keys C-right } { if-shell -F '#{pane_at_right}'  {} { select-pane -R } }
+      # Move
+      bind-key -n 'C-Left'  if-shell "$is_vim" { send-keys C-Left  } { if-shell -F '#{pane_at_left}'   {} { select-pane -L } }
+      bind-key -n 'C-Down'  if-shell "$is_vim" { send-keys C-Down  } { if-shell -F '#{pane_at_bottom}' {} { select-pane -D } }
+      bind-key -n 'C-Up'    if-shell "$is_vim" { send-keys C-Up    } { if-shell -F '#{pane_at_top}'    {} { select-pane -U } }
+      bind-key -n 'C-Right' if-shell "$is_vim" { send-keys C-Right } { if-shell -F '#{pane_at_right}'  {} { select-pane -R } }
 
-      bind-key -T copy-mode-vi 'C-left'  if-shell -F '#{pane_at_left}'   {} { select-pane -L }
-      bind-key -T copy-mode-vi 'C-down'  if-shell -F '#{pane_at_bottom}' {} { select-pane -D }
-      bind-key -T copy-mode-vi 'C-up'    if-shell -F '#{pane_at_top}'    {} { select-pane -U }
-      bind-key -T copy-mode-vi 'C-right' if-shell -F '#{pane_at_right}'  {} { select-pane -R }
+      bind-key -T copy-mode-vi 'C-Left'  if-shell -F '#{pane_at_left}'   {} { select-pane -L }
+      bind-key -T copy-mode-vi 'C-Down'  if-shell -F '#{pane_at_bottom}' {} { select-pane -D }
+      bind-key -T copy-mode-vi 'C-Up'    if-shell -F '#{pane_at_top}'    {} { select-pane -U }
+      bind-key -T copy-mode-vi 'C-Right' if-shell -F '#{pane_at_right}'  {} { select-pane -R }
 
-      bind c new-window -c "#{pane_current_path}"
-      bind s split-window -c "#{pane_current_path}"
-      bind v split-window -h -c "#{pane_current_path}"
+      bind-key -n 'M-C-Left'  resize-pane -L 2
+      bind-key -n 'M-C-Down'  resize-pane -D 2
+      bind-key -n 'M-C-Up'    resize-pane -U 2
+      bind-key -n 'M-C-Right' resize-pane -R 2
 
-      bind -n M-S-Up swap-pane -U
-      bind -n M-S-Down swap-pane -D
+      bind-key -n 'C-c' new-window -c "#{pane_current_path}"
+      bind-key -n 'M-C-s' split-window -c "#{pane_current_path}"
+      bind-key -n 'M-C-v' split-window -h -c "#{pane_current_path}"
 
-      bind -n M-S-h swap-pane -L
-      bind -n M-S-l swap-pane -R
-      bind -n M-S-k swap-pane -U
-      bind -n M-S-j swap-pane -D
+      bind-key -n 'M-C-PageDown' swap-pane -D
+      bind-key -n 'M-C-PageUp'   swap-pane -U
+
+      bind-key -n 'M-C-Tab' list-sessions
     '';
   };
 }
