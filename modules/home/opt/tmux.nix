@@ -43,7 +43,7 @@
       bind-key -n 'M-C-Up'    resize-pane -U 2
       bind-key -n 'M-C-Right' resize-pane -R 2
 
-      bind-key -n 'C-c' new-window -c "#{pane_current_path}"
+      bind-key -n 'M-C-c' new-window -c "#{pane_current_path}"
       bind-key -n 'M-C-s' split-window -c "#{pane_current_path}"
       bind-key -n 'M-C-v' split-window -h -c "#{pane_current_path}"
 
