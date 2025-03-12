@@ -21,6 +21,7 @@
         set fish_cursor_replace underscore
         set fish_cursor_external line
         set fish_cursor_visual block
+        tmux a
       '';
   };
 }
