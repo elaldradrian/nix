@@ -31,3 +31,9 @@ creation_rules:
           - *rune-mac
           - *rune-laptop
           - *rune-workstation
+  - path_regex: secrets/rune-workstation/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-mac
+          - *rune-laptop
+          - *rune-workstation
