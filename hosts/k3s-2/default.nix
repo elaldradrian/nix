@@ -1,7 +1,7 @@
 { inputs, hostname, ... }:
 {
   imports = [
-    inputs.hm.nixosModule
+    inputs.hm.nixosModules.home-manager
     ./hardware-configuration.nix
   ];
 
