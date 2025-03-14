@@ -50,7 +50,7 @@
       bind-key -n 'M-C-PageDown' swap-pane -D
       bind-key -n 'M-C-PageUp'   swap-pane -U
 
-      bind-key -n 'M-C-Tab' list-sessions
+      bind-key -n 'M-C-t' list-sessions
     '';
   };
 }
