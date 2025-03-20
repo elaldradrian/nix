@@ -26,6 +26,7 @@ let
   ];
 
   commonPkgs = with pkgs; [
+    self.packages.${pkgs.system}.nvim
     btop
     dig
     p7zip
@@ -40,6 +41,12 @@ let
     age
     sops
   ];
+
+  work = with pkgs; [
+    google-chrome
+    slack
+    dbeaver-bin
+  ];
 in
 {
   home.packages =
@@ -47,8 +54,6 @@ in
     ++ (if config.opt.features.desktop.enable then desktopPkgs else [ ])
     ++ (if config.opt.features.devUtils.enable then devUtilPkgs else [ ])
     ++ (if config.opt.features.docker.enable then dockerPkgs else [ ])
-    ++ (if config.opt.programs.nvim.enable then [ self.packages.${pkgs.system}.nvim ] else [ ])
-    ++ (if config.opt.programs.colima.enable then [ pkgs.colima ] else [ ])
-    ++ (if config.opt.programs.slack.enable then [ pkgs.slack ] else [ ])
-    ++ (if config.opt.programs.dbeaver.enable then [ pkgs.dbeaver-bin ] else [ ]);
+    ++ (if config.opt.features.work-machine.enable then work else [ ])
+    ++ (if config.opt.programs.colima.enable then [ pkgs.colima ] else [ ]);
 }
