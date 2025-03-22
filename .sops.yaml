@@ -19,6 +19,30 @@ creation_rules:
           - *k3s-1
           - *k3s-2
           - *k3s-3
+  - path_regex: secrets/k3s-1/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-laptop
+          - *rune-workstation
+          - *k3s-1
+          - *k3s-2
+          - *k3s-3
+  - path_regex: secrets/k3s-2/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-laptop
+          - *rune-workstation
+          - *k3s-1
+          - *k3s-2
+          - *k3s-3
+  - path_regex: secrets/k3s-3/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-laptop
+          - *rune-workstation
+          - *k3s-1
+          - *k3s-2
+          - *k3s-3
   - path_regex: secrets/rune-mac/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
