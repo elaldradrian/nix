@@ -13,10 +13,7 @@
       work-machine.enable = false;
     };
     programs = {
-      nvim.enable = true;
       colima.enable = false;
-      slack.enable = false;
-      dbeaver.enable = false;
       "1password".enable = true;
     };
   };
