@@ -16,7 +16,7 @@
   extraConfigLua = # Lua
     ''
       require('grapple').setup({
-        scope = "git_branch",
+        scope = "git",
       })
     '';
 
