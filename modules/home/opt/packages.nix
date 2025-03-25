@@ -25,22 +25,24 @@ let
     docker-compose
   ];
 
-  commonPkgs = with pkgs; [
-    self.packages.${pkgs.system}.nvim
-    btop
-    dig
-    p7zip
-    gh
-    fzf
-    fd
-    jq
-    yq
-    kubectl
-    ripgrep
-    ceph-client
-    age
-    sops
-  ];
+  commonPkgs =
+    with pkgs;
+    [
+      self.packages.${pkgs.system}.nvim
+      btop
+      dig
+      p7zip
+      gh
+      fzf
+      fd
+      jq
+      yq
+      kubectl
+      ripgrep
+      age
+      sops
+    ]
+    ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
 
   work = with pkgs; [
     google-chrome
