@@ -1,3 +1,3 @@
 {
-  options.colorsheme = "nebulous";
+  colorscheme = "nebulous";
 }

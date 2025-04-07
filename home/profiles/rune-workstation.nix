@@ -9,7 +9,6 @@
       desktop.enable = true;
       devUtils.enable = true;
       docker.enable = false;
-      ssh.work-profile.enable = false;
       work-machine.enable = false;
     };
     programs = {

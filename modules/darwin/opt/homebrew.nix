@@ -10,5 +10,8 @@
       "microsoft-azure-storage-explorer"
       "homerow"
     ];
+    brews = [
+      "wasmcloud/wasmcloud/wash"
+    ];
   };
 }
