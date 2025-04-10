@@ -5,7 +5,6 @@
       desktop.enable = mkEnableOption "Enable desktop features";
       devUtils.enable = mkEnableOption "Enable development utilities";
       docker.enable = mkEnableOption "Enable Docker";
-      ssh.work-profile.enable = mkEnableOption "Enable SSH work profile";
       work-machine.enable = mkEnableOption "Enable work machine";
     };
     programs = {

@@ -22,7 +22,7 @@ in
         hostname = "github.com";
         identityFile = "~/.ssh/private.pub";
       };
-      matchBlocks.work = (lib.mkIf config.opt.features.ssh.work-profile.enable) {
+      matchBlocks.work = (lib.mkIf config.opt.features.work-machine.enable) {
         host = "github.com";
         identityFile = "~/.ssh/work.pub";
       };

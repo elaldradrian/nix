@@ -9,5 +9,6 @@
     "$HOME/.local/bin"
     "$HOME/bin"
     "$HOME/.nix-profile/bin"
+    "/opt/homebrew/bin"
   ];
 }
