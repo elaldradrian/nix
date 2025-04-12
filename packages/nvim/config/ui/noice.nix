@@ -18,6 +18,15 @@
         };
         skip = true;
       }
+      # Ignore message with % line no. of file
+      {
+        filter = {
+          event = "msg_show";
+          kind = "";
+          find = "%-%-%d+%%%-%-";
+        };
+        skip = true;
+      }
     ];
   };
 }
