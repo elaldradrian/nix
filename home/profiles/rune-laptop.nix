@@ -10,6 +10,7 @@
       devUtils.enable = true;
       docker.enable = false;
       work-machine.enable = false;
+      games.enable = false;
     };
     programs = {
       colima.enable = false;
