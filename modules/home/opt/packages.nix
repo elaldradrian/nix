@@ -29,9 +29,7 @@ let
     with pkgs;
     [
       self.packages.${pkgs.system}.nvim
-      (btop.overrideAttrs (old: {
-        buildFlags = old.buildFlags or [ ] ++ [ "GPU_SUPPORT=true" ];
-      }))
+      (btop.override { cudaSupport = true; })
       dig
       p7zip
       gh
