@@ -3,26 +3,8 @@
     enable = true;
     settings = {
       options = {
-        theme = {
-          normal = {
-            a = {
-              bg = "#nil";
-            };
-            b = {
-              bg = "nil";
-            };
-            c = {
-              bg = "nil";
-            };
-            z = {
-              bg = "nil";
-            };
-            y = {
-              bg = "nil";
-            };
-          };
-        };
         globalstatus = true;
+        theme = "nebulous";
       };
       tabline = {
         lualine_a = [
@@ -32,7 +14,7 @@
             separator.right = "";
           }
         ];
-        lualine_c = [
+        lualine_z = [
           {
             __unkeyed.__raw = "function() return require(\"lspsaga.symbol.winbar\").get_bar() end";
             separator.left = "";
@@ -47,9 +29,11 @@
           {
             __unkeyed = "mode";
             fmt = "string.lower";
-            color = {
-              bg = "nil";
-            };
+            separator.left = "";
+            separator.right = "";
+          }
+          {
+            __unkeyed = "selectioncount";
             separator.left = "";
             separator.right = "";
           }
@@ -58,8 +42,16 @@
           {
             __unkeyed = "branch";
             icon.__unkeyed = "";
-            color = {
-              bg = "nil";
+            separator.left = "";
+            separator.right = "";
+          }
+          {
+            __unkeyed = "filename";
+            path = 1;
+            symbols = {
+              modified = "";
+              readonly = "👁️";
+              unnamed = "";
             };
             separator.left = "";
             separator.right = "";
@@ -79,9 +71,6 @@
               info = " ";
               hint = "󰝶 ";
             };
-            color = {
-              bg = "nil";
-            };
             separator.left = "";
             separator.right = "";
           }
@@ -99,15 +88,7 @@
             separator.right = "";
           }
           {
-            __unkeyed = "filename";
-            symbols = {
-              modified = "";
-              readonly = "👁️";
-              unnamed = "";
-            };
-            color = {
-              bg = "nil";
-            };
+            __unkeyed = "lsp_status";
             separator.left = "";
             separator.right = "";
           }
@@ -115,9 +96,11 @@
         lualine_z = [
           {
             __unkeyed = "location";
-            color = {
-              bg = "nil";
-            };
+            separator.left = "";
+            separator.right = "";
+          }
+          {
+            __unkeyed = "progress";
             separator.left = "";
             separator.right = "";
           }
