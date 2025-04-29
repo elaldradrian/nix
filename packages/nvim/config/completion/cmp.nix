@@ -11,7 +11,7 @@
         {
           name = "nvim_lsp";
           groupIndex = 2;
-          priority = 700;
+          priority = 1000;
         }
         {
           name = "path";
@@ -36,12 +36,12 @@
         {
           name = "rg";
           groupIndex = 3;
-          priority = 100;
+          priority = 300;
         }
         {
           name = "luasnip";
           groupIndex = 3;
-          priority = 300;
+          priority = 100;
         }
       ];
       formatting = {
@@ -62,15 +62,13 @@
         };
       };
       mapping = {
-        "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-        "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
         "<C-down>" = "cmp.mapping.select_next_item()";
         "<C-up>" = "cmp.mapping.select_prev_item()";
         "<C-e>" = "cmp.mapping.abort()";
         "<C-d>" = "cmp.mapping.scroll_docs(-4)";
         "<C-u>" = "cmp.mapping.scroll_docs(4)";
         "<C-space>" = "cmp.mapping.complete()";
-        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<tab>" = "cmp.mapping.confirm({ select = true })";
         # "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
       };
     };

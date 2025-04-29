@@ -6,8 +6,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "refractalize";
         repo = "oil-git-status.nvim";
-        rev = "a7ea816bac0cc3b8b4c3605e2f2b87960be60a05";
-        hash = "sha256-IXjpuzWipF7Pjp4N92ZuNKktYNe5oTYzyCykqkmNRkg=";
+        rev = "4b5cf53842c17a09420919e655a6a559da3112d7";
+        hash = "sha256-V1tR6U3SAufrPwjSmVXIfhWyaDcF/I48/r2nuCc1/Ms=";
       };
       dependencies = [ pkgs.vimPlugins.oil-nvim ];
     })
