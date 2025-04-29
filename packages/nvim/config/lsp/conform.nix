@@ -2,7 +2,6 @@
 {
   extraPackages = with pkgs; [
     prettierd
-    eslint_d
     shfmt
     stylua
     nixfmt-rfc-style
@@ -71,7 +70,6 @@
         sh = [ "shfmt" ];
         typescript = [
           "prettierd"
-          "eslint_d"
         ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];
