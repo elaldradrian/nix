@@ -19,6 +19,8 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =

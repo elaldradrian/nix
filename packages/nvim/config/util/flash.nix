@@ -18,9 +18,6 @@
         ''
           function()
             require('flash').jump({
-              jump = {
-                autojump = true
-              },
               label = {
                 rainbow = { enabled = true },
               }
