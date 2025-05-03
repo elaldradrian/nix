@@ -36,6 +36,9 @@
       name = "Fira Code";
       size = 14;
     };
+    settings = {
+      shell = "tmux a";
+    };
     extraConfig = ''
       map shift+enter send_text all \x1b[13;2u
     '';
