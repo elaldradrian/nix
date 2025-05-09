@@ -15,10 +15,15 @@
     escapeTime = 0;
     plugins = with pkgs; [
       tmuxPlugins.resurrect
-      tmuxPlugins.continuum
+      tmuxPlugins.cpu
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
       tmuxPlugins.yank
       tmuxPlugins.sessionist
-
     ];
     extraConfig = ''
       set -as terminal-features 'xterm*:extkeys'
@@ -29,7 +34,6 @@
       set -g history-limit 50000
       set -g status-interval 5
       set -g xterm-keys on
-      set -s escape-time 0
       set -s extended-keys on
       set-option -g renumber-windows on
       setw -g mode-keys vi
