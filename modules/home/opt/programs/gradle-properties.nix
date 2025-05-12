@@ -10,7 +10,7 @@
       secrets.work_email = { };
       secrets.artifactory_token = { };
 
-      templates.npmrc = {
+      templates.gradleProperties = {
         path = "${homeDir}/.gradle/gradle.properties";
         content = lib.generators.toINIWithGlobalSection { } {
           globalSection = {
