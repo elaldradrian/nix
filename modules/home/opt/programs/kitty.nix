@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   home.file.kitty-theme = {
     enable = true;
@@ -37,7 +38,7 @@
       size = 14;
     };
     settings = {
-      shell = "tmux a";
+      shell = "${pkgs.tmux}/bin/tmux a";
     };
     extraConfig = ''
       map shift+enter send_text all \x1b[13;2u
