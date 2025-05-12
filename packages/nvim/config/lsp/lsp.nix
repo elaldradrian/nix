@@ -74,6 +74,7 @@ in
             };
         };
         jsonls.enable = true;
+        jdtls.enable = true;
         helm_ls.enable = true;
         hls = {
           enable = true;
