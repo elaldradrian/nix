@@ -9,6 +9,7 @@
       "microsoft-outlook"
       "microsoft-azure-storage-explorer"
       "homerow"
+      "google-chrome"
     ];
     brews = [
       "wasmcloud/wasmcloud/wash"

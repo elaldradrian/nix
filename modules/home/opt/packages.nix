@@ -45,7 +45,6 @@ let
     ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
 
   work = with pkgs; [
-    google-chrome
     slack
     dbeaver-bin
   ];
