@@ -12,9 +12,17 @@
     newSession = true;
     shell = lib.getExe pkgs.fish;
     shortcut = "t";
+    terminal = "tmux-256color";
+    historyLimit = 50000;
     escapeTime = 0;
     plugins = with pkgs; [
-      tmuxPlugins.resurrect
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-strategy-nvim 'session'
+        '';
+      }
       tmuxPlugins.cpu
       {
         plugin = tmuxPlugins.continuum;
@@ -27,16 +35,11 @@
     ];
     extraConfig = ''
       set -as terminal-features 'xterm*:extkeys'
-      set -g @resurrect-capture-pane-contents 'on'
-      set -g @resurrect-strategy-nvim 'session'
-      set -g default-terminal tmux-256color
       set -g display-time 4000
-      set -g history-limit 50000
       set -g status-interval 5
       set -g xterm-keys on
       set -s extended-keys on
       set-option -g renumber-windows on
-      setw -g mode-keys vi
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
