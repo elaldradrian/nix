@@ -14,7 +14,7 @@
       finder.AppleShowAllExtensions = true;
       finder.FXPreferredViewStyle = "clmv";
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
-      ".GlobalPreferences"."com.apple.mouse.scaling" = 1.0;
+      ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
       NSGlobalDomain.NSScrollAnimationEnabled = false;
       screensaver.askForPasswordDelay = 10;
       loginwindow.PowerOffDisabledWhileLoggedIn = true;
