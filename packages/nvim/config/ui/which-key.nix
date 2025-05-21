@@ -1,6 +1,6 @@
 {
   plugins.which-key = {
-    enable = true;
+    enable = false;
     settings.spec = [
       {
         __unkeyed-1 = "<leader>b";
