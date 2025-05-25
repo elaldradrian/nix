@@ -13,6 +13,9 @@
       serverAddr = config.opt.features.k3s.serverAddr;
       extraFlags = toString [
         "--debug"
+        "--disable-cloud-controller"
+        "--disable=traefik"
+        "--disable=servicelb"
       ];
     };
     networking.firewall = {
