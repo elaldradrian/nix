@@ -42,7 +42,6 @@ let
   };
 in
 {
-
   plugins = {
     helm.enable = true;
     lsp = {
@@ -81,10 +80,6 @@ in
           installGhc = false;
         };
         yamlls.enable = true;
-        # vtsls = {
-        #   enable = true;
-        #   package = nodePackages."@vtsls/language-server";
-        # };
         ts_ls.enable = true;
         eslint.enable = true;
         sqls.enable = true;
