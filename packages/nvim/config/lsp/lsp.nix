@@ -1,21 +1,16 @@
 {
   self,
   pkgs,
-  # system,
   ...
 }:
 let
-  # nodePackages = import ../../../node2nix {
-  #   inherit pkgs system;
-  #   nodejs = pkgs.nodejs;
-  # };
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
-    version = "0.32.4";
+    version = "0.36.1";
 
     src = pkgs.fetchzip {
       url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
-      sha256 = "sha256-/lzu9cUEwo/4v5mEwVrLEwbY1p69mrekjU0nxRY/+FQ=";
+      sha256 = "sha256-WqkfUun5RZ4B3jbgwqB1S8NlbFSmUZwgNGTJdBO3EWo=";
       stripRoot = false;
     };
 
