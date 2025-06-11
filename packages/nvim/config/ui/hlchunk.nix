@@ -36,3 +36,41 @@
       })
     '';
 }
+
+# {
+#   plugins.hlchunk = {
+#     enable = true;
+#     luaConfig.pre =
+#       # Lua
+#       ''
+#         local colors = require("nebulous.functions").get_colors("twilight")
+#         print(colors.Cyan)
+#       '';
+#     settings = {
+#       chunk = {
+#         enable = true;
+#         style.__raw = # Lua
+#           ''
+#             {
+#               { fg = colors.Red },
+#               { fg = colors.Cyan },
+#               { fg = colors.Magenta },
+#               { fg = colors.Yellow },
+#               { fg = colors.Blue },
+#               { fg = colors.Orange },
+#               { fg = colors.Green },
+#             },
+#           '';
+#       };
+#       indent = {
+#         enable = true;
+#       };
+#       line_num = {
+#         enable = true;
+#         style.__raw = ''colors.Cyan'';
+#         use_treesitter = true;
+#       };
+#     };
+#   };
+# }
+#

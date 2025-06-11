@@ -6,8 +6,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "elaldradrian";
         repo = "nebulous.nvim";
-        rev = "cbc861435890cdc2961031a501187ac94e537fed";
-        hash = "sha256-um9G0BQbj+/SCoPpKz1J+kkhz2dCzKhMaY5tT0U/IrY=";
+        rev = "d2a4f540dfa56e819d733e6af2e82c245ff87f6f";
+        hash = "sha256-M9xMVN9B/vYAChXfoqc3VvaOicvQXO6MJD+hwxWOAPA=";
       };
     })
   ];
