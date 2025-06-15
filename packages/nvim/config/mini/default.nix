@@ -6,7 +6,6 @@
 
   imports = [
     ./bracketed.nix
-    ./clue.nix
     ./diff.nix
     ./hipatterns.nix
     ./icons.nix
