@@ -1,6 +1,6 @@
 {
   imports = [
     ./conform.nix
-    ./lsp.nix
+    ./nvim-lspconfig.nix
   ];
 }

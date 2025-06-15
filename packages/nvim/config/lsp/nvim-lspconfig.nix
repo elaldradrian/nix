@@ -1,5 +1,4 @@
 {
-  self,
   pkgs,
   ...
 }:
@@ -50,35 +49,7 @@ in
             "${bicepLsp}/bin/bicep-langserver"
           ];
         };
-        html.enable = true;
-        lua_ls.enable = true;
-        nixd = {
-          enable = true;
-          settings =
-            let
-              flake = ''(builtins.getFlake "${self}")'';
-            in
-            {
-              nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
-              options = {
-                flake-parts.expr = "${flake}.debug.options";
-                # darwin.expr = "${flake}.darwinConfigurations.rune-mac.options";
-                # home-manager.expr = "${darwin.expr}.homeConfigurations.rune-mac.options";
-              };
-            };
-        };
-        jsonls.enable = true;
-        jdtls.enable = true;
-        helm_ls.enable = true;
-        hls = {
-          enable = true;
-          installGhc = false;
-        };
-        yamlls.enable = true;
-        ts_ls.enable = true;
         eslint.enable = true;
-        sqls.enable = true;
-        kotlin_language_server.enable = true;
         gradle_ls = {
           enable = true;
           package = pkgs.vscode-extensions.vscjava.vscode-gradle;
@@ -95,6 +66,20 @@ in
             };
           };
         };
+        helm_ls.enable = true;
+        hls = {
+          enable = true;
+          installGhc = false;
+        };
+        html.enable = true;
+        jsonls.enable = true;
+        jdtls.enable = true;
+        kotlin_language_server.enable = true;
+        lua_ls.enable = true;
+        nixd.enable = true;
+        sqls.enable = true;
+        ts_ls.enable = true;
+        yamlls.enable = true;
       };
       keymaps = {
         silent = true;
