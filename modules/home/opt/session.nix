@@ -1,4 +1,9 @@
-{ homeDir, ... }:
+{
+  config,
+  pkgs,
+  homeDir,
+  ...
+}:
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -10,5 +15,5 @@
     "$HOME/bin"
     "$HOME/.nix-profile/bin"
     "/opt/homebrew/bin"
-  ];
+  ] ++ (if config.opt.features.work-machine.enable then [ pkgs.x3270 ] else [ ]);
 }
