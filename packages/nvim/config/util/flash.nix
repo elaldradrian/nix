@@ -19,7 +19,7 @@
           function()
             require('flash').jump({
               label = {
-                rainbow = { enabled = true },
+              rainbow = { enabled = true },
               }
             })
           end

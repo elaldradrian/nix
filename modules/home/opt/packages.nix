@@ -5,6 +5,26 @@
   ...
 }:
 let
+  commonPkgs =
+    with pkgs;
+    [
+      self.packages.${pkgs.system}.nvim
+      (btop.override { cudaSupport = true; })
+      dig
+      p7zip
+      gh
+      fzf
+      fd
+      jq
+      yq
+      kubectl
+      ripgrep
+      age
+      sops
+      nix-tree
+    ]
+    ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
+
   desktopPkgs = with pkgs; [
     brave
     pulseaudio
@@ -24,25 +44,6 @@ let
     docker
     docker-compose
   ];
-
-  commonPkgs =
-    with pkgs;
-    [
-      self.packages.${pkgs.system}.nvim
-      (btop.override { cudaSupport = true; })
-      dig
-      p7zip
-      gh
-      fzf
-      fd
-      jq
-      yq
-      kubectl
-      ripgrep
-      age
-      sops
-    ]
-    ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
 
   work = with pkgs; [
     slack
