@@ -40,7 +40,7 @@ in
     helm.enable = true;
     lsp = {
       enable = true;
-      inlayHints = true;
+      inlayHints = false;
       servers = {
         bicep = {
           enable = true;

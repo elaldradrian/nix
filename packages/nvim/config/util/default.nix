@@ -8,6 +8,7 @@
     ./neogit.nix
     ./octo.nix
     ./oil.nix
+    ./repeat.nix
     ./telescope.nix
     ./tmux.nix
     ./todo-commnets.nix
