@@ -9,8 +9,9 @@
       desktop.enable = true;
       devUtils.enable = true;
       docker.enable = false;
-      work-machine.enable = false;
       games.enable = true;
+      vpn.enable = false;
+      work-machine.enable = false;
     };
     programs = {
       colima.enable = false;

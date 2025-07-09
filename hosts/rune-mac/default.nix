@@ -5,4 +5,10 @@
     ./hardware-configuration.nix
   ];
   networking.hostName = hostname;
+
+  core = {
+    features = {
+      vpn.enable = false;
+    };
+  };
 }

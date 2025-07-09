@@ -11,7 +11,6 @@
     features = {
       ssh.enable = true;
       vm-guest.enable = true;
-      vpn.enable = false;
     };
     programs.polkit.enable = false;
   };

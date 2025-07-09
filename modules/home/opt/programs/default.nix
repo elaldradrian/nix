@@ -7,6 +7,7 @@
     ./npmrc.nix
     ./ssh.nix
     ./sway.nix
+    ./vpn.nix
     ./waybar.nix
   ];
 }
