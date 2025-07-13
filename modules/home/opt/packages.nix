@@ -38,6 +38,7 @@ let
     node2nix
     python3
     argocd
+    kubernetes-helm
   ];
 
   dockerPkgs = with pkgs; [
