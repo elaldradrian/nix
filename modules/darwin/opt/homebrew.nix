@@ -10,6 +10,7 @@
       "microsoft-azure-storage-explorer"
       "homerow"
       "google-chrome"
+      "tailscale"
     ];
     brews = [
       "wasmcloud/wasmcloud/wash"

@@ -7,6 +7,7 @@
       docker.enable = mkEnableOption "Enable Docker";
       work-machine.enable = mkEnableOption "Enable work machine";
       games.enable = mkEnableOption "Enable games";
+      vpn.enable = mkEnableOption "Enable VPN";
     };
     programs = {
       colima.enable = mkEnableOption "Enable Colima";
