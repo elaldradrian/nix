@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }:
@@ -17,6 +18,7 @@
         "--disable=traefik"
         "--disable=servicelb"
       ];
+      package = pkgs.k3s_1_32;
     };
     networking.firewall = {
       allowedTCPPorts = [
