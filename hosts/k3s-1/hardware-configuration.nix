@@ -20,7 +20,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/727bd008-a7bd-4124-b694-2052d216c627";
