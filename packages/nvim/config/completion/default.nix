@@ -1,7 +1,7 @@
 {
   imports = [
-    ./cmp-copilot.nix
-    ./cmp.nix
+    ./blink.nix
+    ./copilot.nix
     ./lspkind.nix
     ./luasnip.nix
     ./schemastore.nix

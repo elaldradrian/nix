@@ -22,6 +22,7 @@ let
       age
       sops
       nix-tree
+      nix-output-monitor
     ]
     ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
 
