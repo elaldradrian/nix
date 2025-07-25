@@ -52,7 +52,6 @@
             packages = with pkgs; [
               nixfmt-rfc-style
               git
-              nh
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
