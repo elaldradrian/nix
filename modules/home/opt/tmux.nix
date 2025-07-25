@@ -69,6 +69,9 @@
       bind-key -n 'M-C-PageUp'   swap-pane -U
 
       bind-key -n 'M-C-t' list-sessions
+
+      set -g status-right '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | %a %h-%d %H:%M '
+      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };
 }
