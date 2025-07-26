@@ -81,44 +81,6 @@ in
         ts_ls.enable = true;
         yamlls.enable = true;
       };
-      keymaps = {
-        silent = true;
-        lspBuf = {
-          gd = {
-            action = "definition";
-            desc = "Goto Definition";
-          };
-          gr = {
-            action = "references";
-            desc = "Goto References";
-          };
-          gD = {
-            action = "declaration";
-            desc = "Goto Declaration";
-          };
-          gI = {
-            action = "implementation";
-            desc = "Goto Implementation";
-          };
-          gT = {
-            action = "type_definition";
-            desc = "Type Definition";
-          };
-          # Use LSP saga keybinding instead
-          # K = {
-          #   action = "hover";
-          #   desc = "Hover";
-          # };
-          # "<leader>cw" = {
-          #   action = "workspace_symbol";
-          #   desc = "Workspace Symbol";
-          # };
-          # "<leader>cr" = {
-          #   action = "rename";
-          #   desc = "Rename";
-          # };
-        };
-      };
     };
   };
 }

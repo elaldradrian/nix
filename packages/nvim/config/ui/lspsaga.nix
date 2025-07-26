@@ -5,11 +5,11 @@
       enable = true;
     };
     ui = {
-      border = "rounded"; # One of none, single, double, rounded, solid, shadow
-      codeAction = "💡"; # Can be any symbol you want 💡
+      border = "rounded";
+      codeAction = "💡";
     };
     hover = {
-      openCmd = "!floorp"; # Choose your browser
+      openCmd = "!chrome";
       openLink = "gx";
     };
     diagnostic = {
@@ -18,7 +18,7 @@
       showCodeAction = true;
     };
     symbolInWinbar = {
-      enable = false; # Breadcrumbs
+      enable = false;
     };
     codeAction = {
       extendGitSigns = false;
@@ -32,11 +32,6 @@
           "q"
         ];
       };
-    };
-    lightbulb = {
-      enable = false;
-      sign = false;
-      virtualText = true;
     };
     implement = {
       enable = false;
@@ -66,7 +61,7 @@
     {
       mode = "n";
       key = "gd";
-      action = "<cmd>Lspsaga finder def<CR>";
+      action = "<cmd>Lspsaga goto_definition<CR>";
       options = {
         desc = "Goto Definition";
         silent = true;
@@ -74,38 +69,19 @@
     }
     {
       mode = "n";
-      key = "gr";
-      action = "<cmd>Lspsaga finder ref<CR>";
-      options = {
-        desc = "Goto References";
-        silent = true;
-      };
-    }
-
-    # {
-    #   mode = "n";
-    #   key = "gD";
-    #   action = "<cmd>Lspsaga show_line_diagnostics<CR>";
-    #   options = {
-    #     desc = "Goto Declaration";
-    #     silent = true;
-    #   };
-    # }
-    {
-      mode = "n";
-      key = "gI";
-      action = "<cmd>Lspsaga finder imp<CR>";
-      options = {
-        desc = "Goto Implementation";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "gT";
-      action = "<cmd>Lspsaga peek_type_definition<CR>";
+      key = "gD";
+      action = "<cmd>Lspsaga goto_type_definition<CR>";
       options = {
         desc = "Type Definition";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "gr";
+      action = "<cmd>Lspsaga finder<CR>";
+      options = {
+        desc = "References";
         silent = true;
       };
     }
@@ -118,16 +94,6 @@
         silent = true;
       };
     }
-    {
-      mode = "n";
-      key = "<leader>cw";
-      action = "<cmd>Lspsaga outline<CR>";
-      options = {
-        desc = "Outline";
-        silent = true;
-      };
-    }
-
     {
       mode = "n";
       key = "<leader>cr";
@@ -183,7 +149,7 @@
           end
         '';
       options = {
-        desc = "Next Diagnostic";
+        desc = "Next Error";
         silent = true;
       };
     }
@@ -197,7 +163,7 @@
           end
         '';
       options = {
-        desc = "Previous Diagnostic";
+        desc = "Previous Error";
         silent = true;
       };
     }
@@ -211,7 +177,7 @@
           end
         '';
       options = {
-        desc = "Next Diagnostic";
+        desc = "Next Warning";
         silent = true;
       };
     }
@@ -225,7 +191,7 @@
           end
         '';
       options = {
-        desc = "Previous Diagnostic";
+        desc = "Previous Warning";
         silent = true;
       };
     }

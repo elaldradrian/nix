@@ -8,38 +8,60 @@
   plugins.blink-cmp = {
     enable = true;
     settings = {
-      appearance = {
-        appearance.kind_icons = {
-          Class = "󱡠";
-          Color = "󰏘";
-          Constant = "󰏿";
-          Constructor = "󰒓";
-          Enum = "󰦨";
-          EnumMember = "󰦨";
-          Event = "󱐋";
-          Field = "󰜢";
-          File = "󰈔";
-          Folder = "󰉋";
-          Function = "󰊕";
-          Interface = "󱡠";
-          Keyword = "󰻾";
-          Method = "󰊕";
-          Module = "󰅩";
-          Operator = "󰪚";
-          Property = "󰖷";
-          Reference = "󰬲";
-          Snippet = "󱄽";
-          Struct = "󱡠";
-          Text = "󰉿";
-          TypeParameter = "󰬛";
-          Unit = "󰪚";
-          Value = "󰦨";
-          Variable = "󰆦";
+      completion = {
+        menu.draw.columns = {
+          __unkeyed-1 = {
+            __unkeyed = "kind_icon";
+          };
+
+          __unkeyed-2 = {
+            __unkeyed-1 = "label";
+            __unkeyed-2 = "label_description";
+            gap = 1;
+          };
+        };
+        list.selection = {
+          auto_insert = false;
+          preselect = true;
         };
       };
       keymap = {
         "<tab>" = [
           "accept"
+          "select_next"
+          "fallback"
+        ];
+        "<c-up>" = [
+          "select_prev"
+          "fallback"
+        ];
+        "<c-down>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<c-k>" = [
+          "select_prev"
+          "fallback"
+        ];
+        "<c-j>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<c-e>" = [
+          "hide"
+        ];
+        "<c-b>" = [
+          "scroll_documentation_up"
+          "fallback"
+        ];
+        "<c-f>" = [
+          "scroll_documentation_down"
+          "fallback"
+        ];
+        "<c-K>" = [
+          "show_signature"
+          "hide_signature"
+          "fallback"
         ];
       };
       sources = {
@@ -49,7 +71,6 @@
           "buffer"
           "dictionary"
           "emoji"
-          "git"
           "spell"
           "ripgrep"
         ];
@@ -68,17 +89,6 @@
               insert = true;
             };
           };
-          git = {
-            module = "blink-cmp-git";
-            name = "git";
-            score_offset = 100;
-            opts = {
-              commit = { };
-              git_centers = {
-                git_hub = { };
-              };
-            };
-          };
           spell = {
             module = "blink-cmp-spell";
             name = "Spell";
@@ -90,7 +100,7 @@
             async = true;
             module = "blink-ripgrep";
             name = "Ripgrep";
-            score_offset = 100;
+            score_offset = 0;
             opts = {
               prefix_min_len = 3;
               context_size = 5;
