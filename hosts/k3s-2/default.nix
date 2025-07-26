@@ -18,12 +18,13 @@
   opt = {
     features = {
       desktop.enable = false;
+      docker.enable = false;
       k3s = {
         enable = true;
         clusterInit = false;
         serverAddr = "https://10.17.16.20:6443";
       };
-      docker.enable = false;
+      vpn.enable = false;
     };
     programs.steam.enable = false;
   };

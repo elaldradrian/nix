@@ -22,8 +22,9 @@
   opt = {
     features = {
       desktop.enable = true;
-      k3s.enable = false;
       docker.enable = true;
+      k3s.enable = false;
+      vpn.enable = true;
     };
     programs.steam = {
       enable = true;
