@@ -12,6 +12,7 @@
           default = "";
         };
       };
+      vpn.enable = mkEnableOption "Enable VPN";
     };
     programs = {
       steam = {

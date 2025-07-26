@@ -50,7 +50,7 @@ in
           "type:touchpad" = {
             tap = "enabled";
             natural_scroll = "enabled";
-            scroll_factor = "0.7";
+            scroll_factor = "0.5";
           };
           "type:keyboard" = {
             xkb_options = "caps:escape";
