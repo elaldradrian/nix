@@ -25,14 +25,9 @@
   };
 
   diagnostic.settings = {
+    virtual_text = true;
     update_in_insert = true;
     severity_sort = true;
-    float = {
-      border = "rounded";
-    };
-    jump = {
-      severity.__raw = "vim.diagnostic.severity.WARN";
-    };
   };
 
   filetype.extension.http = "http";
@@ -83,7 +78,7 @@
     termguicolors = true;
 
     # Enable the sign column to prevent the screen from jumping
-    signcolumn = "yes";
+    signcolumn = "yes:3";
 
     # Enable cursor line highlight
     cursorline = true; # Highlight the line where the cursor is located
