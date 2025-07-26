@@ -11,4 +11,9 @@
       };
     })
   ];
+
+  extraConfigLua = # Lua
+    ''
+      require("better-type-hover").setup()
+    '';
 }
