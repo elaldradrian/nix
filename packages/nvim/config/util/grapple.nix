@@ -75,6 +75,10 @@
               grapple.tag({ path = filepath, name = "N. tmp" })
             end
             setNames(vim.fn.expand('%:t'), 1)
+            require('lualine').refresh({
+              scope = 'tabpage',
+              place = { 'statusline', 'winbar', 'tabline' },
+            })
           end
         '';
       #  "<CMD>lua require('grapple').toggle({ name = vim.fn.expand('%:t') })<CR>";
