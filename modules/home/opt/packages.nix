@@ -22,6 +22,7 @@ let
     nix-tree
     nix-output-monitor
     nh
+    ncdu
   ];
   # ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.ceph-client ]);
 
