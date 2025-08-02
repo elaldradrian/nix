@@ -56,6 +56,7 @@
       scrollDown = "<C-f>";
       scrollUp = "<C-b>";
     };
+    lightbulb.virtualText = false;
   };
   keymaps = [
     {
@@ -79,7 +80,7 @@
     {
       mode = "n";
       key = "gr";
-      action = "<cmd>Lspsaga finder<CR>";
+      action = "<cmd>Lspsaga finder ref<CR>";
       options = {
         desc = "References";
         silent = true;

@@ -15,6 +15,7 @@ let
     fd
     jq
     yq
+    gq
     kubectl
     ripgrep
     age
