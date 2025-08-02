@@ -26,6 +26,7 @@
         };
       };
       keymap = {
+        preset = "none";
         "<tab>" = [
           "accept"
           "select_next"
@@ -35,12 +36,12 @@
           "select_prev"
           "fallback"
         ];
-        "<c-down>" = [
-          "select_next"
-          "fallback"
-        ];
         "<c-k>" = [
           "select_prev"
+          "fallback"
+        ];
+        "<c-down>" = [
+          "select_next"
           "fallback"
         ];
         "<c-j>" = [
@@ -63,24 +64,22 @@
           "hide_signature"
           "fallback"
         ];
+        "<c-space>" = [
+          "show"
+          "show_documentation"
+          "hide_documentation"
+        ];
       };
       sources = {
         default = [
           "lsp"
           "path"
           "buffer"
-          "dictionary"
           "emoji"
           "spell"
           "ripgrep"
         ];
         providers = {
-          dictionary = {
-            module = "blink-cmp-dictionary";
-            name = "Dict";
-            score_offset = 100;
-            min_keyword_length = 3;
-          };
           emoji = {
             module = "blink-emoji";
             name = "Emoji";
@@ -100,7 +99,7 @@
             async = true;
             module = "blink-ripgrep";
             name = "Ripgrep";
-            score_offset = 0;
+            score_offset = -100;
             opts = {
               prefix_min_len = 3;
               context_size = 5;
