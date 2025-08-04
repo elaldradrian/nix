@@ -5,28 +5,25 @@
   ...
 }:
 let
-  commonPkgs =
-    with pkgs;
-    [
-      self.packages.${pkgs.system}.nvim
-      (btop.override { cudaSupport = true; })
-      dig
-      p7zip
-      gh
-      fzf
-      fd
-      jq
-      yq
-      kubectl
-      ripgrep
-      age
-      sops
-      nix-tree
-      nix-output-monitor
-      nh
-      ncdu
-    ]
-    ++ (if pkgs.stdenv.isDarwin then [ ] else [ pkgs.stable.ceph-client ]);
+  commonPkgs = with pkgs; [
+    self.packages.${pkgs.system}.nvim
+    (btop.override { cudaSupport = true; })
+    dig
+    p7zip
+    gh
+    fzf
+    fd
+    jq
+    yq
+    kubectl
+    ripgrep
+    age
+    sops
+    nix-tree
+    nix-output-monitor
+    nh
+    ncdu
+  ];
 
   desktopPkgs = with pkgs; [
     brave
