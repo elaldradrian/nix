@@ -5,7 +5,6 @@
 }:
 {
   flake = {
-    # The nixvim module used to build `packages.<system>.nvim`
     nixvimModules.default = import ./config;
   };
 
