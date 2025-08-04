@@ -4,7 +4,7 @@ let
     git
     p7zip
     parted
-    ceph-client
+    stable.ceph-client
   ];
 
   vpnPkgs = with pkgs; [
