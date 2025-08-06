@@ -12,14 +12,16 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "virtio_scsi"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "virtio_scsi"
+      "sr_mod"
+    ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ "rbd" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/727bd008-a7bd-4124-b694-2052d216c627";
