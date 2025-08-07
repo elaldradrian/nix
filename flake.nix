@@ -46,9 +46,23 @@
         {
           config,
           pkgs,
+          system,
           ...
         }:
         {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [
+              (self: _super: {
+                stable = import inputs.nixpkgs-stable {
+                  inherit (self) system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+            config.allowUnfree = true;
+          };
+
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
               nixfmt-rfc-style

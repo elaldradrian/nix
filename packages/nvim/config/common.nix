@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   viAlias = true;
   vimAlias = true;
 
@@ -20,6 +24,7 @@
     providers = {
       wl-copy = {
         enable = true;
+        package = pkgs.stable.wl-clipboard;
       };
     };
   };
