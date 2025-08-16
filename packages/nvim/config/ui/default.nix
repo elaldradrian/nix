@@ -1,5 +1,6 @@
 {
   imports = [
+    ./codecompanion.nix
     ./csvview.nix
     ./diffview.nix
     ./git-sign.nix
@@ -17,6 +18,7 @@
     ./snacks.nix
     ./scheme
     ./trouble.nix
+    ./undotree.nix
     ./which-key.nix
   ];
 }
