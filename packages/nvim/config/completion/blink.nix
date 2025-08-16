@@ -65,7 +65,6 @@
           "fallback"
         ];
         "<c-space>" = [
-          "show"
           "show_documentation"
           "hide_documentation"
         ];
