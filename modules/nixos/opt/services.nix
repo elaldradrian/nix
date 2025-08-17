@@ -10,7 +10,7 @@
       greetd = {
         enable = true;
         settings.default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'sway --unsupported-gpu'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd 'sway --unsupported-gpu'";
           user = "greeter";
         };
       };
