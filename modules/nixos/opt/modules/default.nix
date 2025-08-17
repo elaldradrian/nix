@@ -6,5 +6,6 @@
     ./light.nix
     ./rbd.nix
     ./steam.nix
+    ./vpn.nix
   ];
 }
