@@ -39,6 +39,8 @@ let
     python3
     argocd
     kubernetes-helm
+    azure-cli
+    gh
   ];
 
   dockerPkgs = with pkgs; [
