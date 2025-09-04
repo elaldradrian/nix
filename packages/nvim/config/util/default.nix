@@ -4,11 +4,11 @@
     ./autoclose.nix
     ./flash.nix
     ./grapple.nix
+    ./kulala.nix
     ./neogit.nix
     ./octo.nix
     ./oil.nix
     ./repeat.nix
-    ./rest.nix
     ./telescope.nix
     ./tmux.nix
     ./todo-commnets.nix
