@@ -1,62 +1,64 @@
 {
   plugins.lspsaga = {
     enable = true;
-    beacon = {
-      enable = true;
-    };
-    ui = {
-      border = "rounded";
-      codeAction = "💡";
-    };
-    hover = {
-      openCmd = "!chrome";
-      openLink = "gx";
-    };
-    diagnostic = {
-      borderFollow = true;
-      diagnosticOnlyCurrent = false;
-      showCodeAction = true;
-    };
-    symbolInWinbar = {
-      enable = false;
-    };
-    codeAction = {
-      extendGitSigns = false;
-      showServerName = true;
-      onlyInCursor = true;
-      numShortcut = true;
-      keys = {
-        exec = "<CR>";
-        quit = [
-          "<Esc>"
-          "q"
-        ];
+    settings = {
+      beacon = {
+        enable = true;
       };
-    };
-    implement = {
-      enable = false;
-    };
-    rename = {
-      autoSave = true;
-      inSelect = false;
-    };
-    outline = {
-      autoClose = true;
-      autoPreview = true;
-      closeAfterJump = true;
-      layout = "normal"; # normal or float
-      winPosition = "right"; # left or right
-      keys = {
-        jump = "e";
-        quit = "q";
-        toggleOrJump = "o";
+      ui = {
+        border = "rounded";
+        codeAction = "💡";
       };
+      hover = {
+        openCmd = "!chrome";
+        openLink = "gx";
+      };
+      diagnostic = {
+        borderFollow = true;
+        diagnosticOnlyCurrent = false;
+        showCodeAction = true;
+      };
+      symbolInWinbar = {
+        enable = false;
+      };
+      codeAction = {
+        extendGitSigns = false;
+        showServerName = true;
+        onlyInCursor = true;
+        numShortcut = true;
+        keys = {
+          exec = "<CR>";
+          quit = [
+            "<Esc>"
+            "q"
+          ];
+        };
+      };
+      implement = {
+        enable = false;
+      };
+      rename = {
+        autoSave = true;
+        inSelect = false;
+      };
+      outline = {
+        autoClose = true;
+        autoPreview = true;
+        closeAfterJump = true;
+        layout = "normal"; # normal or float
+        winPosition = "right"; # left or right
+        keys = {
+          jump = "e";
+          quit = "q";
+          toggleOrJump = "o";
+        };
+      };
+      scrollPreview = {
+        scrollDown = "<C-f>";
+        scrollUp = "<C-b>";
+      };
+      lightbulb.virtualText = false;
     };
-    scrollPreview = {
-      scrollDown = "<C-f>";
-      scrollUp = "<C-b>";
-    };
-    lightbulb.virtualText = false;
   };
   keymaps = [
     {
