@@ -46,10 +46,10 @@
         graphql = [ "prettierd" ];
         groovy = [ "npm_groovy_lint" ];
         handlebars = [ "prettierd" ];
-        html = [ "prettierd" ];
         haskell = {
           lsp_format = "prefer";
         };
+        html = [ "prettierd" ];
         java = [ "google-java-format" ];
         javascript = [ "prettierd" ];
         javascriptreact = [ "prettierd" ];
@@ -68,9 +68,7 @@
         nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
         sh = [ "shfmt" ];
-        typescript = [
-          "prettierd"
-        ];
+        typescript = [ "prettierd" ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];
         xml = [ "xmllint" ];

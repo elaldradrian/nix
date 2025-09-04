@@ -15,8 +15,10 @@ in
   config = lib.mkIf config.opt.programs."1password".enable {
     programs.ssh = {
       enable = true;
+      enableDefaultConfig = false;
       extraConfig = "IdentityAgent \"${onePasswordSock}\"";
 
+      matchBlocks."*" = { };
       matchBlocks.private = {
         host = "private";
         hostname = "github.com";

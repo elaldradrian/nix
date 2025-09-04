@@ -5,11 +5,11 @@
 let
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
-    version = "0.36.1";
+    version = "0.37.4";
 
     src = pkgs.fetchzip {
       url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
-      sha256 = "sha256-WqkfUun5RZ4B3jbgwqB1S8NlbFSmUZwgNGTJdBO3EWo=";
+      sha256 = "sha256-Eo/t3tnOOVUwdAQZBEcsaH36CNXt7InFqNYpmrAQZK8=";
       stripRoot = false;
     };
 
@@ -45,9 +45,7 @@ in
         bicep = {
           enable = true;
           package = bicepLsp;
-          cmd = [
-            "${bicepLsp}/bin/bicep-langserver"
-          ];
+          cmd = [ "${bicepLsp}/bin/bicep-langserver" ];
         };
         eslint.enable = true;
         gradle_ls = {
@@ -72,9 +70,10 @@ in
           installGhc = false;
         };
         html.enable = true;
-        jsonls.enable = true;
         jdtls.enable = true;
+        jsonls.enable = true;
         kotlin_language_server.enable = true;
+        # kulala_ls.enable = true;
         lua_ls.enable = true;
         nixd.enable = true;
         sqls.enable = true;
