@@ -30,7 +30,7 @@
       # `nix flake check` will also validate config
       checks.nvim = mkTestDerivationFromNvim {
         inherit (self'.packages) nvim;
-        name = "My custom neovim";
+        name = "Custom Neovim";
       };
       debug = true;
     };
