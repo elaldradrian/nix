@@ -29,52 +29,105 @@
           function ()
             local grapple = require("grapple")
 
-            function getExisting(tbl, value)
-              for _, obj in ipairs(tbl) do
-                if string.sub(obj.name, 4, string.len(obj.name)) == value then
-                  return obj
-                end
+            -- Normalize to "/" and split
+            local function split_path(p)
+              p = p:gsub("\\", "/")
+              local parts = {}
+              for part in p:gmatch("[^/]+") do
+                table.insert(parts, part)
               end
-              return nil
+              return parts
             end
 
-            local function setNames(target_filename, partCount)
-              local tags = grapple.tags()
-              local matching_tags = {}
+            local function tail(parts, depth)
+              local n = #parts
+              local d = math.min(depth, n)
+              return table.concat(parts, "/", n - d + 1, n)
+            end
 
+            -- Compute minimal unique suffix for every tag (per-basename)
+            local function compute_names(tags)
+              local items = {}
               for i, tag in ipairs(tags) do
-                if tag.path:match(target_filename:gsub("%-", "%%-") .. "$") then
-                  tag.index = i
-                  table.insert(matching_tags, tag)
-                elseif partCount == 1 then
-                  grapple.tag({ path = tag.path, name = i..". "..string.sub(tag.name, 4, string.len(tag.name)), index = i })
-                end
+                local parts = split_path(tag.path)
+                items[i] = { index = i, path = tag.path, parts = parts, base = parts[#parts] }
               end
 
-              for i = #matching_tags, 1, -1 do
-                local tag = matching_tags[i]
-                local parts = vim.split(tag.path, "/", { trimempty = true })
+              -- Group by basename
+              local bybase = {}
+              for _, it in ipairs(items) do
+                local g = bybase[it.base]
+                if not g then g = {}; bybase[it.base] = g end
+                table.insert(g, { it = it, depth = 1 })
+              end
 
-                local new_name = table.concat(parts, "/", #parts - partCount + 1, #parts)
+              local names = {}
 
-                local existing = getExisting(matching_tags,new_name)
-                if existing ~= nil then
-                  if existing.path ~= tag.path then
-                    setNames(target_filename, partCount + 1)
-                  end
+              for _, group in pairs(bybase) do
+                if #group == 1 then
+                  names[group[1].it.path] = group[1].it.base
                 else
-                  grapple.tag({ path = tag.path, name = tag.index..". "..new_name, index = i , index = tag.index })
+                  -- Increase depth only for the items that still collide
+                  while true do
+                    local seen = {}
+                    local any_collision = false
+
+                    for _, g in ipairs(group) do
+                      local name = tail(g.it.parts, g.depth)
+                      if seen[name] then
+                        any_collision = true
+                        g.collide = true
+                        seen[name].collide = true
+                      else
+                        seen[name] = g
+                        g.collide = false
+                      end
+                    end
+
+                    if not any_collision then break end
+
+                    for _, g in ipairs(group) do
+                      if g.collide and g.depth < #g.it.parts then
+                        g.depth = g.depth + 1
+                      end
+                    end
+                  end
+
+                  for _, g in ipairs(group) do
+                    names[g.it.path] = tail(g.it.parts, g.depth)
+                  end
                 end
               end
+
+              return names
             end
 
+            -- 1) Toggle current file first so the tag list is up to date
             local filepath = vim.fn.expand("%:p")
             if grapple.exists({ path = filepath }) then
               grapple.untag({ path = filepath })
             else
-              grapple.tag({ path = filepath, name = "N. tmp" })
+              grapple.tag({ path = filepath })
             end
-            setNames(vim.fn.expand('%:t'), 1)
+
+            -- 2) Fresh snapshot and compute names
+            local tags = grapple.tags()
+            local names = compute_names(tags)
+
+            -- 3) Apply consistent "index. name" across all tags
+            for i, tag in ipairs(tags) do
+              local final = names[tag.path]
+                            or (function()
+                                  local parts = split_path(tag.path)
+                                  return parts[#parts]
+                                end)()
+              grapple.tag({
+                path = tag.path,
+                name = i .. ". " .. final,
+                index = i, -- keep stable order
+              })
+            end
+
             require('lualine').refresh({
               scope = 'tabpage',
               place = { 'statusline', 'winbar', 'tabline' },
