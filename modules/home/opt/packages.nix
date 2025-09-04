@@ -39,7 +39,7 @@ let
     python3
     argocd
     kubernetes-helm
-    azure-cli
+    stable.azure-cli
     gh
   ];
 
