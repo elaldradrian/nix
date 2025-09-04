@@ -11,43 +11,10 @@
         desc = "Clear search";
       };
     }
-    # Change window
-    # {
-    #   mode = "n";
-    #   key = "<C-left>";
-    #   action = "<C-w>h";
-    #   options = {
-    #     desc = "Go to Left Window";
-    #   };
-    # }
-    # {
-    #   mode = "n";
-    #   key = "<C-down>";
-    #   action = "<C-w>j";
-    #   options = {
-    #     desc = "Go to Lower Window";
-    #   };
-    # }
-    # {
-    #   mode = "n";
-    #   key = "<C-up>";
-    #   action = "<C-w>k";
-    #   options = {
-    #     desc = "Go to Upper Window";
-    #   };
-    # }
-    # {
-    #   mode = "n";
-    #   key = "<C-right>";
-    #   action = "<C-w>l";
-    #   options = {
-    #     desc = "Go to Right Window";
-    #   };
-    # }
     # Resize window
     {
       mode = "n";
-      key = "<S-left>";
+      key = "<M-C-left>";
       action = "<cmd>vertical resize -2<cr>";
       options = {
         desc = "Decrease Window Width";
@@ -55,7 +22,7 @@
     }
     {
       mode = "n";
-      key = "<S-down>";
+      key = "<M-C-down>";
       action = "<cmd>resize -2<cr>";
       options = {
         desc = "Decrease Window Height";
@@ -63,7 +30,7 @@
     }
     {
       mode = "n";
-      key = "<S-up>";
+      key = "<M-C-up>";
       action = "<cmd>resize +2<cr>";
       options = {
         desc = "Increase Window Height";
@@ -71,7 +38,40 @@
     }
     {
       mode = "n";
-      key = "<S-right>";
+      key = "<M-C-right>";
+      action = "<cmd>vertical resize +2<cr>";
+      options = {
+        desc = "Increase Window Width";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<M-C-h>";
+      action = "<cmd>vertical resize -2<cr>";
+      options = {
+        desc = "Decrease Window Width";
+      };
+    }
+    {
+      mode = "n";
+      key = "<M-C-j>";
+      action = "<cmd>resize -2<cr>";
+      options = {
+        desc = "Decrease Window Height";
+      };
+    }
+    {
+      mode = "n";
+      key = "<M-C-k>";
+      action = "<cmd>resize +2<cr>";
+      options = {
+        desc = "Increase Window Height";
+      };
+    }
+    {
+      mode = "n";
+      key = "<M-C-l>";
       action = "<cmd>vertical resize +2<cr>";
       options = {
         desc = "Increase Window Width";
@@ -87,42 +87,42 @@
       };
     }
     # Move between windows
-    {
-      mode = "n";
-      key = "<C-h>";
-      action = "<C-W>h";
-      options = {
-        silent = true;
-        desc = "Move to window left";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<C-W>j";
-      options = {
-        silent = true;
-        desc = "Move to window bellow";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-W>k";
-      options = {
-        silent = true;
-        desc = "Move to window over";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-W>l";
-      options = {
-        silent = true;
-        desc = "Move to window right";
-      };
-    }
+    # {
+    #   mode = "n";
+    #   key = "<C-h>";
+    #   action = "<C-W>h";
+    #   options = {
+    #     silent = true;
+    #     desc = "Move to window left";
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-j>";
+    #   action = "<C-W>j";
+    #   options = {
+    #     silent = true;
+    #     desc = "Move to window bellow";
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-k>";
+    #   action = "<C-W>k";
+    #   options = {
+    #     silent = true;
+    #     desc = "Move to window over";
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-l>";
+    #   action = "<C-W>l";
+    #   options = {
+    #     silent = true;
+    #     desc = "Move to window right";
+    #   };
+    # }
     # Save
     {
       mode = "n";
@@ -189,24 +189,25 @@
         "n"
         "x"
       ];
-      key = "<Down>";
-      action = "v:count == 0 ? 'gj' : 'j'";
-      options = {
-        silent = true;
-        desc = "Move down";
-        expr = true;
-      };
-    }
-    {
-      mode = [
-        "n"
-        "x"
-      ];
       key = "k";
       action = "v:count == 0 ? 'gk' : 'k'";
       options = {
         silent = true;
         desc = "Move up";
+        expr = true;
+      };
+    }
+
+    {
+      mode = [
+        "n"
+        "x"
+      ];
+      key = "<Down>";
+      action = "v:count == 0 ? 'gj' : 'j'";
+      options = {
+        silent = true;
+        desc = "Move down";
         expr = true;
       };
     }
