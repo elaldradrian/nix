@@ -48,9 +48,12 @@ in
 
         input = {
           "type:touchpad" = {
+            dwt = "disabled";
             tap = "enabled";
             natural_scroll = "enabled";
-            scroll_factor = "0.5";
+            scroll_factor = "0.20";
+            drag = "enabled";
+            drag_lock = "disabled";
           };
           "type:keyboard" = {
             xkb_options = "caps:escape";
