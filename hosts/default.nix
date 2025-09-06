@@ -66,6 +66,10 @@
           hostname = "k3s-3";
           user = "rune";
         };
+        pve-3 = mkHost {
+          hostname = "pve-3";
+          user = "rune";
+        };
       };
 
     darwinConfigurations =

@@ -17,4 +17,7 @@
   k3s-3 = [
     ./profiles/k3s-3.nix
   ];
+  pve-3 = [
+    ./profiles/k3s-3.nix
+  ];
 }
