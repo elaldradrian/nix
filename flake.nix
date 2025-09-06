@@ -49,6 +49,8 @@
       url = "github:ravitemer/mcphub.nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
   outputs =
@@ -92,6 +94,8 @@
             packages = with pkgs; [
               nixfmt-rfc-style
               git
+              age
+              sops
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
