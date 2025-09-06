@@ -20,19 +20,19 @@
         "x"
       ];
       key = "<M-j>";
-      action = "<cmd>lua MiniMove.move_selection(\"up\")<cr>";
+      action = "<cmd>lua MiniMove.move_selection(\"down\")<cr>";
       options = {
-        desc = "Move selection up";
+        desc = "Move selection down";
       };
     }
     {
       mode = [
         "x"
       ];
-      key = "<M-l>";
-      action = "<cmd>lua MiniMove.move_selection(\"down\")<cr>";
+      key = "<M-k>";
+      action = "<cmd>lua MiniMove.move_selection(\"up\")<cr>";
       options = {
-        desc = "Move selection down";
+        desc = "Move selection up";
       };
     }
     {
@@ -60,20 +60,20 @@
       mode = [
         "x"
       ];
-      key = "<M-up>";
-      action = "<cmd>lua MiniMove.move_selection(\"up\")<cr>";
+      key = "<M-down>";
+      action = "<cmd>lua MiniMove.move_selection(\"down\")<cr>";
       options = {
-        desc = "Move selection up";
+        desc = "Move selection down";
       };
     }
     {
       mode = [
         "x"
       ];
-      key = "<M-down>";
-      action = "<cmd>lua MiniMove.move_selection(\"down\")<cr>";
+      key = "<M-up>";
+      action = "<cmd>lua MiniMove.move_selection(\"up\")<cr>";
       options = {
-        desc = "Move selection down";
+        desc = "Move selection up";
       };
     }
     {
@@ -102,19 +102,19 @@
         "n"
       ];
       key = "<M-j>";
-      action = "<cmd>lua MiniMove.move_line(\"up\")<cr>";
+      action = "<cmd>lua MiniMove.move_line(\"down\")<cr>";
       options = {
-        desc = "Move selection up";
+        desc = "Move selection down";
       };
     }
     {
       mode = [
         "n"
       ];
-      key = "<M-l>";
-      action = "<cmd>lua MiniMove.move_line(\"down\")<cr>";
+      key = "<M-k>";
+      action = "<cmd>lua MiniMove.move_line(\"up\")<cr>";
       options = {
-        desc = "Move selection down";
+        desc = "Move selection up";
       };
     }
     {
@@ -142,20 +142,20 @@
       mode = [
         "n"
       ];
-      key = "<M-up>";
-      action = "<cmd>lua MiniMove.move_line(\"up\")<cr>";
+      key = "<M-down>";
+      action = "<cmd>lua MiniMove.move_line(\"down\")<cr>";
       options = {
-        desc = "Move selection up";
+        desc = "Move selection down";
       };
     }
     {
       mode = [
         "n"
       ];
-      key = "<M-down>";
-      action = "<cmd>lua MiniMove.move_line(\"down\")<cr>";
+      key = "<M-up>";
+      action = "<cmd>lua MiniMove.move_line(\"up\")<cr>";
       options = {
-        desc = "Move selection down";
+        desc = "Move selection up";
       };
     }
     {
