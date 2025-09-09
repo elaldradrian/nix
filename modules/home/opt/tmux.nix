@@ -41,9 +41,6 @@
       set -s extended-keys on
       set-option -g renumber-windows on
 
-      # Enter copy mode with Prefix+v
-      bind v copy-mode
-      unbind [
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
@@ -91,6 +88,10 @@
 
       bind-key -n M-C-n next-window
       bind-key -n M-C-p previous-window
+
+      bind-key -n 'M-C-[' copy-mode
+      bind v copy-mode
+      unbind [
 
       set -g status-right '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | %a %h-%d %H:%M '
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
