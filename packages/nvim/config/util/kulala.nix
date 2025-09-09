@@ -28,6 +28,7 @@ in
       enable = true;
       settings = {
         display_mode = "split";
+        split_direction = "horizontal";
         default_view = "headers_body";
         debug = true;
       };
