@@ -94,11 +94,6 @@
 
             neotest.run.run()
             neotest.summary.open()
-
-            nio.run(function()
-              nio.sleep(1000)
-              neotest.summary:expand(file, true)
-            end)
           end
         '';
       options = {
