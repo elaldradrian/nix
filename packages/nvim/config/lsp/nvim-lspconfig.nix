@@ -78,6 +78,7 @@ in
         nixd.enable = true;
         sqls.enable = true;
         ts_ls.enable = true;
+        vectorcode_server.enable = true;
         yamlls.enable = true;
       };
     };

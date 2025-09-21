@@ -1,9 +1,9 @@
 {
   imports = [
+    ./ai
     ./autoCmd.nix
     ./common.nix
     ./keymap.nix
-
     ./completion
     ./lsp
     ./mini
