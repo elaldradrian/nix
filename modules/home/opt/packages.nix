@@ -47,9 +47,8 @@ let
   ];
 
   work = with pkgs; [
-    slack
     dbeaver-bin
-    x3270
+    pkgs.stable.x3270
   ];
 
   games = with pkgs; [
