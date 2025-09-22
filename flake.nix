@@ -24,6 +24,8 @@
 
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
+
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
   outputs =
@@ -67,6 +69,8 @@
             packages = with pkgs; [
               nixfmt-rfc-style
               git
+              age
+              sops
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
