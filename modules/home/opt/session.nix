@@ -15,5 +15,6 @@
     "$HOME/bin"
     "$HOME/.nix-profile/bin"
     "/opt/homebrew/bin"
-  ] ++ (if config.opt.features.work-machine.enable then [ "${pkgs.x3270}" ] else [ ]);
+  ]
+  ++ (if config.opt.features.work-machine.enable then [ "${pkgs.stable.x3270}" ] else [ ]);
 }

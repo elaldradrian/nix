@@ -11,6 +11,7 @@
       "homerow"
       "google-chrome"
       "tailscale"
+      "slack"
     ];
     brews = [
       "wasmcloud/wasmcloud/wash"
