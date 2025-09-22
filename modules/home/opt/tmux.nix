@@ -84,7 +84,7 @@
       bind-key -n 'M-C-PageDown' swap-pane -D
       bind-key -n 'M-C-PageUp'   swap-pane -U
 
-      bind-key -n 'M-C-l' choose-tree -s
+      bind-key -n 'M-C-a' choose-tree -s
 
       bind-key -n M-C-n next-window
       bind-key -n M-C-p previous-window
