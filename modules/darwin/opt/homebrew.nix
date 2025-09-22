@@ -10,7 +10,7 @@
       "microsoft-azure-storage-explorer"
       "homerow"
       "google-chrome"
-      "tailscale"
+      "tailscale-app"
       "slack"
     ];
     brews = [
