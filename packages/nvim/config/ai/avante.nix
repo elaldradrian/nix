@@ -1,7 +1,7 @@
 {
   plugins.avante = {
     enable = true;
-    lazyLoad.settings.event = "DeferredUIEnter";
+    # lazyLoad.settings.event = "DeferredUIEnter";
     settings = {
       provider = "copilot";
       system_prompt.__raw = # Lua

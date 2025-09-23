@@ -8,6 +8,17 @@
       "args": ["run", "-i", "--rm", "mcp/fetch"],
       "command": "docker"
     },
+    "git": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=${REPOSITORY_PATH},dst=/workspace",
+        "mcp/git"
+      ]
+    },
     "github": {
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
