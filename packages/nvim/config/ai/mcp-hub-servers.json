@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "vectorcode-mcp-server": {
+      "command": "vectorcode-mcp-server",
+      "args": []
+    },
+    "fetch": {
+      "args": ["run", "-i", "--rm", "mcp/fetch"],
+      "command": "docker"
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

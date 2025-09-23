@@ -51,6 +51,7 @@
       enable32Bit = true;
     };
 
+    nvidia-container-toolkit.enable = true;
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
