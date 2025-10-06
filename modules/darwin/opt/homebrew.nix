@@ -12,6 +12,7 @@
       "google-chrome"
       "tailscale-app"
       "slack"
+      "notunes"
     ];
     brews = [
       "wasmcloud/wasmcloud/wash"
