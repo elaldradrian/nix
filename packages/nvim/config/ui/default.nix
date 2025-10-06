@@ -1,6 +1,5 @@
 {
   imports = [
-    ./codecompanion.nix
     ./csvview.nix
     ./diffview.nix
     ./git-sign.nix
@@ -10,6 +9,7 @@
     ./lspsaga.nix
     ./lualine.nix
     ./markdown-preview.nix
+    ./markdown-render.nix
     ./marks.nix
     ./neoscroll.nix
     ./noice.nix

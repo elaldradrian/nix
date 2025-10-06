@@ -24,6 +24,12 @@
 
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
+
+    mcp-hub.url = "github:ravitemer/mcp-hub";
+    mcp-hub.inputs.nixpkgs.follows = "nixpkgs";
+
+    mcp-hub-nvim.url = "github:ravitemer/mcphub.nvim";
+    mcp-hub-nvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
