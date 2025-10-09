@@ -27,6 +27,7 @@
           jest_test_discovery = true;
         };
       };
+      vitest.enable = true;
     };
   };
 
