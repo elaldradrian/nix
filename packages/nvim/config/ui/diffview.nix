@@ -1,7 +1,7 @@
 {
   plugins.diffview = {
     enable = true;
-    keymaps.filePanel = [
+    settings.keymaps.file_panel = [
       {
         action = "<cmd>tabc<cr>";
         description = "Close Diff View";

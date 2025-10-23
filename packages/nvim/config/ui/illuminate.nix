@@ -1,6 +1,6 @@
 {
   plugins.illuminate = {
     enable = true;
-    underCursor = false;
+    settings.underCursor = false;
   };
 }
