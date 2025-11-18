@@ -19,6 +19,21 @@
             }
           end
         '';
+      behaviour = {
+        auto_apply_diff_after_generation = false;
+      };
+      disabled_tools = [
+        "list_files"
+        "search_files"
+        "read_file"
+        "create_file"
+        "rename_file"
+        "delete_file"
+        "create_dir"
+        "rename_dir"
+        "delete_dir"
+        "bash"
+      ];
       input = {
         provider = "snacks";
         provider_opts = {
