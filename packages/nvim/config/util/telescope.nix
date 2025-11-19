@@ -1,6 +1,7 @@
 {
   plugins.telescope = {
     enable = true;
+    lazyLoad.settings.event = "VeryLazy";
     extensions = {
       file-browser = {
         enable = true;

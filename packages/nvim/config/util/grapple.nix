@@ -15,8 +15,12 @@
 
   extraConfigLua = # Lua
     ''
-      require('grapple').setup({
-        scope = "git",
+      vim.api.nvim_create_autocmd("VeryLazy", {
+        callback = function()
+          require('grapple').setup({
+            scope = "git",
+          })
+        end,
       })
     '';
 

@@ -1,6 +1,10 @@
 {
   plugins.oil = {
     enable = true;
+    lazyLoad.settings.cmd = [
+      "Oil"
+      "OilOpen"
+    ];
 
     settings = {
       skip_confirm_for_simple_edits = true;

@@ -1,6 +1,7 @@
 {
   plugins.lspsaga = {
     enable = true;
+    lazyLoad.settings.event = "LspAttach";
     settings = {
       beacon = {
         enable = true;

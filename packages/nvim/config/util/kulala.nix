@@ -26,6 +26,7 @@ in
     };
     kulala = {
       enable = true;
+      lazyLoad.settings.ft = "http";
       settings = {
         display_mode = "split";
         split_direction = "horizontal";

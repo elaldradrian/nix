@@ -1,6 +1,14 @@
 {
   plugins.flash = {
     enable = true;
+    lazyLoad.settings.keys = [
+      "s"
+      "S"
+      "r"
+      "R"
+      "[<space>"
+      "]<space>"
+    ];
     settings = {
       labels = "arstgmneiobpfluykhvd";
     };

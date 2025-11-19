@@ -1,6 +1,7 @@
 {
   plugins.noice = {
     enable = true;
+    lazyLoad.settings.event = "VeryLazy";
     settings.routes = [
       {
         filter = {

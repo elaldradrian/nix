@@ -2,6 +2,7 @@
 {
   plugins.dap = {
     enable = true;
+    lazyLoad.settings.event = "VeryLazy";
     adapters.servers.pwa-node = {
       host = "localhost";
       port = "\${port}";

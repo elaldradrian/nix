@@ -1,3 +1,6 @@
 {
-  plugins.octo.enable = true;
+  plugins.octo = {
+    enable = true;
+    lazyLoad.settings.cmd = "Octo";
+  };
 }

@@ -1,3 +1,10 @@
 {
-  plugins.undotree.enable = true;
+  plugins.undotree = {
+    enable = true;
+    lazyLoad.settings.cmd = [
+      "UndotreeToggle"
+      "UndotreeShow"
+      "UndotreeHide"
+    ];
+  };
 }

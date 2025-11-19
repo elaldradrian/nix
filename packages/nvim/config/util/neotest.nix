@@ -2,6 +2,7 @@
 {
   plugins.neotest = {
     enable = true;
+    lazyLoad.settings.event = "VeryLazy";
     package = pkgs.vimPlugins.neotest.overrideAttrs (_: {
       src = pkgs.fetchFromGitHub {
         owner = "nvim-neotest";
