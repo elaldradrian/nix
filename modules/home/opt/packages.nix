@@ -6,7 +6,7 @@
 }:
 let
   commonPkgs = with pkgs; [
-    self.packages.${pkgs.system}.nvim
+    self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
     (btop.override { cudaSupport = true; })
     dig
     p7zip
