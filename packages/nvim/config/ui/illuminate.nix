@@ -1,6 +1,7 @@
 {
   plugins.illuminate = {
     enable = true;
-    settings.underCursor = false;
+    lazyLoad.settings.event = "BufEnter";
+    settings.underCursor = true;
   };
 }

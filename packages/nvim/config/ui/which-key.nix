@@ -1,6 +1,7 @@
 {
   plugins.which-key = {
     enable = false;
+    lazyLoad.settings.event = "DeferredUIEnter";
     settings.spec = [
       {
         __unkeyed-1 = "<leader>b";

@@ -1,7 +1,7 @@
 {
   plugins.avante = {
     enable = true;
-    lazyLoad.settings.event = "DeferredUIEnter";
+    lazyLoad.settings.event = "BufEnter";
     settings = {
       mode = "legacy";
       provider = "copilot";

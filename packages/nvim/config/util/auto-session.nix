@@ -1,3 +1,6 @@
 {
-  plugins.auto-session.enable = false;
+  plugins.auto-session = {
+    enable = false;
+    lazyLoad.settings.event = "DeferredUIEnter";
+  };
 }

@@ -1,3 +1,6 @@
 {
-  plugins.guess-indent.enable = true;
+  plugins.guess-indent = {
+    enable = true;
+    lazyLoad.settings.event = "BufEnter";
+  };
 }

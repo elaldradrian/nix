@@ -1,6 +1,7 @@
 {
   plugins.oil = {
     enable = true;
+    lazyLoad.settings.event = "DeferredUIEnter";
 
     settings = {
       skip_confirm_for_simple_edits = true;

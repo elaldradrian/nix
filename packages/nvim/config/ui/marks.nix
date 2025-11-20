@@ -1,3 +1,6 @@
 {
-  plugins.marks.enable = true;
+  plugins.marks = {
+    enable = true;
+    lazyLoad.settings.event = "DeferredUIEnter";
+  };
 }

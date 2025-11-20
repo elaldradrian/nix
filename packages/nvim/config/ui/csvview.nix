@@ -1,3 +1,6 @@
 {
-  plugins.csvview.enable = true;
+  plugins.csvview = {
+    enable = true;
+    lazyLoad.settings.ft = "csv";
+  };
 }

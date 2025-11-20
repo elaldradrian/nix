@@ -14,6 +14,11 @@
 
   extraConfigLua = # Lua
     ''
-      require("better-type-hover").setup()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function()
+          require("better-type-hover").setup()
+        end,
+        once = true,
+      })
     '';
 }
