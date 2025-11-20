@@ -1,7 +1,7 @@
 {
   plugins.telescope = {
     enable = true;
-    lazyLoad.settings.event = "VeryLazy";
+    lazyLoad.settings.event = "DeferredUIEnter";
     extensions = {
       file-browser = {
         enable = true;

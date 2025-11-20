@@ -1,6 +1,7 @@
 {
   plugins.snacks = {
     enable = true;
+    lazyLoad.settings.event = "DeferredUIEnter";
     settings = {
       bigfile.enabled = true;
       git.enabled = true;

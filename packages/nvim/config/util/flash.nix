@@ -1,14 +1,7 @@
 {
   plugins.flash = {
     enable = true;
-    lazyLoad.settings.keys = [
-      "s"
-      "S"
-      "r"
-      "R"
-      "[<space>"
-      "]<space>"
-    ];
+    lazyLoad.settings.event = "BufEnter";
     settings = {
       labels = "arstgmneiobpfluykhvd";
     };
@@ -142,5 +135,4 @@
       };
     }
   ];
-
 }

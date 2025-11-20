@@ -1,12 +1,28 @@
 {
-  plugins.blink-cmp-dictionary.enable = true;
-  plugins.blink-cmp-git.enable = true;
-  plugins.blink-emoji.enable = true;
-  plugins.blink-cmp-spell.enable = true;
-  plugins.blink-ripgrep.enable = true;
+  plugins.blink-cmp-dictionary = {
+    enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
+  };
+  plugins.blink-cmp-git = {
+    enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
+  };
+  plugins.blink-emoji = {
+    enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
+  };
+  plugins.blink-cmp-spell = {
+    enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
+  };
+  plugins.blink-ripgrep = {
+    enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
+  };
 
   plugins.blink-cmp = {
     enable = true;
+    # lazyLoad.settings.event = "DeferredUIEnter";
     settings = {
       completion = {
         menu.draw.columns = {

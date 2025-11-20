@@ -2,7 +2,7 @@
 {
   plugins.dap = {
     enable = true;
-    lazyLoad.settings.event = "VeryLazy";
+    lazyLoad.settings.event = "DeferredUIEnter";
     adapters.servers.pwa-node = {
       host = "localhost";
       port = "\${port}";
@@ -58,5 +58,15 @@
         typescript = javascript-config;
       };
   };
-  plugins.dap-view.enable = true;
+  plugins.dap-view = {
+    enable = true;
+    lazyLoad.settings = {
+      event = "DeferredUIEnter";
+      before.__raw = ''
+        function()
+          require('lz.n').trigger_load('nvim-dap')
+        end
+      '';
+    };
+  };
 }

@@ -1,6 +1,7 @@
 {
   plugins.lualine = {
     enable = true;
+    lazyLoad.settings.event = "DeferredUIEnter";
     settings = {
       options = {
         globalstatus = true;

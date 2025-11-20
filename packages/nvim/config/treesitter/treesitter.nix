@@ -2,6 +2,7 @@
 {
   plugins.treesitter = {
     enable = true;
+    lazyLoad.settings.event = "DeferredUIEnter";
     grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
     settings = {
       indent.enable = true;

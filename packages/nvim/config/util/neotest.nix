@@ -2,7 +2,7 @@
 {
   plugins.neotest = {
     enable = true;
-    lazyLoad.settings.event = "VeryLazy";
+    lazyLoad.settings.event = "DeferredUIEnter";
     package = pkgs.vimPlugins.neotest.overrideAttrs (_: {
       src = pkgs.fetchFromGitHub {
         owner = "nvim-neotest";

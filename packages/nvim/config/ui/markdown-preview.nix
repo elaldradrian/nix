@@ -1,6 +1,3 @@
 {
-  plugins.markdown-preview = {
-    enable = true;
-    lazyLoad.settings.ft = "markdown";
-  };
+  plugins.markdown-preview.enable = true;
 }
