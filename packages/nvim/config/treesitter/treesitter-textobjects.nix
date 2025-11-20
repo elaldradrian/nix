@@ -1,7 +1,14 @@
 {
   plugins.treesitter-textobjects = {
     enable = true;
-    lazyLoad.settings.event = "DeferredUIEnter";
+    lazyLoad.settings = {
+      event = "DeferredUIEnter";
+      before.__raw = ''
+        function()
+          require('lz.n').trigger_load('nvim-treesitter')
+        end
+      '';
+    };
     settings = {
       select = {
         enable = true;
