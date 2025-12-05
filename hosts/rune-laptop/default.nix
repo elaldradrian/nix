@@ -27,7 +27,7 @@
       vpn.enable = true;
     };
     programs.steam = {
-      enable = true;
+      enable = false;
     };
   };
 }
