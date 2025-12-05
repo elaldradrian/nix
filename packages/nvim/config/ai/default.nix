@@ -1,6 +1,6 @@
 {
   imports = [
     ./avante.nix
-    # ./mcp-hub.nix
+    ./mcp-hub.nix
   ];
 }
