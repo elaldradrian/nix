@@ -1,4 +1,9 @@
-{ inputs, user, ... }:
+{
+  config,
+  inputs,
+  user,
+  ...
+}:
 {
   nixpkgs = {
     config.allowUnfree = true;
@@ -14,6 +19,7 @@
   nix = {
     optimise.automatic = true;
     settings = {
+      extra-platforms = config.boot.binfmt.emulatedSystems;
       experimental-features = "nix-command flakes";
       trusted-users = [ user ];
     };

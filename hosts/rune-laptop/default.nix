@@ -19,6 +19,11 @@
     programs.polkit.enable = true;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   opt = {
     features = {
       desktop.enable = true;

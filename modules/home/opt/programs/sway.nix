@@ -9,6 +9,14 @@ let
 in
 {
   config = lib.mkIf config.opt.features.desktop.enable {
+    home.file.dark-theme = {
+      enable = true;
+      target = ".config/gtk-3.0/settings.ini";
+      text = ''
+        [Settings]
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures = {
