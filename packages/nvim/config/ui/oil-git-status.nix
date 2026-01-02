@@ -5,7 +5,7 @@
       event = "DeferredUIEnter";
       before.__raw = ''
         function()
-          require('lz.n').trigger_load('nvim-oil')
+          require('lz.n').trigger_load('oil.nvim')
         end
       '';
     };

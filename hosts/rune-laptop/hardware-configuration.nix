@@ -24,6 +24,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4cd4b0db-e971-4acd-8987-9dda6f7f7731";
@@ -58,4 +59,6 @@
     enable = true;
     enable32Bit = true;
   };
+
+  powerManagement.cpuFreqGovernor = "powersave";
 }
