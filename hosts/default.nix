@@ -93,7 +93,6 @@
           darwinSystem {
             inherit specialArgs;
             modules = default ++ [
-              inputs.mac-app-util.darwinModules.default
               ./${hostname}
               (
                 if user != null then
@@ -102,9 +101,6 @@
                       useUserPackages = true;
                       users.${user}.imports = homeImports.${hostname};
                       extraSpecialArgs = specialArgs;
-                      sharedModules = [
-                        inputs.mac-app-util.homeManagerModules.default
-                      ];
                     };
                   }
                 else
