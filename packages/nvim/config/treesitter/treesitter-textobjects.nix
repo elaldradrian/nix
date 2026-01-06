@@ -1,7 +1,6 @@
 {
   plugins.treesitter-textobjects = {
-    # TODO: Enable when it builds.
-    enable = false;
+    enable = true;
     lazyLoad.settings = {
       event = "DeferredUIEnter";
       before.__raw = ''
