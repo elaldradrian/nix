@@ -39,6 +39,7 @@ let
     kubernetes-helm
     stable.azure-cli
     gh
+    qemu
   ];
 
   dockerPkgs = with pkgs; [
