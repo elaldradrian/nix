@@ -37,7 +37,7 @@ let
     python3
     argocd
     kubernetes-helm
-    stable.azure-cli
+    (azure-cli.override { withImmutableConfig = false; })
     gh
     qemu
   ];
