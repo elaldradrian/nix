@@ -69,6 +69,9 @@
         nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
         sh = [ "shfmt" ];
+        terraform = {
+          lsp_format = "prefer";
+        };
         typescript = [ "prettierd" ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];

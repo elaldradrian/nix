@@ -17,7 +17,7 @@
       require("lz.n").load {
           {
               "hlchunk.nvim",
-              event = "BufEnter";
+              event = "BufReadPost";
               after = function()
                 local colors = require("nebulous.functions").get_colors("twilight")
 

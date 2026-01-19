@@ -1,7 +1,7 @@
 {
   plugins.flash = {
     enable = true;
-    lazyLoad.settings.event = "BufEnter";
+    lazyLoad.settings.event = "BufReadPost";
     settings = {
       labels = "arstgmneiobpfluykhvd";
     };

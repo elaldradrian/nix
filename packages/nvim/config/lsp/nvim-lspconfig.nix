@@ -73,12 +73,11 @@ in
         jdtls.enable = true;
         jsonls.enable = true;
         kotlin_language_server.enable = true;
-        # kulala_ls.enable = true;
         lua_ls.enable = true;
         nixd.enable = true;
         sqls.enable = true;
+        terraform_lsp.enable = true;
         ts_ls.enable = true;
-        # vectorcode_server.enable = true;
         yamlls.enable = true;
       };
     };
