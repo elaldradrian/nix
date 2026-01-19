@@ -4,7 +4,7 @@
     prettierd
     shfmt
     stylua
-    nixfmt-rfc-style
+    nixfmt
     google-java-format
     libxml2
     markdownlint-cli2

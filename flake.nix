@@ -35,7 +35,6 @@
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     mcp-hub-nvim = {
@@ -73,7 +72,7 @@
             overlays = [
               (self: _super: {
                 stable = import inputs.nixpkgs-stable {
-                  inherit (self) system;
+                  localSystem = { inherit system; };
                   config.allowUnfree = true;
                 };
               })
@@ -83,19 +82,19 @@
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
-              nixfmt-rfc-style
+              nixfmt
               git
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
-            shellHook = # Bash
-              ''
-                ${config.pre-commit.installationScript}
-              '';
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
           };
 
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
+
       debug = true;
     };
 }
