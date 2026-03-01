@@ -33,7 +33,6 @@ let
 
   devUtilPkgs = with pkgs; [
     nodejs
-    node2nix
     python3
     argocd
     kubernetes-helm
