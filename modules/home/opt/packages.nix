@@ -35,7 +35,7 @@ let
     nodejs
     node2nix
     python3
-    argocd
+    # argocd
     kubernetes-helm
     (azure-cli.override { withImmutableConfig = false; })
     gh
@@ -51,11 +51,6 @@ let
     dbeaver-bin
     pkgs.stable.x3270
   ];
-
-  games = with pkgs; [
-    wineWowPackages.stagingFull
-    winetricks
-  ];
 in
 {
   home.packages =
@@ -64,6 +59,5 @@ in
     ++ (if config.opt.features.devUtils.enable then devUtilPkgs else [ ])
     ++ (if config.opt.features.docker.enable then dockerPkgs else [ ])
     ++ (if config.opt.features.work-machine.enable then work else [ ])
-    ++ (if config.opt.features.games.enable then games else [ ])
     ++ (if config.opt.programs.colima.enable then [ pkgs.colima ] else [ ]);
 }

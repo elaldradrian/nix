@@ -6,7 +6,6 @@
       devUtils.enable = mkEnableOption "Enable development utilities";
       docker.enable = mkEnableOption "Enable Docker";
       work-machine.enable = mkEnableOption "Enable work machine";
-      games.enable = mkEnableOption "Enable games";
       vpn.enable = mkEnableOption "Enable VPN";
     };
     programs = {
