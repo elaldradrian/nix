@@ -18,6 +18,7 @@
 
   opt = {
     features = {
+      ceph.enable = false;
       desktop.enable = true;
       docker.enable = false;
       k3s.enable = false;

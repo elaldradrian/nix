@@ -2,6 +2,7 @@
 {
   options.opt = with lib; {
     features = {
+      ceph.enable = mkEnableOption "Enable Ceph configuration";
       desktop.enable = mkEnableOption "Enable desktop";
       docker.enable = mkEnableOption "Enable docker";
       k3s = {

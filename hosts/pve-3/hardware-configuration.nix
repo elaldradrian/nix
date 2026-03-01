@@ -51,12 +51,21 @@
     defaultGateway = "10.17.16.1";
     nameservers = [ "10.17.16.1" ];
     useDHCP = false;
-    interfaces.enP4p65s0.ipv4.addresses = [
-      {
-        address = "10.17.16.3";
-        prefixLength = 23;
-      }
-    ];
+    bridges.vmbr0.interfaces = [ "enP4p65s0" ];
+    interfaces = {
+      # enP4p65s0.ipv4.addresses = [
+      #   {
+      #     address = "10.17.16.3";
+      #     prefixLength = 23;
+      #   }
+      # ];
+      vmbr0.ipv4.addresses = [
+        {
+          address = "10.17.16.3";
+          prefixLength = 23;
+        }
+      ];
+    };
   };
 
   # networking.interfaces.enP3p49s0.useDHCP = lib.mkDefault true;
