@@ -19,7 +19,7 @@
   opt = {
     features = {
       ceph.enable = false;
-      desktop.enable = true;
+      desktop.enable = false;
       docker.enable = false;
       k3s.enable = false;
       vpn.enable = false;

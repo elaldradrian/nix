@@ -6,7 +6,7 @@
 
   opt = {
     features = {
-      desktop.enable = true;
+      desktop.enable = false;
       devUtils.enable = true;
       docker.enable = false;
       games.enable = false;
