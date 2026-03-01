@@ -41,7 +41,6 @@
       set -s extended-keys on
       set-option -g renumber-windows on
 
-
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \

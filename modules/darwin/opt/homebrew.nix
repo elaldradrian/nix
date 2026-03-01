@@ -13,6 +13,7 @@
       "tailscale-app"
       "slack"
       "notunes"
+      "android-studio"
     ];
     brews = [
       "wasmcloud/wasmcloud/wash"

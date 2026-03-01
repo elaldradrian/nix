@@ -1,7 +1,16 @@
 {
   plugins.avante = {
     enable = true;
-    lazyLoad.settings.event = "BufEnter";
+    lazyLoad.settings = {
+      cmd = [
+        "Avante"
+        "AvanteToggle"
+        "MCPHub"
+      ];
+      keys = [
+        "<leader>at"
+      ];
+    };
     settings = {
       mode = "legacy";
       provider = "copilot";

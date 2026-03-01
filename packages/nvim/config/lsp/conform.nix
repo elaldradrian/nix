@@ -4,10 +4,11 @@
     prettierd
     shfmt
     stylua
-    nixfmt-rfc-style
+    nixfmt
     google-java-format
     libxml2
     markdownlint-cli2
+    pgformatter
   ];
 
   plugins.conform-nvim = {
@@ -69,6 +70,10 @@
         nix = [ "nixfmt" ];
         scss = [ "prettierd" ];
         sh = [ "shfmt" ];
+        sql = [ "pg_format" ];
+        terraform = {
+          lsp_format = "prefer";
+        };
         typescript = [ "prettierd" ];
         typescriptreact = [ "prettierd" ];
         vue = [ "prettierd" ];

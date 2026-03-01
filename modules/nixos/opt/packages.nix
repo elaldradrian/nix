@@ -4,6 +4,5 @@
     git
     p7zip
     parted
-    stable.ceph-client
   ];
 }
