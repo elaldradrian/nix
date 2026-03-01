@@ -5,6 +5,10 @@
       enable = true;
       ports = [ 22 ];
       settings = {
+        AcceptEnv = lib.mkForce [
+          "LANG"
+          "LC_*"
+        ];
         PasswordAuthentication = true;
         AllowUsers = [ "rune" ];
         UseDns = true;
