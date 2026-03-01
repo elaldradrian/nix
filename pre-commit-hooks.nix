@@ -8,7 +8,7 @@
     settings.hooks = {
       deadnix.enable = true;
       flake-checker.enable = true;
-      nixfmt-rfc-style.enable = true;
+      nixfmt.enable = true;
     };
   };
 }

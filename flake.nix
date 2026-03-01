@@ -32,17 +32,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # https://github.com/hraban/mac-app-util/issues/39
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
+    direnv-instant = {
+      url = "github:Mic92/direnv-instant";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
     };
 
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     mcp-hub-nvim = {
@@ -80,9 +77,9 @@
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = [
-              (self: _super: {
+              (_self: _super: {
                 stable = import inputs.nixpkgs-stable {
-                  inherit (self) system;
+                  localSystem = { inherit system; };
                   config.allowUnfree = true;
                 };
               })
@@ -92,21 +89,21 @@
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
-              nixfmt-rfc-style
+              nixfmt
               git
               age
               sops
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
-            shellHook = # Bash
-              ''
-                ${config.pre-commit.installationScript}
-              '';
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
           };
 
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
+
       debug = true;
     };
 }

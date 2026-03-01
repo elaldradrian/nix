@@ -19,6 +19,11 @@
     programs.polkit.enable = true;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   opt = {
     features = {
       desktop.enable = true;
@@ -27,7 +32,7 @@
       vpn.enable = true;
     };
     programs.steam = {
-      enable = false;
+      enable = true;
     };
   };
 }

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   users = {
+    groups.ceph = { };
     users.rune = {
       isNormalUser = true;
       description = "Rune Dahl Billeskov";
@@ -10,6 +11,7 @@
         "video"
         "gamemode"
         "docker"
+        "ceph"
       ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGfqJV+LLTDqhZboTExbEZChKbIdQwhNJXSmKEYfdOJ"
