@@ -33,7 +33,7 @@
       vpn.enable = true;
     };
     programs.steam = {
-      enable = false;
+      enable = true;
     };
   };
 }
