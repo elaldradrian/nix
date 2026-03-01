@@ -56,5 +56,5 @@
     enable32Bit = true;
   };
 
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "powersave";
 }

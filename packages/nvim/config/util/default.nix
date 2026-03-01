@@ -7,7 +7,8 @@
     ./grapple.nix
     ./kulala.nix
     ./neogit.nix
-    ./neotest.nix
+    # TODO: Reenable after its fixed.
+    # ./neotest.nix
     ./octo.nix
     ./oil.nix
     ./repeat.nix

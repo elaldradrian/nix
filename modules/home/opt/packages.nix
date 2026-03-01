@@ -33,9 +33,8 @@ let
 
   devUtilPkgs = with pkgs; [
     nodejs
-    node2nix
     python3
-    # argocd
+    argocd
     kubernetes-helm
     (azure-cli.override { withImmutableConfig = false; })
     gh
