@@ -73,10 +73,10 @@ in
             position = "0,0";
             scale = "1.5";
           };
-          "DP-5" = {
+          "DP-3" = {
             position = "0,0";
           };
-          "DP-6" = {
+          "DP-5" = {
             position = "2560,0";
           };
         };
