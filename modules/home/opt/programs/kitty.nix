@@ -35,7 +35,7 @@
     shellIntegration.enableFishIntegration = true;
     font = {
       name = "Fira Code";
-      size = 11;
+      size = 12;
     };
     settings = {
       shell = "${pkgs.tmux}/bin/tmux a";
