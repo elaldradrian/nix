@@ -4,7 +4,7 @@
   nix = {
     optimise.automatic = true;
     linux-builder = {
-      enable = true;
+      enable = false;
       package = pkgs.darwin.linux-builder-x86_64;
       ephemeral = true;
       systems = [
