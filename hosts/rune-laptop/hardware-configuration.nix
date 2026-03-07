@@ -23,6 +23,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = -1;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4cd4b0db-e971-4acd-8987-9dda6f7f7731";

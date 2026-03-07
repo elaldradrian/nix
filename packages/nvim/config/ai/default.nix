@@ -1,6 +1,6 @@
 {
   imports = [
-    ./code-pilot-chat.nix
+    ./copilot-chat.nix
     ./mcp-hub.nix
   ];
 }

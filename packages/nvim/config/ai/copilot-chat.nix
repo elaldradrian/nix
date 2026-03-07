@@ -25,16 +25,16 @@
       };
       window = {
         layout = "vertical";
-        width = 0.25;
+        width = 0.35;
       };
+      model = "qwen3.5-9b";
       providers = {
-        ollama = {
+        llama-cpp = {
           get_url.__raw = ''
             function()
               return "http://localhost:11434/v1/chat/completions"
             end
           '';
-
           get_headers.__raw = ''
             function()
               return {}
@@ -51,55 +51,25 @@
           get_models.__raw = ''
             function(headers)
               local curl = require("CopilotChat.utils.curl")
-
-              local tags, err = curl.get("http://localhost:11434/api/tags", {
+              local tags, err = curl.get("http://localhost:11434/v1/models", {
                 headers = headers,
                 json_response = true,
               })
               if err then error(err) end
-
               local models = {}
-
-              for _, m in ipairs(tags.body.models or {}) do
-                local show, err2 = curl.post("http://localhost:11434/api/show", {
-                  headers = headers,
-                  json_request = true,
-                  json_response = true,
-                  body = { model = m.name },
-                })
-
-                local caps = {}
-                local ctx_len = nil
-                local version = nil
-
-                if not err2 and show and show.body then
-                  caps = show.body.capabilities or {}
-                  version = show.body.modified_at
-
-                  local model_info = show.body.model_info or {}
-                  ctx_len =
-                    model_info["qwen2.context_length"]
-                    or model_info["llama.context_length"]
-                    or model_info["general.context_length"]
-
-                  if type(ctx_len) == "string" then
-                    ctx_len = tonumber(ctx_len)
-                  end
-                end
-
+              for _, m in ipairs(tags.body.data or {}) do
                 table.insert(models, {
-                  id = m.name,
-                  name = m.name,
+                  id = m.id,
+                  name = m.id,
                   tokenizer = "o200k_base",
-                  max_input_tokens = ctx_len,
-                  max_output_tokens = nil,
+                  max_input_tokens = 24000,
+                  max_output_tokens = 24000,
                   streaming = true,
-                  tools = vim.tbl_contains(caps, "tools") or false,
-                  reasoning = vim.tbl_contains(caps, "thinking") or false,
-                  version = version,
+                  tools = true,
+                  reasoning = true,
+                  version = nil,
                 })
               end
-
               return models
             end
           '';
@@ -118,6 +88,14 @@
       action = ":CopilotChatToggle<CR>";
       options = {
         desc = "CopilotChat Toggle (cmd)";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>a?";
+      action = ":CopilotChatModels<CR>";
+      options = {
+        desc = "CopilotChat Models (cmd)";
       };
     }
   ];
