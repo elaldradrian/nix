@@ -7,6 +7,7 @@
   opt = {
     features = {
       desktop.enable = true;
+      llama-cpp.enable = true;
       devUtils.enable = true;
       docker.enable = false;
       vpn.enable = false;

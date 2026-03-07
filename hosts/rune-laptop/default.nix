@@ -27,7 +27,6 @@
   opt = {
     features = {
       desktop.enable = true;
-      llama-cpp.enable = true;
       docker.enable = true;
       k3s.enable = false;
       vpn.enable = true;
