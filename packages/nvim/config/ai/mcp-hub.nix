@@ -6,16 +6,19 @@
       require("lz.n").load {
         {
           "mcphub.nvim",
-          ft = { "Avante", "AvanteInput" },
+          ft = { "copilot-chat" },
           cmd = "MCPHub",
           after = function()
             require("mcphub").setup({
               cmd = "${mcp-hub}/bin/mcp-hub",
               config = "${./mcp-hub-servers.json}",
               extensions = {
-                avante = {
-                  make_slash_commands = true, -- make /slash commands from MCP server prompts
-                }
+                copilotchat = {
+                  enabled = true,
+                  convert_tools_to_functions = true,
+                  convert_resources_to_functions = true,
+                  add_mcp_prefix = false,
+                },
               },
             })
           end,
