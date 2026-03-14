@@ -21,6 +21,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = -1;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/dc6ee6e0-8cfa-4715-abf4-6953b6e01a54";
