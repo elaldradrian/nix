@@ -5,7 +5,7 @@
     ./git-config.nix
     ./gradle-properties.nix
     ./kitty.nix
-    ./llama-cpp.nix
+    ./llama-swap.nix
     ./npmrc.nix
     ./ssh.nix
     ./sway.nix
