@@ -24,6 +24,10 @@
       "headers": {
         "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
+    },
+    "effect-docs": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "timsmart/effect-mcp"]
     }
   }
 }

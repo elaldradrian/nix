@@ -28,6 +28,7 @@ in
       enable = true;
       lazyLoad.settings.ft = "http";
       settings = {
+        ui.disable_script_print_output = 327680;
         display_mode = "split";
         split_direction = "horizontal";
         default_view = "headers_body";

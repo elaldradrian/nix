@@ -22,8 +22,12 @@ let
     builtins.toJSON {
       models = {
         "qwen3.5-9b" = {
-          cmd = "${llama-server} --port \${PORT} -m /var/lib/llama-swap/models/Qwen3.5-9B-Q4_K_M.gguf --jinja -c 32768";
-          ttl = 300;
+          cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-Q8_0.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0";
+          ttl = 600;
+        };
+        "qwen3.5-35b-a3b" = {
+          cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0";
+          ttl = 600;
         };
       };
     }
