@@ -1,4 +1,5 @@
 {
+  extraLuaPackages = ps: [ ps.tiktoken_core ];
   plugins.copilot-chat = {
     enable = true;
     lazyLoad.settings = {
@@ -27,7 +28,7 @@
         layout = "vertical";
         width = 0.35;
       };
-      model = "qwen3.5-9b";
+      model = "qwen3.5-35b-a3b";
       providers = {
         llama-cpp = {
           get_url.__raw = ''
@@ -42,7 +43,10 @@
           '';
 
           prepare_input.__raw = ''
-            require("CopilotChat.config.providers").copilot.prepare_input
+            (function()
+              local original = require("CopilotChat.config.providers").copilot.prepare_input
+              return compaction.wrap_prepare_input(original)
+            end)()
           '';
           prepare_output.__raw = ''
             require("CopilotChat.config.providers").copilot.prepare_output
@@ -62,8 +66,8 @@
                   id = m.id,
                   name = m.id,
                   tokenizer = "o200k_base",
-                  max_input_tokens = 24000,
-                  max_output_tokens = 24000,
+                  max_input_tokens = 48000,
+                  max_output_tokens = 16000,
                   streaming = true,
                   tools = true,
                   reasoning = true,
@@ -78,25 +82,24 @@
     };
   };
 
-  keymaps = [
-    {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>at";
-      action = ":CopilotChatToggle<CR>";
-      options = {
-        desc = "CopilotChat Toggle (cmd)";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>a?";
-      action = ":CopilotChatModels<CR>";
-      options = {
-        desc = "CopilotChat Models (cmd)";
-      };
-    }
-  ];
+  # keymaps = [
+  #   {
+  #     mode = [
+  #       "n"
+  #       "v"
+  #     ];
+  #     key = "<leader>at";
+  #     action = ":CopilotChatToggle<CR>";
+  #     options = {
+  #       desc = "CopilotChat Toggle (cmd)";
+  #     };
+  #   }
+  #   {
+  #     mode = "n";
+  #     key = "<leader>a?";
+  #     action = ":CopilotChatModels<CR>";
+  #     options = {
+  #       desc = "CopilotChat Models (cmd)";
+  #     };
+  #   }
 }

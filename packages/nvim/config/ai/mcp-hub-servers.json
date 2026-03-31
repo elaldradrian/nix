@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "vectorcode-mcp-server": {
+    "vectorcode": {
       "command": "vectorcode-mcp-server",
       "args": []
     },
@@ -19,15 +19,13 @@
         "mcp/git"
       ]
     },
-    "github": {
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
-      }
-    },
     "effect-docs": {
       "command": "docker",
       "args": ["run", "-i", "--rm", "timsmart/effect-mcp"]
+    },
+    "memory": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "-v", "mcp-memory:/app/dist", "mcp/memory"]
     }
   }
 }
