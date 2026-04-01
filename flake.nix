@@ -47,6 +47,8 @@
       url = "github:ravitemer/mcphub.nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
   };
 
   outputs =
@@ -76,7 +78,7 @@
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = [
-              (self: _super: {
+              (_self: _super: {
                 stable = import inputs.nixpkgs-stable {
                   localSystem = { inherit system; };
                   config.allowUnfree = true;
@@ -90,6 +92,8 @@
             packages = with pkgs; [
               nixfmt
               git
+              age
+              sops
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";

@@ -10,6 +10,10 @@
         UseDns = true;
         X11Forwarding = false;
         PermitRootLogin = "no";
+        AcceptEnv = [
+          "LANG"
+          "LC_*"
+        ];
       };
     };
   };
