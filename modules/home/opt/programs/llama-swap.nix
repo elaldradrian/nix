@@ -20,16 +20,21 @@ let
 
   configFile = pkgs.writeText "llama-swap-config.yaml" (
     builtins.toJSON {
-      models = {
-        "qwen3.5-9b" = {
-          cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-Q8_0.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0";
-          ttl = 600;
-        };
-        "qwen3.5-35b-a3b" = {
-          cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0";
-          ttl = 600;
-        };
-      };
+      models =
+        if pkgs.stdenv.isDarwin then
+          {
+            "qwen3.5-35b-a3b" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1";
+              ttl = 900;
+            };
+          }
+        else
+          {
+            "qwen3.5-9b" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q4_K_XL.gguf --jinja -c 65536 -ngl 99 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1";
+              ttl = 900;
+            };
+          };
     }
   );
 in
