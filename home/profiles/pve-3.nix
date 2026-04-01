@@ -9,7 +9,6 @@
       desktop.enable = false;
       devUtils.enable = true;
       docker.enable = false;
-      games.enable = false;
       vpn.enable = false;
       work-machine.enable = false;
     };

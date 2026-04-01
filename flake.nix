@@ -48,7 +48,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/update-cluster";
+    proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
   };
 
   outputs =
