@@ -6,6 +6,7 @@
     ./nix.nix
     ./options.nix
     ./programs.nix
+    ./proxmox.nix
     ./security.nix
     ./sops.nix
     ./ssh.nix

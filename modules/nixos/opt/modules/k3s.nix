@@ -2,10 +2,15 @@
   config,
   pkgs,
   lib,
+  self,
   ...
 }:
 {
   config = lib.mkIf config.opt.features.k3s.enable {
+    sops.secrets.k3s-token = {
+      sopsFile = "${self}/secrets/k3s/secrets.json";
+    };
+
     services.k3s = {
       enable = true;
       role = "server";
