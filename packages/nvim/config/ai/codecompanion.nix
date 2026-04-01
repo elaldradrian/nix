@@ -20,7 +20,7 @@
       };
       adapters = {
         http = {
-          llama-swap = {
+          llama = {
             __raw = ''
               function()
                 return require('codecompanion.adapters').extend('openai_compatible', {
@@ -29,9 +29,10 @@
                   },
                   schema = {
                     model = {
-                      default = 'qwen3.5-9b';
+                      default = 'qwen3.5-35b-a3b';
                       choices = {
                         ["qwen3.5-9b"] = { opts = { can_reason = false } },
+                        "qwen3.5-35b-a3b",
                       },
                     },
                     num_ctx = {
@@ -91,13 +92,13 @@
       };
       strategies = {
         agent = {
-          adapter = "llama-swap";
+          adapter = "llama";
         };
         chat = {
-          adapter = "llama-swap";
+          adapter = "llama";
         };
         inline = {
-          adapter = "llama-swap";
+          adapter = "llama";
         };
       };
     };
