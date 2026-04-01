@@ -29,10 +29,12 @@
                   },
                   schema = {
                     model = {
-                      default = 'qwen3.5-35b-a3b';
+                      default = 'qwen3.5';
                       choices = {
                         ["qwen3.5-9b"] = { opts = { can_reason = false } },
                         "qwen3.5-35b-a3b",
+                        "qwen3.5",
+                        "qwen3.5-122b-a10b",
                       },
                     },
                     num_ctx = {
