@@ -73,6 +73,10 @@
           user = "rune";
           gpuBackend = "vulkan";
         };
+        pve-3 = mkHost {
+          hostname = "pve-3";
+          user = "rune";
+        };
       };
 
     darwinConfigurations =

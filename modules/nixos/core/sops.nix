@@ -15,9 +15,5 @@
       generateKey = false;
       keyFile = "/home/rune/.config/sops/age/keys.txt";
     };
-
-    secrets.k3s-token = {
-      sopsFile = "${self}/secrets/k3s/secrets.json";
-    };
   };
 }
