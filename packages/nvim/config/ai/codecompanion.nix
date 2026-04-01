@@ -2,6 +2,22 @@
   plugins.codecompanion = {
     enable = true;
     settings = {
+      mcp = {
+        servers = {
+          vectorcode = {
+            cmd = [ "vectorcode-mcp-server" ];
+          };
+          "effect-docs" = {
+            cmd = [
+              "docker"
+              "run"
+              "-i"
+              "--rm"
+              "timsmart/effect-mcp"
+            ];
+          };
+        };
+      };
       adapters = {
         http = {
           llama-swap = {
@@ -13,7 +29,10 @@
                   },
                   schema = {
                     model = {
-                      default = 'qwen3.5-9b',
+                      default = 'qwen3.5-9b';
+                      choices = {
+                        ["qwen3.5-9b"] = { opts = { can_reason = false } },
+                      },
                     },
                     num_ctx = {
                       default = 65536,
