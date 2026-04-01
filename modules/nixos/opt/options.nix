@@ -2,6 +2,7 @@
 {
   options.opt = with lib; {
     features = {
+      backup-vault.enable = mkEnableOption "Enable Backup Vault";
       ceph.enable = mkEnableOption "Enable Ceph client";
       desktop.enable = mkEnableOption "Enable desktop";
       docker.enable = mkEnableOption "Enable docker";
