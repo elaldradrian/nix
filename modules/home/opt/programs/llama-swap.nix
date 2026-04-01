@@ -2,19 +2,22 @@
   pkgs,
   lib,
   config,
+  gpuBackend,
   ...
 }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  hasNvidia = if isLinux then config.hardware.nvidia.modesetting.enable or false else false;
-
+  llama-cpp-cuda = pkgs.llama-cpp.override {
+    cudaSupport = true;
+    cudaPackages = pkgs.cudaPackages_12_8;
+  };
   llama-server =
-    if isDarwin then
+    if gpuBackend == "metal" then
       "${pkgs.llama-cpp}/bin/llama-server"
-    else if hasNvidia then
-      "${pkgs.llama-cpp}/bin/llama-server"
+    else if gpuBackend == "nvidia" then
+      "${llama-cpp-cuda}/bin/llama-server"
     else
       "${pkgs.llama-cpp-vulkan}/bin/llama-server";
 
@@ -36,6 +39,15 @@ let
             };
             "qwen3.5-35b-a3b" = {
               cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ2_XXS.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
+              ttl = 900;
+            };
+
+            "qwen3.5" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
+              ttl = 900;
+            };
+            "qwen3.5-122b-a10b" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-122B-A10B-UD-IQ3_S.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
               ttl = 900;
             };
           };
