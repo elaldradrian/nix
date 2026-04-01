@@ -26,6 +26,7 @@
 
   opt = {
     features = {
+      backup-vault.enable = false;
       ceph.enable = false;
       desktop.enable = true;
       docker.enable = true;
