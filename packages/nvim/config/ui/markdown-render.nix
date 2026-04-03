@@ -3,12 +3,12 @@
     enable = true;
     lazyLoad.settings.ft = [
       "markdown"
-      "Avante"
+      "codecompanion"
     ];
     settings = {
       file_types = [
         "markdown"
-        "Avante"
+        "codecompanion"
       ];
       code = {
         border = "thick";

@@ -29,19 +29,16 @@
                   },
                   schema = {
                     model = {
-                      default = 'qwen3.5-35b-a3b';
+                      default = 'qwen3.5';
                       choices = {
-                        ["qwen3.5-9b"] = { opts = { can_reason = false } },
-                        "qwen3.5-35b-a3b",
-                        "qwen3.5-122b-a10b",
+                        "qwen3.5-9b-s",
+                        "qwen3.5-9b-l",
+                        "qwen3.5-27b-s",
+                        "qwen3.5-27b-l",
+                        "qwen3.5-35b-a3b-s",
+                        "qwen3.5-35b-a3b-l",
                       },
                     },
-                    num_ctx = {
-                      default = 65536,
-                    },
-                    temperature = {
-                      default = 0.6;
-                    };
                   },
                   handlers = {
                     form_messages = function(self, messages)
