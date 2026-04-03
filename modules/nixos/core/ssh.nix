@@ -10,7 +10,7 @@
         UseDns = true;
         X11Forwarding = false;
         PermitRootLogin = "no";
-        AcceptEnv = [
+        AcceptEnv = lib.mkForce [
           "LANG"
           "LC_*"
         ];

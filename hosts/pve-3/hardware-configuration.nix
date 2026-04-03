@@ -51,25 +51,33 @@
     defaultGateway = "10.17.16.1";
     nameservers = [ "10.17.16.1" ];
     useDHCP = false;
-    bridges.vmbr0.interfaces = [ "enP4p65s0" ];
-    interfaces = {
-      # enP4p65s0.ipv4.addresses = [
-      #   {
-      #     address = "10.17.16.3";
-      #     prefixLength = 23;
-      #   }
-      # ];
-      vmbr0.ipv4.addresses = [
-        {
-          address = "10.17.16.3";
-          prefixLength = 23;
-        }
-      ];
-    };
-  };
 
-  # networking.interfaces.enP3p49s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enP4p65s0.useDHCP = lib.mkDefault true;
+    bonds.bond0 = {
+      interfaces = [
+        "enP3p49s0"
+        "enP4p65s0"
+      ];
+      driverOptions = {
+        mode = "802.3ad";
+        miimon = "100";
+        xmit_hash_policy = "layer2+3";
+      };
+    };
+
+    bridges.vmbr0.interfaces = [ "bond0" ];
+
+    vlans."vmbr0.100" = {
+      id = 100;
+      interface = "vmbr0";
+    };
+
+    interfaces."vmbr0.100".ipv4.addresses = [
+      {
+        address = "10.17.16.3";
+        prefixLength = 23;
+      }
+    ];
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

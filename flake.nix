@@ -2,8 +2,7 @@
   description = "Runes flake";
 
   inputs = {
-    # TODO: use unstable again when this is available in unstable https://ocfox.me/nixpkgs-tracker?pr=483431
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     nix-darwin = {
