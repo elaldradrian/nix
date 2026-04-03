@@ -27,27 +27,34 @@ let
         if pkgs.stdenv.isDarwin then
           {
             "qwen3.5-35b-a3b" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
               ttl = 900;
             };
           }
         else
           {
-            "qwen3.5-9b" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q4_K_XL.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --keep -1 --temp 0.6";
+            "qwen3.5-9b-s" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q3_K_XL.gguf --jinja -c 32768 --no-warmup --parallel 1 --keep -1 --temp 0.5 --top-p 0.95 --top-k 20 --min-p 0.00 --presence-penalty 1.5 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\":false}'";
               ttl = 900;
             };
-            "qwen3.5-35b-a3b" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ2_XXS.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --keep -1 --temp 0.6";
+            "qwen3.5-9b-l" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q4_K_XL.gguf --jinja -c 32768 --no-warmup --parallel 1 --keep -1 --temp 0.5 --top-p 0.95 --top-k 20 --min-p 0.00 --presence-penalty 1.5 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\":false}'";
               ttl = 900;
             };
-
-            "qwen3.5" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
+            "qwen3.5-35b-a3b-s" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ3_XXS.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
               ttl = 900;
             };
-            "qwen3.5-122b-a10b" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-122B-A10B-UD-IQ3_S.gguf --jinja -c 65536 --cache-type-k q4_0 --cache-type-v q4_0 --no-warmup --parallel 1 --batch-size 4096 --keep -1 --temp 0.6";
+            "qwen3.5-35b-a3b-l" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-IQ4_XS.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
+              ttl = 900;
+            };
+            "qwen3.5-27b-s" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-IQ2_XXS.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
+              ttl = 900;
+            };
+            "qwen3.5-27b-l" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-Q8_K_XL.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
               ttl = 900;
             };
           };
