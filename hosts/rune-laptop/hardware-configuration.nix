@@ -44,7 +44,16 @@
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  networking.useDHCP = lib.mkDefault true;
+
+  networking = {
+    useDHCP = lib.mkDefault true;
+    firewall = {
+      allowedTCPPorts = [
+        11434
+        50052
+      ];
+    };
+  };
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
