@@ -113,11 +113,6 @@
       networkConfig.VLAN = [ "vmbr0.100" ];
       bridgeVLANs = [
         { VLAN = "2-4092"; }
-        {
-          VLAN = 1;
-          PVID = true;
-          EgressUntagged = true;
-        }
       ];
     };
 
