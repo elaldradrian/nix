@@ -8,7 +8,7 @@
   config = lib.mkIf config.core.features.proxmox.enable {
 
     nixpkgs.overlays = [
-      inputs.proxmox-nixos.overlays.x86_64-linux
+      inputs.proxmox-nixos.overlays.aarch64-linux
     ];
 
     services.proxmox-ve = {
@@ -18,11 +18,20 @@
       ceph = {
         enable = true;
         mgr.enable = false;
-        mon.enable = false;
-        mds.enable = false;
+        mon.enable = true;
+        mds = {
+          enable = true;
+          daemons = [
+            "pve-3"
+          ];
+        };
         osd = {
           enable = true;
-          daemons = [ "4" ];
+          daemons = [
+            "4"
+            "6"
+            "7"
+          ];
         };
       };
     };

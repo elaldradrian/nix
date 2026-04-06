@@ -389,11 +389,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1775465197,
-        "narHash": "sha256-j6jsxeQ7RIJNaIu4H4CWpq4kcfBWM2YXOEVLMJ6G52U=",
+        "lastModified": 1775471741,
+        "narHash": "sha256-UG+Ikp0Nax3kXkmGVILJh6bCp7wEnKIqHIlPmxTAy7g=",
         "owner": "elaldradrian",
         "repo": "proxmox-nixos",
-        "rev": "68597d6f427b37dba3be43bf7a7d8fc183693b4d",
+        "rev": "ab686280794293972f8625542d7993e0b5e8555c",
         "type": "github"
       },
       "original": {
