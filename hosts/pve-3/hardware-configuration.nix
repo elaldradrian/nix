@@ -55,6 +55,10 @@
 
   systemd.network = {
     enable = true;
+    wait-online.ignoredInterfaces = [
+      "bond0"
+      "vmbr0"
+    ];
 
     netdevs."10-bond0" = {
       netdevConfig = {
@@ -109,6 +113,11 @@
       networkConfig.VLAN = [ "vmbr0.100" ];
       bridgeVLANs = [
         { VLAN = "2-4092"; }
+        {
+          VLAN = 1;
+          PVID = true;
+          EgressUntagged = true;
+        }
       ];
     };
 
