@@ -78,7 +78,7 @@ in
         sqls.enable = true;
         terraform_lsp.enable = true;
         ts_ls.enable = true;
-        vectorcode_server.enable = true;
+        vectorcode_server.enable = (!pkgs.stdenv.hostPlatform.isAarch64);
         yamlls.enable = true;
       };
     };
