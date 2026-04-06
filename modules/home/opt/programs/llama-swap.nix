@@ -9,17 +9,12 @@ let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  llama-cpp-cuda = pkgs.llama-cpp.override {
-    cudaSupport = true;
+  llama-server = pkgs.llama-cpp.override {
+    rpcSupport = true;
+    cudaSupport = gpuBackend == "nvidia";
     cudaPackages = pkgs.cudaPackages_12_8;
+    vulkanSupport = gpuBackend == "vulkan";
   };
-  llama-server =
-    if gpuBackend == "metal" then
-      "${pkgs.llama-cpp}/bin/llama-server"
-    else if gpuBackend == "nvidia" then
-      "${llama-cpp-cuda}/bin/llama-server"
-    else
-      "${pkgs.llama-cpp-vulkan}/bin/llama-server";
 
   configFile = pkgs.writeText "llama-swap-config.yaml" (
     builtins.toJSON {
@@ -38,7 +33,7 @@ let
               ttl = 900;
             };
             "qwen3.5-9b-l" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q4_K_XL.gguf --jinja -c 32768 --no-warmup --parallel 1 --keep -1 --temp 0.5 --top-p 0.95 --top-k 20 --min-p 0.00 --presence-penalty 1.5 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\":false}'";
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-9B-UD-Q4_K_XL.gguf --jinja -c 32768 --no-warmup --parallel 1 --keep -1 --temp 0.5 --top-p 0.95 --top-k 20 --min-p 0.00 --presence-penalty 1.5 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\":false}' -ctk q8_0 -ctv q8_0";
               ttl = 900;
             };
             "qwen3.5-35b-a3b-s" = {
@@ -50,7 +45,7 @@ let
               ttl = 900;
             };
             "qwen3.5-27b-s" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-IQ2_XXS.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00";
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-IQ2_XXS.gguf --jinja -c 32768  --no-warmup --parallel 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --rpc rune-workstation.local.dahl-billeskov.com:50052";
               ttl = 900;
             };
             "qwen3.5-27b-l" = {
@@ -70,7 +65,7 @@ in
         After = [ "network.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.llama-swap}/bin/llama-swap --config ${configFile} --listen localhost:11434";
+        ExecStart = "${pkgs.llama-swap}/bin/llama-swap --config ${configFile} --listen 0.0.0.0:11434";
         Restart = "on-failure";
       };
       Install.WantedBy = [ "default.target" ];
@@ -85,7 +80,7 @@ in
           "--config"
           "${configFile}"
           "--listen"
-          "localhost:11434"
+          "0.0.0.0:11434"
         ];
         KeepAlive = true;
         RunAtLoad = true;
