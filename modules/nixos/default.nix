@@ -3,7 +3,10 @@ let
     ./core/default.nix
     ./opt/default.nix
   ];
+  proxmox = [
+    ./core/proxmox.nix
+  ];
 in
 {
-  inherit default;
+  inherit default proxmox;
 }
