@@ -48,6 +48,9 @@
     };
 
     proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
+
+    proxmox-nixos-nixpkgs.url = "github:NixOS/nixpkgs/1cd347bf3355fce6c64ab37d3967b4a2cb4b878c";
+    proxmox-nixos.inputs.nixpkgs-stable.follows = "proxmox-nixos-nixpkgs";
   };
 
   outputs =

@@ -40,11 +40,11 @@
     },
     "flake-compat_2": {
       "locked": {
-        "lastModified": 1747046372,
-        "narHash": "sha256-CIVLLkVgvHYbgI2UpXvIIBJ12HWgX+fjA8Xf8PUmqCY=",
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "9100a0f413b0c601e0533d1d94ffd501ce2e7885",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
         "type": "github"
       },
       "original": {
@@ -321,22 +321,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable_2": {
-      "locked": {
-        "lastModified": 1769318308,
-        "narHash": "sha256-Mjx6p96Pkefks3+aA+72lu1xVehb6mv2yTUUqmSet6Q=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1cd347bf3355fce6c64ab37d3967b4a2cb4b878c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_5",
@@ -385,21 +369,39 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "nixpkgs-libvncserver": "nixpkgs-libvncserver",
-        "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-stable": [
+          "proxmox-nixos-nixpkgs"
+        ],
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1775462088,
-        "narHash": "sha256-AYQ1hQps42dTYJKb1AwYxzjpFLfRhDF+lziVLfO+jDY=",
+        "lastModified": 1775465197,
+        "narHash": "sha256-j6jsxeQ7RIJNaIu4H4CWpq4kcfBWM2YXOEVLMJ6G52U=",
         "owner": "elaldradrian",
         "repo": "proxmox-nixos",
-        "rev": "f9d4da2afe8a8207377b190ddd360682eb95d2e2",
+        "rev": "68597d6f427b37dba3be43bf7a7d8fc183693b4d",
         "type": "github"
       },
       "original": {
         "owner": "elaldradrian",
         "ref": "feature/sanctuary-cluster",
         "repo": "proxmox-nixos",
+        "type": "github"
+      }
+    },
+    "proxmox-nixos-nixpkgs": {
+      "locked": {
+        "lastModified": 1769318308,
+        "narHash": "sha256-Mjx6p96Pkefks3+aA+72lu1xVehb6mv2yTUUqmSet6Q=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1cd347bf3355fce6c64ab37d3967b4a2cb4b878c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1cd347bf3355fce6c64ab37d3967b4a2cb4b878c",
         "type": "github"
       }
     },
@@ -416,6 +418,7 @@
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks",
         "proxmox-nixos": "proxmox-nixos",
+        "proxmox-nixos-nixpkgs": "proxmox-nixos-nixpkgs",
         "sops-nix": "sops-nix"
       }
     },

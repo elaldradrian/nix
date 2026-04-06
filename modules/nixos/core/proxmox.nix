@@ -9,9 +9,10 @@
         enable = true;
         mgr.enable = false;
         mon.enable = false;
+        mds.enable = false;
         osd = {
-          enable = false;
-          daemons = [ ];
+          enable = true;
+          daemons = [ "4" ];
         };
       };
     };
