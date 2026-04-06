@@ -36,17 +36,6 @@
       url = "github:Mic92/direnv-instant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    mcp-hub = {
-      url = "github:ravitemer/mcp-hub";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    mcp-hub-nvim = {
-      url = "github:ravitemer/mcphub.nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
   };
 
