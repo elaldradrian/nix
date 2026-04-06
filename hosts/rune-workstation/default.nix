@@ -13,6 +13,7 @@
 
   core = {
     features = {
+      proxmox.enable = false;
       ssh.enable = true;
       vm-guest.enable = false;
     };
