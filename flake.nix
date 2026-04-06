@@ -2,8 +2,7 @@
   description = "Runes flake";
 
   inputs = {
-    # TODO: use unstable again when this is available in unstable https://ocfox.me/nixpkgs-tracker?pr=483431
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     nix-darwin = {
@@ -37,6 +36,7 @@
       url = "github:Mic92/direnv-instant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
   };
 
   outputs =
@@ -66,7 +66,7 @@
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = [
-              (self: _super: {
+              (_self: _super: {
                 stable = import inputs.nixpkgs-stable {
                   localSystem = { inherit system; };
                   config.allowUnfree = true;
@@ -80,6 +80,8 @@
             packages = with pkgs; [
               nixfmt
               git
+              age
+              sops
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
