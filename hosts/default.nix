@@ -8,7 +8,7 @@
     nixosConfigurations =
       let
         inherit (inputs.nixpkgs.lib) nixosSystem;
-        inherit (import "${self}/modules/nixos") default;
+        inherit (import "${self}/modules/nixos") default proxmox;
 
         homeImports = import "${self}/home";
 
@@ -17,6 +17,7 @@
             hostname,
             user ? null,
             gpuBackend,
+            extraModules ? [ ],
           }:
           let
             specialArgs = {
@@ -31,20 +32,23 @@
           in
           nixosSystem {
             inherit specialArgs;
-            modules = default ++ [
-              ./${hostname}
-              (
-                if user != null then
-                  {
-                    home-manager = {
-                      users.${user}.imports = homeImports.${hostname};
-                      extraSpecialArgs = specialArgs;
-                    };
-                  }
-                else
-                  { }
-              )
-            ];
+            modules =
+              default
+              ++ extraModules
+              ++ [
+                ./${hostname}
+                (
+                  if user != null then
+                    {
+                      home-manager = {
+                        users.${user}.imports = homeImports.${hostname};
+                        extraSpecialArgs = specialArgs;
+                      };
+                    }
+                  else
+                    { }
+                )
+              ];
           };
       in
       {
@@ -77,6 +81,7 @@
           hostname = "pve-3";
           user = "rune";
           gpuBackend = "vulkan";
+          extraModules = proxmox ++ [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
         };
       };
 

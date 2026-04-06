@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.proxmox-nixos.nixosModules.proxmox-ve
     inputs.hm.nixosModules.home-manager
   ];
 
