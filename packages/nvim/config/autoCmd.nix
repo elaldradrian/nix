@@ -22,9 +22,30 @@
         '';
     }
     {
-      event = "FileType";
-      pattern = "helm";
-      command = "LspRestart";
+      desc = "Enable inline completion for LSP";
+      event = "LspAttach";
+      callback.__raw = # lua
+        ''
+          function(args)
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client and client:supports_method("textDocument/inlineCompletion") then
+              vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+              vim.keymap.set(
+                'i',
+                '<S-CR>',
+                vim.lsp.inline_completion.get,
+                { desc = 'LSP: accept inline completion', buffer = bufnr }
+              )
+              vim.keymap.set(
+                'i',
+                '<C-G>',
+                vim.lsp.inline_completion.select,
+                { desc = 'LSP: switch inline completion', buffer = bufnr }
+              )
+            end
+          end
+        '';
     }
   ];
 }
