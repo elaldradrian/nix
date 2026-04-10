@@ -14,7 +14,6 @@
           config.allowUnfree = true;
         };
       })
-      inputs.proxmox-nixos.overlays.aarch64-linux
     ];
   };
   nix = {
