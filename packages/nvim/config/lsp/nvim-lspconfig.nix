@@ -47,6 +47,7 @@ in
           package = bicepLsp;
           cmd = [ "${bicepLsp}/bin/bicep-langserver" ];
         };
+        copilot.enable = true;
         eslint.enable = true;
         gradle_ls = {
           enable = true;
