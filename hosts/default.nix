@@ -77,6 +77,12 @@
           user = "rune";
           gpuBackend = "vulkan";
         };
+        pve-1 = mkHost {
+          hostname = "pve-1";
+          user = "rune";
+          gpuBackend = "vulkan";
+          extraModules = proxmox ++ [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
+        };
         pve-3 = mkHost {
           hostname = "pve-3";
           user = "rune";
