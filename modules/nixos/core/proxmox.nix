@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.proxmox-nixos.nixosModules.proxmox-ve
-  ];
-
   config = lib.mkIf config.core.features.proxmox.enable {
 
     nixpkgs.overlays = [
