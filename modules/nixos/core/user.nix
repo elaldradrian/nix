@@ -3,6 +3,7 @@
   users = {
     groups.ceph = { };
     users.rune = {
+      shell = pkgs.fish;
       isNormalUser = true;
       description = "Rune Dahl Billeskov";
       extraGroups = [
@@ -18,6 +19,6 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGfqJV+LLTDqhZboTExbEZChKbIdQwhNJXSmKEYfdOJ"
       ];
     };
-    defaultUserShell = pkgs.fish;
+    defaultUserShell = pkgs.bash;
   };
 }

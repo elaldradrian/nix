@@ -1,15 +1,26 @@
-{ config, lib, ... }:
+{
+  config,
+  user,
+  lib,
+  ...
+}:
 {
   config = lib.mkIf config.core.features.ssh.enable {
     services.openssh = {
       enable = true;
       ports = [ 22 ];
+      authorizedKeysFiles = [
+        "/etc/pve/priv/authorized_keys"
+      ];
       settings = {
         PasswordAuthentication = true;
-        AllowUsers = [ "rune" ];
+        PermitRootLogin = "prohibit-password";
+        AllowUsers = [
+          "root"
+          user
+        ];
         UseDns = true;
         X11Forwarding = false;
-        PermitRootLogin = "no";
         AcceptEnv = lib.mkForce [
           "LANG"
           "LC_*"
