@@ -18,8 +18,8 @@
           mgr.enable = false;
           mon.enable = true;
           mds = {
-            enable = true;
-            daemons = [ "pve-3" ];
+            enable = false;
+            daemons = [ ];
           };
           osd = {
             enable = true;

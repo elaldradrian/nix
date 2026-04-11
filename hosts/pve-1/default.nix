@@ -9,7 +9,27 @@
 
   core = {
     features = {
-      proxmox.enable = false;
+      proxmox = {
+        enable = true;
+        ipAddress = "10.17.16.2";
+        bridges = [ "vmbr0" ];
+        ceph = {
+          enable = true;
+          mgr.enable = true;
+          mon.enable = true;
+          mds = {
+            enable = false;
+            daemons = [ ];
+          };
+          osd = {
+            enable = true;
+            daemons = [
+              "0"
+              "1"
+            ];
+          };
+        };
+      };
       ssh.enable = true;
       vm-guest.enable = false;
     };
