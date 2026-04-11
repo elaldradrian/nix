@@ -4,8 +4,11 @@
   lib,
   ...
 }:
+let
+  cfg = config.core.features.proxmox;
+in
 {
-  config = lib.mkIf config.core.features.proxmox.enable {
+  config = lib.mkIf cfg.enable {
 
     nixpkgs.overlays = [
       inputs.proxmox-nixos.overlays.aarch64-linux
@@ -13,25 +16,19 @@
 
     services.proxmox-ve = {
       enable = true;
-      ipAddress = "10.17.16.3";
-      bridges = [ "vmbr0" ];
+      ipAddress = cfg.ipAddress;
+      bridges = cfg.bridges;
       ceph = {
-        enable = true;
-        mgr.enable = false;
-        mon.enable = true;
+        enable = cfg.ceph.enable;
+        mgr.enable = cfg.ceph.mgr.enable;
+        mon.enable = cfg.ceph.mon.enable;
         mds = {
-          enable = true;
-          daemons = [
-            "pve-3"
-          ];
+          enable = cfg.ceph.mds.enable;
+          daemons = cfg.ceph.mds.daemons;
         };
         osd = {
-          enable = true;
-          daemons = [
-            "4"
-            "6"
-            "7"
-          ];
+          enable = cfg.ceph.osd.enable;
+          daemons = cfg.ceph.osd.daemons;
         };
       };
     };
