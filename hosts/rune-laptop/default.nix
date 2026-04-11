@@ -14,7 +14,7 @@
   core = {
     features = {
       proxmox.enable = false;
-      ssh.enable = false;
+      ssh.enable = true;
       vm-guest.enable = false;
     };
     programs.polkit.enable = true;
