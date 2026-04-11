@@ -23,12 +23,12 @@ let
       models =
         if pkgs.stdenv.isDarwin then
           {
-            "qwen3.5-27b" = {
-              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-Q4_K_XL.gguf --jinja -c 65536 -ctxcp 1 --no-warmup -cram 0 -np 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --presence_penalty 0";
-              ttl = 900;
-            };
             "qwen3.5-35b-a3b" = {
               cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-35B-A3B-UD-Q4_K_XL.gguf --jinja -c 65536 -ctxcp 1 --no-warmup -cram 0 -np 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --presence_penalty 0";
+              ttl = 900;
+            };
+            "qwen3.5-27b" = {
+              cmd = "${llama-server} --port \${PORT} --model /var/lib/llama-swap/models/Qwen3.5-27B-UD-Q4_K_XL.gguf --jinja -c 65536 -ctxcp 1 --no-warmup -cram 0 -np 1 --keep -1 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --presence_penalty 0";
               ttl = 900;
             };
             "gemma-4-26b-a4b" = {
