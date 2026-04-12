@@ -7,6 +7,11 @@
 
   networking.hostName = hostname;
 
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "/etc/nix/cache-priv-key.pem";
+  };
+
   core = {
     features = {
       proxmox = {
