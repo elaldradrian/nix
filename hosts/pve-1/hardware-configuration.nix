@@ -54,6 +54,7 @@
     firewall = {
       allowedTCPPorts = [
         3031
+        5000
       ];
     };
   };
