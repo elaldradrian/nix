@@ -7,6 +7,11 @@
 
   networking.hostName = hostname;
 
+  nix.settings = {
+    substituters = [ "http://10.17.16.2:5000" ];
+    trusted-public-keys = [ "mycache:ME+pe82DGpgE+eR5IphLtSZ8/sCSap642K3c5ADkkfE=" ];
+  };
+
   core = {
     features = {
       proxmox = {
