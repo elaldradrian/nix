@@ -20,6 +20,9 @@
   pve-1 = [
     ./profiles/pve-1.nix
   ];
+  pve-2 = [
+    ./profiles/pve-2.nix
+  ];
   pve-3 = [
     ./profiles/pve-3.nix
   ];
