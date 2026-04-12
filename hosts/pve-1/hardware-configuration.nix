@@ -51,6 +51,11 @@
     nameservers = [ "10.17.16.1" ];
     useDHCP = false;
     useNetworkd = true;
+    firewall = {
+      allowedTCPPorts = [
+        3031
+      ];
+    };
   };
 
   systemd.network = {
