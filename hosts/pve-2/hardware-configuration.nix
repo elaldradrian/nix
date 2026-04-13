@@ -21,12 +21,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/84f43348-d39e-4374-b705-02249247ebe7";
+    device = "/dev/disk/by-uuid/393d80e6-31cd-43a9-a039-b0e8d54e03d5";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DF4B-E21F";
+    device = "/dev/disk/by-uuid/B374-1616";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -35,28 +35,22 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/3131b7bc-4733-4922-b3ac-9cc0dd1554c1"; }
+    { device = "/dev/disk/by-uuid/bf092260-d8b8-4eb8-be72-7420b692f608"; }
   ];
 
   networking = {
     hostName = hostname;
     hosts = {
       "127.0.0.1" = [ "localhost" ];
-      "10.17.16.2" = [
-        "pve-1.local.dahl-billeskov.com"
-        "pve-1"
+      "10.17.16.4" = [
+        "pve-2.local.dahl-billeskov.com"
+        "pve-2"
       ];
     };
     domain = "local.dahl-billeskov.com";
     nameservers = [ "10.17.16.1" ];
     useDHCP = false;
     useNetworkd = true;
-    firewall = {
-      allowedTCPPorts = [
-        3031
-        5000
-      ];
-    };
   };
 
   systemd.network = {
@@ -125,7 +119,7 @@
     # Host IP on VLAN 100
     networks."40-vmbr0.100" = {
       matchConfig.Name = "vmbr0.100";
-      address = [ "10.17.16.2/23" ];
+      address = [ "10.17.16.4/23" ];
       gateway = [ "10.17.16.1" ];
     };
   };

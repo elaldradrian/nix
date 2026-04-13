@@ -16,7 +16,7 @@
     features = {
       proxmox = {
         enable = true;
-        ipAddress = "10.17.16.3";
+        ipAddress = "10.17.16.4";
         bridges = [ "vmbr0" ];
         ceph = {
           enable = true;
@@ -29,9 +29,9 @@
           osd = {
             enable = true;
             daemons = [
-              "4"
-              "6"
-              "7"
+              "2"
+              "3"
+              "5"
             ];
           };
         };

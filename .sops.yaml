@@ -10,6 +10,7 @@ keys:
   - &rune-mac age1v7wmx3zdmm6erjyff8xfsdxghvtf4u9heah2x86z6rang3e869zs7rj04h
   - &rune-workstation age1ewyrrx2vwjr74vlge62edr2gulsml4h2ynju2gg0ue9ev76d55fss4dqcc
   - &pve-1 age1xfw9jpedpe2yfug8gqm5jkxgjpmwwljln6c49nkfusn0gw5qspaseczc5w
+  - &pve-2 age1keyrzgqu93wzk6fegyvchfj8wdjryk2vd79tvlkc2p7hmxd0jyaq4g2r3j
   - &pve-3 age1y2ryuq2y7ffljq5katq4xvgpxt7de2d2n3vyehd2emvkgpv9a3zshelh90
 
 creation_rules:
@@ -70,6 +71,13 @@ creation_rules:
           - *rune-laptop
           - *rune-workstation
           - *pve-1
+  - path_regex: secrets/pve-2/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *rune-mac
+          - *rune-laptop
+          - *rune-workstation
+          - *pve-2
   - path_regex: secrets/pve-3/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
