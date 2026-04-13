@@ -9,12 +9,14 @@ let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  llama-pkgs = pkgs.llama-cpp.override {
-    rpcSupport = true;
-    cudaSupport = gpuBackend == "nvidia";
-    cudaPackages = pkgs.cudaPackages_12_8;
-    vulkanSupport = gpuBackend == "vulkan";
-  };
+  llama-pkgs = (
+    pkgs.master.llama-cpp.override {
+      rpcSupport = true;
+      cudaSupport = gpuBackend == "nvidia";
+      cudaPackages = pkgs.cudaPackages_12_8;
+      vulkanSupport = gpuBackend == "vulkan";
+    }
+  );
 
   llama-server = "${llama-pkgs}/bin/llama-server";
 
