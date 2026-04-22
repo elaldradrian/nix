@@ -88,7 +88,7 @@
                     model = {
                       default = 'qwen3.6-35b-a3b';
                       choices = {
-                        "qwen3.5-27b",
+                        "qwen3.6-27b",
                         "qwen3.6-35b-a3b",
                         "gemma-4-26b-a4b",
                         "gemma-4-31b",

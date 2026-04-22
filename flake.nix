@@ -86,6 +86,7 @@
               git
               age
               sops
+              opencode
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";

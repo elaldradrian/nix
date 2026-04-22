@@ -7,6 +7,7 @@
     ./kitty.nix
     ./llama-cpp.nix
     ./llama-rpc.nix
+    ./opencode.nix
     ./npmrc.nix
     ./ssh.nix
     ./sway.nix
