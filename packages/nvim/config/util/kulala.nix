@@ -9,8 +9,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "mistweaverco";
       repo = "kulala.nvim";
-      rev = "6b6e1c8b538cce6654cfc5fb3e4a3acfa316ce57";
-      hash = "sha256-cFjYRw93tR439RGSwNeBo3i4ep0jx/Jcfx9UTS32Tx8=";
+      rev = "6656c9d332735ca6a27725e0fb45a1715c4372d9";
+      hash = "sha256-e+6kEOW0lCFYgaju6DWeDHkX28wplR0H5O8T7nOWWjU=";
     };
     location = "lua/tree-sitter";
 
