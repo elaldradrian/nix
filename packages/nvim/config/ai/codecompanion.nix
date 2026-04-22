@@ -16,11 +16,68 @@
               "timsmart/effect-mcp"
             ];
           };
+          "open-websearch" = {
+            cmd = [
+              "docker"
+              "run"
+              "-i"
+              "--rm"
+              "-e"
+              "MODE=stdio"
+              "-e"
+              "DEFAULT_SEARCH_ENGINE=duckduckgo"
+              "ghcr.io/aas-ee/open-web-search:latest"
+            ];
+          };
+        };
+      };
+      interactions = {
+        chat = {
+          adapter = "llama";
+          keymaps = {
+            codeblock = false;
+            regenerate.modes.n = "g.";
+            change_adapter.modes.n = "g?";
+          };
+          tools = {
+            "web_search" = {
+              enabled.__raw = "function() return false end";
+            };
+            "read_file" = {
+              opts.require_approval_before = false;
+            };
+            "grep_search" = {
+              opts.require_approval_before = false;
+            };
+            "memory" = {
+              opts.require_approval_before = false;
+            };
+            groups.agent.tools = [
+              "ask_questions"
+              "create_file"
+              "delete_file"
+              "file_search"
+              "get_changed_files"
+              "get_diagnostics"
+              "grep_search"
+              "insert_edit_into_file"
+              "read_file"
+              "run_command"
+            ];
+          };
+        };
+        inline.adapter = "llama";
+        agent.adapter = "llama";
+        shared.keymaps = {
+          always_accept.modes.n = "g+";
+          accept_change.modes.n = "ga";
+          reject_change.modes.n = "gr";
+          cancel.modes.n = "gc";
         };
       };
       adapters = {
         http = {
-          llama-swap = {
+          llama = {
             __raw = ''
               function()
                 return require('codecompanion.adapters').extend('openai_compatible', {
@@ -29,23 +86,19 @@
                   },
                   schema = {
                     model = {
-                      default = 'qwen3.5-9b';
+                      default = 'qwen3.6-35b-a3b';
                       choices = {
-                        ["qwen3.5-9b"] = { opts = { can_reason = false } },
+                        "qwen3.5-27b",
+                        "qwen3.6-35b-a3b",
+                        "gemma-4-26b-a4b",
+                        "gemma-4-31b",
                       },
                     },
-                    num_ctx = {
-                      default = 65536,
-                    },
-                    temperature = {
-                      default = 0.6;
-                    };
                   },
                   handlers = {
                     form_messages = function(self, messages)
                       local system_content = {}
                       local other_messages = {}
-                      -- 1. Separate system messages from everything else
                       for _, msg in ipairs(messages) do
                         if msg.role == "system" then
                           table.insert(system_content, msg.content)
@@ -54,18 +107,15 @@
                         end
                       end
                       local final_messages = {}
-                      -- 2. If there are system messages, merge them into ONE message at the top
                       if #system_content > 0 then
                         table.insert(final_messages, {
                           role = "system",
                           content = table.concat(system_content, "\n\n"),
                         })
                       end
-                      -- 3. Append all the user/assistant messages
                       for _, msg in ipairs(other_messages) do
                         table.insert(final_messages, msg)
                       end
-                      -- 4. Pass the cleaned messages to the standard OpenAI handler
                       local openai = require "codecompanion.adapters.http.openai"
                       return openai.handlers.form_messages(self, final_messages)
                     end,
@@ -88,17 +138,6 @@
       };
       opts = {
         send_code = true;
-      };
-      strategies = {
-        agent = {
-          adapter = "llama-swap";
-        };
-        chat = {
-          adapter = "llama-swap";
-        };
-        inline = {
-          adapter = "llama-swap";
-        };
       };
     };
   };

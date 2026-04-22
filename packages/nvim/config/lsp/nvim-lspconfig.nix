@@ -5,11 +5,11 @@
 let
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
-    version = "0.37.4";
+    version = "0.42.1";
 
     src = pkgs.fetchzip {
       url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
-      sha256 = "sha256-Eo/t3tnOOVUwdAQZBEcsaH36CNXt7InFqNYpmrAQZK8=";
+      sha256 = "sha256-01R1y8Odomwl1PlySd+5YWr9Fqh6oFR+GvCnXoSXvbo=";
       stripRoot = false;
     };
 
@@ -47,6 +47,7 @@ in
           package = bicepLsp;
           cmd = [ "${bicepLsp}/bin/bicep-langserver" ];
         };
+        copilot.enable = true;
         eslint.enable = true;
         gradle_ls = {
           enable = true;

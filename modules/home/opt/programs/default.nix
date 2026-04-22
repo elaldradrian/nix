@@ -6,6 +6,7 @@
     ./gradle-properties.nix
     ./kitty.nix
     ./llama-swap.nix
+    ./llama-rpc.nix
     ./npmrc.nix
     ./ssh.nix
     ./sway.nix

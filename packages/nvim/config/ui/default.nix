@@ -19,6 +19,5 @@
     ./scheme
     ./trouble.nix
     ./undotree.nix
-    ./which-key.nix
   ];
 }
