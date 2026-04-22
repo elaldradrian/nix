@@ -9,12 +9,30 @@ let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  llama-pkgs = pkgs.llama-cpp.override {
-    rpcSupport = true;
-    cudaSupport = gpuBackend == "nvidia";
-    cudaPackages = pkgs.cudaPackages_12_8;
-    vulkanSupport = gpuBackend == "nvidia";
-  };
+  llama-pkgs =
+    (pkgs.llama-cpp.override {
+      rpcSupport = true;
+      cudaSupport = gpuBackend == "nvidia";
+      cudaPackages = pkgs.cudaPackages_12_8;
+      vulkanSupport = gpuBackend == "nvidia";
+    }).overrideAttrs
+      (prev: {
+        version = "8884";
+        src = prev.src.override {
+          tag = "b8884";
+          hash = "sha256-5S/r7u6OI1DF25xEGnvsUNCFrAWJYjuRvBNbW5KaHh8=";
+        };
+        npmDeps = pkgs.fetchNpmDeps {
+          name = "llama-cpp-8884-npm-deps";
+          inherit (prev) patches;
+          src = prev.src.override {
+            tag = "b8884";
+            hash = "sha256-5S/r7u6OI1DF25xEGnvsUNCFrAWJYjuRvBNbW5KaHh8=";
+          };
+          preBuild = "pushd tools/server/webui";
+          hash = "sha256-RAFtsbBGBjteCt5yXhrmHL39rIDJMCFBETgzId2eRRk=";
+        };
+      });
 
   llama-server = "${llama-pkgs}/bin/llama-server";
 
@@ -85,8 +103,7 @@ let
   );
 
   linuxModelsIni = pkgs.writeText "models.ini" (
-    "version=1\n\n"
-    + lib.generators.toINI { listsAsDuplicateKeys = true; } {
+    lib.generators.toINI { listsAsDuplicateKeys = true; } {
       "qwen3.5-9b" = {
         model = "/home/rune/models/Qwen3.5-9B-Q4_K_M.gguf";
         jinja = "true";
@@ -94,7 +111,7 @@ let
         ctx-checkpoints = "1";
         no-warmup = "true";
         cache-ram = "0";
-        parallel = "1";
+        parallel = "2";
         keep = "-1";
         temp = "0.6";
         top-p = "0.95";
@@ -107,12 +124,13 @@ let
         # fit-ctx = "65536";
         ctk = "q8_0";
         ctv = "q8_0";
-        mlock = "true";
+        # mlock = "true";
         batch-size = "1024";
         ubatch-size = "1024";
         no-mmap = "true";
-        # device = "Vulkan0";
+        device = "Vulkan0,Cuda0,RPC0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
+        rpc = "desktop-28grr5l.tail5465ac.ts.net:50052";
       };
       "qwen3.6-27b" = {
         model = "/home/rune/models/Qwen3.6-27B-Q4_K_M.gguf";
@@ -134,17 +152,17 @@ let
         # fit-ctx = "65536";
         ctk = "q8_0";
         ctv = "q8_0";
-        mlock = "true";
+        # mlock = "true";
         batch-size = "1024";
         ubatch-size = "1024";
         no-mmap = "true";
-        device = "Vulkan0";
+        # device = "Cuda0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
       };
       "qwen3.6-35b-a3b" = {
         model = "/home/rune/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
         jinja = "true";
-        # c = "65536";
+        c = "65536";
         ctx-checkpoints = "1";
         no-warmup = "true";
         cache-ram = "0";
@@ -158,14 +176,14 @@ let
         repeat-penalty = "1";
         fit = "on";
         fit-target = "256";
-        fit-ctx = "65536";
+        # fit-ctx = "65536";
         ctk = "q8_0";
         ctv = "q8_0";
-        mlock = "true";
-        batch-size = "1024";
-        ubatch-size = "1024";
+        # mlock = "true";
+        batch-size = "2048";
+        ubatch-size = "2048";
         no-mmap = "true";
-        device = "Cuda0";
+        # device = "Vulkan0,Cuda0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
       };
     }
