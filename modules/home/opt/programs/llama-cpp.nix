@@ -85,12 +85,10 @@ let
   );
 
   linuxModelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { } {
-      "" = {
-        version = "1";
-      };
+    "version=1\n\n"
+    + lib.generators.toINI { } {
       "qwen3.6-35b-a3b" = {
-        model = "/Users/rdb/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
+        model = "/home/rune/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
         jinja = "true";
         c = "65536";
         ctx-checkpoints = "1";
@@ -119,7 +117,7 @@ in
         After = [ "network.target" ];
       };
       Service = {
-        ExecStart = "${llama-server} --host 0.0.0.0 --port 11434 --config ${linuxModelsIni}";
+        ExecStart = "${llama-server} --host 0.0.0.0 --port 11434 --models-preset ${linuxModelsIni}";
         Restart = "on-failure";
       };
       Install.WantedBy = [ "default.target" ];
@@ -135,7 +133,7 @@ in
           "0.0.0.0"
           "--port"
           "11434"
-          "--config"
+          "--models-preset"
           "${darwinModelsIni}"
         ];
         KeepAlive = true;
