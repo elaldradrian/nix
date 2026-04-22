@@ -13,7 +13,7 @@ let
     rpcSupport = true;
     cudaSupport = gpuBackend == "nvidia";
     cudaPackages = pkgs.cudaPackages_12_8;
-    vulkanSupport = gpuBackend == "vulkan";
+    vulkanSupport = true;
   };
 
   llama-rpc-server = "${llama-pkg}/bin/llama-rpc-server";
@@ -29,7 +29,7 @@ in
         After = [ "network.target" ];
       };
       Service = {
-        ExecStart = "${llama-rpc-server} --host 0.0.0.0 --port ${rpcPort}";
+        ExecStart = "${llama-rpc-server} --host 0.0.0.0 --port ${rpcPort} -c";
         Restart = "on-failure";
       };
       Install.WantedBy = [ "default.target" ];

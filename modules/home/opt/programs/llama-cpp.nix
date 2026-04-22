@@ -13,7 +13,7 @@ let
     rpcSupport = true;
     cudaSupport = gpuBackend == "nvidia";
     cudaPackages = pkgs.cudaPackages_12_8;
-    vulkanSupport = gpuBackend == "vulkan";
+    vulkanSupport = gpuBackend == "nvidia";
   };
 
   llama-server = "${llama-pkgs}/bin/llama-server";
@@ -86,9 +86,9 @@ let
 
   linuxModelsIni = pkgs.writeText "models.ini" (
     "version=1\n\n"
-    + lib.generators.toINI { } {
-      "qwen3.6-35b-a3b" = {
-        model = "/home/rune/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
+    + lib.generators.toINI { listsAsDuplicateKeys = true; } {
+      "qwen3.5-9b" = {
+        model = "/home/rune/models/Qwen3.5-9B-Q4_K_M.gguf";
         jinja = "true";
         c = "65536";
         ctx-checkpoints = "1";
@@ -102,6 +102,70 @@ let
         min-p = "0.00";
         presence-penalty = "0";
         repeat-penalty = "1";
+        fit = "on";
+        fit-target = "256";
+        # fit-ctx = "65536";
+        ctk = "q8_0";
+        ctv = "q8_0";
+        mlock = "true";
+        batch-size = "1024";
+        ubatch-size = "1024";
+        no-mmap = "true";
+        # device = "Vulkan0";
+        chat-template-kwargs = ''{"preserve_thinking": true}'';
+      };
+      "qwen3.6-27b" = {
+        model = "/home/rune/models/Qwen3.6-27B-Q4_K_M.gguf";
+        jinja = "true";
+        c = "65536";
+        ctx-checkpoints = "1";
+        no-warmup = "true";
+        cache-ram = "0";
+        parallel = "1";
+        keep = "-1";
+        temp = "0.6";
+        top-p = "0.95";
+        top-k = "20";
+        min-p = "0.00";
+        presence-penalty = "0";
+        repeat-penalty = "1";
+        fit = "on";
+        fit-target = "256";
+        # fit-ctx = "65536";
+        ctk = "q8_0";
+        ctv = "q8_0";
+        mlock = "true";
+        batch-size = "1024";
+        ubatch-size = "1024";
+        no-mmap = "true";
+        device = "Vulkan0";
+        chat-template-kwargs = ''{"preserve_thinking": true}'';
+      };
+      "qwen3.6-35b-a3b" = {
+        model = "/home/rune/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
+        jinja = "true";
+        # c = "65536";
+        ctx-checkpoints = "1";
+        no-warmup = "true";
+        cache-ram = "0";
+        parallel = "1";
+        keep = "-1";
+        temp = "0.6";
+        top-p = "0.95";
+        top-k = "20";
+        min-p = "0.00";
+        presence-penalty = "0";
+        repeat-penalty = "1";
+        fit = "on";
+        fit-target = "256";
+        fit-ctx = "65536";
+        ctk = "q8_0";
+        ctv = "q8_0";
+        mlock = "true";
+        batch-size = "1024";
+        ubatch-size = "1024";
+        no-mmap = "true";
+        device = "Cuda0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
       };
     }
@@ -110,6 +174,7 @@ let
 in
 {
   config = lib.mkIf (config.opt.features.llama-cpp.enable) {
+    home.packages = [ llama-pkgs ];
     # Linux
     systemd.user.services.llama-cpp = lib.mkIf isLinux {
       Unit = {
@@ -117,8 +182,9 @@ in
         After = [ "network.target" ];
       };
       Service = {
-        ExecStart = "${llama-server} --host 0.0.0.0 --port 11434 --models-preset ${linuxModelsIni}";
+        ExecStart = "${llama-server} --host 0.0.0.0 --port 11434 --models-preset ${linuxModelsIni} --models-max 1";
         Restart = "on-failure";
+        LimitMEMLOCK = "infinity";
       };
       Install.WantedBy = [ "default.target" ];
     };

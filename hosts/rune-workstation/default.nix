@@ -27,7 +27,7 @@
       desktop.enable = true;
       docker.enable = true;
       k3s.enable = false;
-      vpn.enable = false;
+      vpn.enable = true;
     };
     programs.steam = {
       enable = true;

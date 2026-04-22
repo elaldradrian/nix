@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }:
@@ -19,8 +20,12 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "xe"
+  ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = -1;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/dc6ee6e0-8cfa-4715-abf4-6953b6e01a54";
@@ -52,12 +57,27 @@
   hardware.enableAllFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [
+    "xe"
+    "nvidia"
+  ];
 
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-compute-runtime
+        level-zero
+        intel-graphics-compiler
+        intel-ocl
+        mkl
+        vpl-gpu-rt
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        intel-media-driver
+      ];
     };
 
     nvidia-container-toolkit.enable = true;
