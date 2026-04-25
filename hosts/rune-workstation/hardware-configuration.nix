@@ -22,7 +22,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
     "kvm-amd"
-    "xe"
   ];
   boot.extraModulePackages = [ ];
   boot.kernel.sysctl."kernel.perf_event_paranoid" = -1;
@@ -69,10 +68,10 @@
       extraPackages = with pkgs; [
         intel-media-driver
         intel-compute-runtime
+        intel-compute-runtime.drivers
         level-zero
         intel-graphics-compiler
         intel-ocl
-        mkl
         vpl-gpu-rt
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
@@ -82,11 +81,11 @@
 
     nvidia-container-toolkit.enable = true;
     nvidia = {
-      modesetting.enable = true;
+      modesetting.enable = false;
       powerManagement.enable = false;
       powerManagement.finegrained = false;
-      open = true;
-      nvidiaSettings = true;
+      open = false;
+      nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };

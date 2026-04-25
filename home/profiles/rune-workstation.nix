@@ -9,7 +9,7 @@
       desktop.enable = true;
       llama-cpp = {
         enable = true;
-        rpc-server.enable = true;
+        rpc-server.enable = false;
       };
       devUtils.enable = true;
       docker.enable = false;
