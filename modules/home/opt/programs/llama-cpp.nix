@@ -455,7 +455,7 @@ let
         no-warmup = "true";
         ctx-checkpoints = "1";
         ctx-size = "65536";
-        fit-target = "512";
+        fit-target = "1024";
         fit = "on";
         keep = "-1";
         min-p = "0.00";

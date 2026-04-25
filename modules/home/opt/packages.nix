@@ -40,6 +40,7 @@ let
     (azure-cli.override { withImmutableConfig = false; })
     gh
     qemu
+    opencode
   ];
 
   dockerPkgs = with pkgs; [

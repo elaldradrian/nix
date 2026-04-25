@@ -1,6 +1,6 @@
 {
   imports = [
     ./codecompanion.nix
-    # ./opencode.nix
+    ./opencode.nix
   ];
 }
