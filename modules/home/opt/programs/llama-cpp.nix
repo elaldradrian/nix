@@ -37,32 +37,9 @@ let
   llama-server = "${llama-pkgs}/bin/llama-server";
 
   darwinModelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { listsAsDuplicateKeys = true; } {
-      "qwen3.6-27b" = {
-        model = "/Users/rdb/models/Qwen3.6-27B-Q4_K_M.gguf";
-        jinja = "true";
-        c = "65536";
-        ctx-checkpoints = "1";
-        no-warmup = "true";
-        cache-ram = "0";
-        parallel = "1";
-        keep = "-1";
-        temp = "0.6";
-        top-p = "0.95";
-        top-k = "20";
-        min-p = "0.00";
-        presence-penalty = "0";
-        repeat-penalty = "1";
-        fit = "on";
-        fit-target = "256";
-        # fit-ctx = "65536";
-        ctk = "q8_0";
-        ctv = "q8_0";
-        mlock = "true";
-        batch-size = "1024";
-        ubatch-size = "1024";
-        no-mmap = "true";
-        chat-template-kwargs = ''{"preserve_thinking": true}'';
+    lib.generators.toINI { } {
+      "" = {
+        version = "1";
       };
       "qwen3.6-35b-a3b" = {
         model = "/Users/rdb/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
@@ -79,50 +56,54 @@ let
         min-p = "0.00";
         presence-penalty = "0";
         repeat-penalty = "1";
-        fit = "on";
-        fit-target = "256";
-        # fit-ctx = "65536";
-        ctk = "q8_0";
-        ctv = "q8_0";
-        mlock = "true";
-        batch-size = "1024";
-        ubatch-size = "1024";
-        no-mmap = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
       };
-    }
-  );
-
-  linuxModelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { listsAsDuplicateKeys = true; } {
-      "qwen3.5-9b" = {
-        model = "/home/rune/models/Qwen3.5-9B-Q4_K_M.gguf";
+      "qwen3.5-27b" = {
+        model = "/Users/rdb/models/Qwen3.5-27B-UD-Q4_K_XL.gguf";
         jinja = "true";
         c = "65536";
         ctx-checkpoints = "1";
         no-warmup = "true";
         cache-ram = "0";
-        parallel = "2";
+        parallel = "1";
         keep = "-1";
         temp = "0.6";
         top-p = "0.95";
         top-k = "20";
         min-p = "0.00";
         presence-penalty = "0";
-        repeat-penalty = "1";
-        fit = "on";
-        fit-target = "256";
-        # fit-ctx = "65536";
-        ctk = "q8_0";
-        ctv = "q8_0";
-        # mlock = "true";
-        batch-size = "1024";
-        ubatch-size = "1024";
-        no-mmap = "true";
-        device = "Vulkan0,Cuda0,RPC0";
-        chat-template-kwargs = ''{"preserve_thinking": true}'';
-        rpc = "desktop-28grr5l.tail5465ac.ts.net:50052";
       };
+      "gemma-4-26b-a4b" = {
+        model = "/Users/rdb/models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf";
+        jinja = "true";
+        c = "65536";
+        ctx-checkpoints = "1";
+        no-warmup = "true";
+        cache-ram = "0";
+        parallel = "1";
+        keep = "-1";
+        temp = "1";
+        top-p = "0.95";
+        top-k = "64";
+      };
+      "gemma-4-31b" = {
+        model = "/Users/rdb/models/gemma-4-31B-it-UD-Q4_K_XL.gguf";
+        jinja = "true";
+        c = "65536";
+        ctx-checkpoints = "1";
+        no-warmup = "true";
+        cache-ram = "0";
+        parallel = "1";
+        keep = "-1";
+        temp = "1";
+        top-p = "0.95";
+        top-k = "64";
+      };
+    }
+  );
+
+  linuxModelsIni = pkgs.writeText "models.ini" (
+    lib.generators.toINI { listsAsDuplicateKeys = true; } {
       "qwen3.6-27b" = {
         model = "/home/rune/models/Qwen3.6-27B-Q4_K_M.gguf";
         jinja = "true";
