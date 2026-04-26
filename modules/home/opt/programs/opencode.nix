@@ -10,16 +10,27 @@ let
       "$schema" = "https://opencode.ai/config.json";
       model = "llama-server/qwen3.6-35b-a3b";
       permission = {
-        "*" = "ask";
-        glob = "allow";
+        bash = {
+          "*" = "ask";
+        };
+        edit = "allow";
         read = {
           "*" = "allow";
           "*.env" = "deny";
           "*.env.*" = "deny";
           "*.env.example" = "allow";
         };
+        glob = "allow";
         grep = "allow";
+        lsp = "allow";
+        task = "allow";
+        skill = "allow";
+        question = "allow";
         webfetch = "allow";
+        websearch = "allow";
+        codesearch = "allow";
+        external_directory = "ask";
+        doom_loop = "ask";
       };
       provider = {
         "llama-server" = {
