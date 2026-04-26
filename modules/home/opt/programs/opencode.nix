@@ -9,7 +9,18 @@ let
     builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
       model = "llama-server/qwen3.6-35b-a3b";
-      permission."*" = "ask";
+      permission = {
+        "*" = "ask";
+        glob = "allow";
+        read = {
+          "*" = "allow";
+          "*.env" = "deny";
+          "*.env.*" = "deny";
+          "*.env.example" = "allow";
+        };
+        grep = "allow";
+        webfetch = "allow";
+      };
       provider = {
         "llama-server" = {
           npm = "@ai-sdk/openai-compatible";
