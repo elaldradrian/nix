@@ -6,9 +6,8 @@
     ./gradle-properties.nix
     ./kitty.nix
     ./llama-cpp.nix
-    ./llama-rpc.nix
-    ./opencode.nix
     ./npmrc.nix
+    ./opencode.nix
     ./ssh.nix
     ./sway.nix
     ./vpn.nix

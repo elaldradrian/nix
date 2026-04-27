@@ -8,10 +8,6 @@
           inherit (self) system;
           config.allowUnfree = true;
         };
-        master = import inputs.nixpkgs-master {
-          inherit (self) system;
-          config.allowUnfree = true;
-        };
       })
     ];
   };

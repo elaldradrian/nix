@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -72,10 +71,6 @@
                   localSystem = { inherit system; };
                   config.allowUnfree = true;
                 };
-                master = import inputs.nixpkgs-master {
-                  localSystem = { inherit system; };
-                  config.allowUnfree = true;
-                };
               })
             ];
             config.allowUnfree = true;
@@ -86,7 +81,6 @@
               git
               age
               sops
-              opencode
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
