@@ -19,8 +19,11 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+  ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = -1;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/dc6ee6e0-8cfa-4715-abf4-6953b6e01a54";
@@ -49,9 +52,12 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.enableAllFirmware = true;
+  hardware.cpu.amd.updateMicrocode = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [
+    "nvidia"
+  ];
 
   hardware = {
     graphics = {
@@ -61,11 +67,11 @@
 
     nvidia-container-toolkit.enable = true;
     nvidia = {
-      modesetting.enable = true;
+      modesetting.enable = false;
       powerManagement.enable = false;
       powerManagement.finegrained = false;
-      open = true;
-      nvidiaSettings = true;
+      open = false;
+      nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };

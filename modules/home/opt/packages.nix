@@ -8,6 +8,7 @@ let
   commonPkgs = with pkgs; [
     self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
     (btop.override { cudaSupport = true; })
+    nvtopPackages.full
     dig
     p7zip
     gh
@@ -39,6 +40,7 @@ let
     (azure-cli.override { withImmutableConfig = false; })
     gh
     qemu
+    opencode
   ];
 
   dockerPkgs = with pkgs; [

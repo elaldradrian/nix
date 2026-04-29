@@ -15,6 +15,7 @@
         };
       };
       vpn.enable = mkEnableOption "Enable VPN";
+      llama-cpp.enable = mkEnableOption "Enable llama-cpp";
     };
     programs = {
       steam = {
