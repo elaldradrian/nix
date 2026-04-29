@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -57,7 +56,6 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   services.xserver.videoDrivers = [
-    "xe"
     "nvidia"
   ];
 
@@ -65,18 +63,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        intel-compute-runtime
-        intel-compute-runtime.drivers
-        level-zero
-        intel-graphics-compiler
-        intel-ocl
-        vpl-gpu-rt
-      ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        intel-media-driver
-      ];
     };
 
     nvidia-container-toolkit.enable = true;
