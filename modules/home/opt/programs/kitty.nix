@@ -42,6 +42,7 @@
     };
     extraConfig = ''
       map shift+enter send_text all \x1b[13;2u
+      map ctrl+cmd+l no_op
     '';
   };
 }
