@@ -16,7 +16,6 @@
           {
             hostname,
             user ? null,
-            gpuBackend,
             extraModules ? [ ],
           }:
           let
@@ -26,7 +25,6 @@
             // {
               hostname = hostname;
               user = user;
-              gpuBackend = gpuBackend;
               homeDir = "/home/${user}";
             };
           in
@@ -55,44 +53,36 @@
         rune-laptop = mkHost {
           hostname = "rune-laptop";
           user = "rune";
-          gpuBackend = "vulkan";
         };
         rune-workstation = mkHost {
           hostname = "rune-workstation";
           user = "rune";
-          gpuBackend = "both";
         };
         k3s-1 = mkHost {
           hostname = "k3s-1";
           user = "rune";
-          gpuBackend = "vulkan";
         };
         k3s-2 = mkHost {
           hostname = "k3s-2";
           user = "rune";
-          gpuBackend = "vulkan";
         };
         k3s-3 = mkHost {
           hostname = "k3s-3";
           user = "rune";
-          gpuBackend = "vulkan";
         };
         pve-1 = mkHost {
           hostname = "pve-1";
           user = "rune";
-          gpuBackend = "vulkan";
           extraModules = proxmox ++ [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
         };
         pve-2 = mkHost {
           hostname = "pve-2";
           user = "rune";
-          gpuBackend = "vulkan";
           extraModules = proxmox ++ [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
         };
         pve-3 = mkHost {
           hostname = "pve-3";
           user = "rune";
-          gpuBackend = "vulkan";
           extraModules = proxmox ++ [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
         };
       };
@@ -108,7 +98,6 @@
           {
             hostname,
             user ? null,
-            gpuBackend,
           }:
           let
             specialArgs = {
@@ -118,7 +107,6 @@
               hostname = hostname;
               user = user;
               homeDir = "/Users/${user}";
-              gpuBackend = gpuBackend;
             };
           in
           darwinSystem {
@@ -144,7 +132,6 @@
         rune-mac = mkHost {
           hostname = "rune-mac";
           user = "rdb";
-          gpuBackend = "metal";
         };
       };
   };

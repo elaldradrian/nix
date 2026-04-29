@@ -6,6 +6,7 @@
     ./docker.nix
     ./k3s.nix
     ./light.nix
+    ./llama-cpp.nix
     ./steam.nix
     ./vpn.nix
   ];
