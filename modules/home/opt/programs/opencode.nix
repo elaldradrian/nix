@@ -37,10 +37,9 @@ let
           npm = "@ai-sdk/openai-compatible";
           name = "llama.cpp (local)";
           options = {
-            baseURL = "http://127.0.0.1:11434/v1";
+            baseURL = "https://ai.dahl-billeskov.com/v1";
             apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
           };
-          apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
           models = {
             "qwen3.6-27b" = {
               name = "Qwen3.6-27B (local)";
