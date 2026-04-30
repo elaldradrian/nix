@@ -29,9 +29,6 @@ let
 
   modelsIni = pkgs.writeText "models.ini" (
     lib.generators.toINI { } {
-      "" = {
-        version = "1";
-      };
       "qwen3.6-35b-a3b" = {
         model = "/Users/rdb/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
         jinja = "true";

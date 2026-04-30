@@ -8,7 +8,7 @@
     settings = {
       file_types = [
         "markdown"
-        "codecompanion"
+        "opencode_output"
       ];
       code = {
         border = "thick";
