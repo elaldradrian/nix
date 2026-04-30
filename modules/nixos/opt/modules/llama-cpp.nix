@@ -7,22 +7,20 @@
 let
   llama-pkgs = (
     (pkgs.llama-cpp.override {
-      cudaSupport = true;
-      cudaPackages = pkgs.cudaPackages_13_1;
       rocmSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "8967";
+        version = "8981";
         src = prev.src.override {
-          tag = "b8967";
-          hash = "sha256-cWLFZV5JrmeS/1+CoBDHnviG1MuuUpw4m1H4vS+z9dU=";
+          tag = "b8981";
+          hash = "sha256-3VmuTkEVXmX7GMkEaCIdHjbP2KxmSDwMKTPyB7eTZc8=";
         };
         npmDeps = pkgs.fetchNpmDeps {
           name = "llama-cpp-8884-npm-deps";
           inherit (prev) patches;
           src = prev.src.override {
-            tag = "b8967";
-            hash = "sha256-cWLFZV5JrmeS/1+CoBDHnviG1MuuUpw4m1H4vS+z9dU=";
+            tag = "b8981";
+            hash = "sha256-3VmuTkEVXmX7GMkEaCIdHjbP2KxmSDwMKTPyB7eTZc8=";
           };
           preBuild = "pushd tools/server/webui";
           hash = "sha256-iYJB0z2YHG8OzEA9EwHUZrDa5obr5m2sbnIH+of28o0=";
@@ -77,7 +75,7 @@ let
         top-p = "0.95";
         batch-size = "2048";
         ubatch-size = "2048";
-        device = "Cuda0";
+        device = "ROCm0";
       };
     }
   );
@@ -92,9 +90,11 @@ let
 in
 {
   systemd.services.llama-cpp = {
+    enable = true;
     description = "llama.cpp server (models.ini)";
     after = [ "network.target" ];
     wants = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       ExecStart = "${run-llama-cpp}";

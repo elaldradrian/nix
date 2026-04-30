@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   modulesPath,
   ...
@@ -52,27 +51,18 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.enableAllFirmware = true;
-  hardware.cpu.amd.updateMicrocode = true;
 
   services.xserver.videoDrivers = [
-    "nvidia"
+    "amdgpu"
   ];
 
   hardware = {
+    enableAllFirmware = true;
+    cpu.amd.updateMicrocode = true;
+    amdgpu.initrd.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    nvidia-container-toolkit.enable = true;
-    nvidia = {
-      modesetting.enable = false;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 }
