@@ -7,7 +7,7 @@
 let
   llama-pkgs = (
     (pkgs.llama-cpp.override {
-      rocmSupport = true;
+      vulkanSupport = true;
     }).overrideAttrs
       (prev: {
         version = "8981";
@@ -31,15 +31,17 @@ let
   llama-server = "${llama-pkgs}/bin/llama-server";
 
   modelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { listsAsDuplicateKeys = true; } {
+    lib.generators.toINI { } {
       "qwen3.6-27b" = {
-        model = "/var/lib/llama/Qwen3.6-27B-Q4_K_M.gguf";
+        model = "/var/lib/llama/models/Qwen3.6-27B-UD-Q5_K_XL.gguf";
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        ctx-checkpoints = "1";
-        ctx-size = "5000";
-        fit-target = "1024";
+        ctx-checkpoints = "80";
+        checkpoint-every-n-tokens = "4096";
+        cache-ram = "32768";
+        ctx-size = "131072";
+        fit-target = "512";
         fit = "on";
         keep = "-1";
         min-p = "0.00";
@@ -51,16 +53,18 @@ let
         top-k = "20";
         top-p = "0.95";
         batch-size = "2048";
-        ubatch-size = "2048";
+        ubatch-size = "512";
+        no-mmproj-offload = "true";
+        device = "Vulkan0";
       };
       "qwen3.6-35b-a3b" = {
         model = "/var/lib/llama/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        ctx-checkpoints = "64";
-        checkpoint-every-n-tokens = "2048";
-        cache-ram = "24576";
+        ctx-checkpoints = "80";
+        checkpoint-every-n-tokens = "4096";
+        cache-ram = "32768";
         ctx-size = "131072";
         fit-target = "256";
         fit = "on";
@@ -73,9 +77,10 @@ let
         temp = "0.6";
         top-k = "20";
         top-p = "0.95";
-        batch-size = "2048";
+        batch-size = "4096";
         ubatch-size = "2048";
-        device = "ROCm0";
+        no-mmproj-offload = "true";
+        device = "Vulkan0";
       };
     }
   );
@@ -104,7 +109,7 @@ in
       User = "_llama-cpp";
       Group = "_llama-cpp";
       DynamicUser = false;
-      ReadWritePaths = [ "/home/rune/models" ];
+      ReadWritePaths = [ "/var/lib/llama/models/" ];
       StandardOutput = "journal";
       StandardError = "journal";
     };
