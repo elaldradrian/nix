@@ -5,26 +5,28 @@
   ...
 }:
 let
-  commonPkgs = with pkgs; [
-    self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
-    (btop.override { rocmSupport = true; })
-    nvtopPackages.full
-    dig
-    p7zip
-    gh
-    fzf
-    fd
-    jq
-    yq
-    kubectl
-    ripgrep
-    age
-    sops
-    nix-tree
-    nix-output-monitor
-    nh
-    ncdu
-  ];
+  commonPkgs =
+    with pkgs;
+    [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
+      (btop.override { rocmSupport = !pkgs.stdenv.isDarwin; })
+      dig
+      p7zip
+      gh
+      fzf
+      fd
+      jq
+      yq
+      kubectl
+      ripgrep
+      age
+      sops
+      nix-tree
+      nix-output-monitor
+      nh
+      ncdu
+    ]
+    ++ (if !pkgs.stdenv.isDarwin then [ nvtopPackages.amd ] else [ ]);
 
   desktopPkgs = with pkgs; [
     brave
