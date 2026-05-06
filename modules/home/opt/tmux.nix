@@ -16,20 +16,7 @@
     historyLimit = 50000;
     escapeTime = 0;
     plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = ''
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-strategy-nvim 'session'
-        '';
-      }
       tmuxPlugins.cpu
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-        '';
-      }
       tmuxPlugins.yank
       tmuxPlugins.sessionist
     ];

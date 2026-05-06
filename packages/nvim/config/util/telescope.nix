@@ -67,12 +67,6 @@
           desc = "Recent";
         };
       };
-      "<leader>o" = {
-        action = "buffers";
-        options = {
-          desc = "Buffers";
-        };
-      };
       "<leader>fg" = {
         action = "git_files";
         options = {

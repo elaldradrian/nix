@@ -110,28 +110,8 @@
       }
       {
         mode = "n";
-        keys = "<Leader>b";
-        desc = "+buffers";
-      }
-      {
-        mode = "n";
-        keys = "<Leader>w";
-        desc = "+windows";
-      }
-      {
-        mode = "n";
-        keys = "<Leader><Tab>";
-        desc = "+tabs";
-      }
-      {
-        mode = "n";
         keys = "<Leader>c";
         desc = "+code";
-      }
-      {
-        mode = "n";
-        keys = "<Leader>x";
-        desc = "+trouble";
       }
       { __raw = "require('mini.clue').gen_clues.builtin_completion()"; }
       { __raw = "require('mini.clue').gen_clues.g()"; }

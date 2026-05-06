@@ -5,11 +5,7 @@
     overlays = [
       (self: _super: {
         stable = import inputs.nixpkgs-stable {
-          inherit (self) system;
-          config.allowUnfree = true;
-        };
-        master = import inputs.nixpkgs-master {
-          inherit (self) system;
+          inherit (self.stdenv.hostPlatform) system;
           config.allowUnfree = true;
         };
       })

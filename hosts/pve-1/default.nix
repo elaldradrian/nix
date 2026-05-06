@@ -48,6 +48,7 @@
       docker.enable = false;
       k3s.enable = false;
       vpn.enable = false;
+      prometheus.enable = false;
     };
     programs.steam.enable = false;
   };
