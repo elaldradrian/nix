@@ -5,7 +5,8 @@
     ./grapple.nix
     ./kulala.nix
     ./neogit.nix
-    ./neotest.nix
+    # TODO: Add when tests pass
+    # ./neotest.nix
     ./oil.nix
     ./repeat.nix
     ./telescope.nix

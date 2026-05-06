@@ -8,7 +8,7 @@ let
   opencodeConfig = pkgs.writeText "opencode.json" (
     builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
-      model = "llama-server/qwen3.6-35b-a3b";
+      model = "llama-server/qwen3.6-27b";
       permission = {
         bash = {
           "*" = "ask";

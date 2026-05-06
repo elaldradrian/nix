@@ -28,6 +28,7 @@
         serverAddr = "https://10.17.16.20:6443";
       };
       vpn.enable = false;
+      prometheus.enable = false;
     };
     programs.steam.enable = false;
   };

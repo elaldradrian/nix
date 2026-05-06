@@ -10,17 +10,17 @@ let
       vulkanSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "9012";
+        version = "9045";
         src = prev.src.override {
-          tag = "b9012";
-          hash = "sha256-NSMFAOyBIlJbiYXmQdkvhw3yDYY4nq7tS+3BmjP0NTM=";
+          tag = "b9045";
+          hash = "sha256-fdHGxJaMx/VG7twXdWvHdkThAOSFJTbjAnpRxsNx5l0=";
         };
         npmDeps = pkgs.fetchNpmDeps {
-          name = "llama-cpp-9012-npm-deps";
+          name = "llama-cpp-9045-npm-deps";
           inherit (prev) patches;
           src = prev.src.override {
-            tag = "b9012";
-            hash = "sha256-NSMFAOyBIlJbiYXmQdkvhw3yDYY4nq7tS+3BmjP0NTM=";
+            tag = "b9045";
+            hash = "sha256-fdHGxJaMx/VG7twXdWvHdkThAOSFJTbjAnpRxsNx5l0=";
           };
           preBuild = "pushd tools/server/webui";
           hash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
@@ -38,11 +38,11 @@ let
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "80";
-        checkpoint-every-n-tokens = "4096";
-        cache-ram = "32768";
+        checkpoint-every-n-tokens = "6144";
+        cache-ram = "50000";
         ctx-size = "200000";
-        fit-target = "512";
-        fit = "on";
+        ngl = 99;
+        fit = "off";
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
@@ -64,10 +64,10 @@ let
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "80";
-        checkpoint-every-n-tokens = "4096";
-        cache-ram = "32768";
-        fit-target = "256";
-        fit = "on";
+        checkpoint-every-n-tokens = "6144";
+        cache-ram = "50000";
+        fit = "off";
+        ngl = 99;
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
@@ -90,7 +90,8 @@ let
     exec ${llama-server} \
       --host 0.0.0.0 --port 11434 \
       --models-preset ${modelsIni} --models-max 1 \
-      --api-key-file ${config.sops.secrets.llama-cpp-api-key.path}
+      --api-key-file ${config.sops.secrets.llama-cpp-api-key.path} \
+      --metrics
   '';
 
 in
@@ -128,9 +129,13 @@ in
 
   sops.secrets.llama-cpp-api-key = {
     owner = "_llama-cpp";
-    group = "_llama-cpp";
-    mode = "0400";
-    restartUnits = [ "llama-cpp.service" ];
+    group = "prometheus";
+    mode = "0440";
+    restartUnits = [
+      "llama-cpp.service"
+      "prometheus.service"
+      "llama-model-sd.service"
+    ];
   };
 
   environment.systemPackages = [ llama-pkgs ];
