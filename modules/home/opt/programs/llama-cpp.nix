@@ -7,25 +7,7 @@
 let
   isDarwin = pkgs.stdenv.isDarwin;
 
-  llama-pkgs = pkgs.llama-cpp.overrideAttrs (prev: {
-    version = "8967";
-    src = prev.src.override {
-      tag = "b8967";
-      hash = "sha256-4p+iQRgLua5zVt171wr7yNGu3iEnEMa/sJXr5wQZNrM=";
-    };
-    npmDeps = pkgs.fetchNpmDeps {
-      name = "llama-cpp-8884-npm-deps";
-      inherit (prev) patches;
-      src = prev.src.override {
-        tag = "b8967";
-        hash = "sha256-4p+iQRgLua5zVt171wr7yNGu3iEnEMa/sJXr5wQZNrM=";
-      };
-      preBuild = "pushd tools/server/webui";
-      hash = "sha256-RAFtsbBGBjteCt5yXhrmHL39rIDJMCFBETgzId2eRRk=";
-    };
-  });
-
-  llama-server = "${llama-pkgs}/bin/llama-server";
+  llama-server = "${pkgs.llama-cpp}/bin/llama-server";
 
   modelsIni = pkgs.writeText "models.ini" (
     lib.generators.toINI { } {
@@ -88,7 +70,7 @@ let
 in
 {
   config = lib.mkIf (config.opt.features.llama-cpp.enable) {
-    home.packages = [ llama-pkgs ];
+    home.packages = [ pkgs.llama-cpp ];
 
     # macOS
     launchd.agents.llama-cpp = lib.mkIf isDarwin {

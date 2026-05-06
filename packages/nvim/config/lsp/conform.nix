@@ -9,6 +9,7 @@
     libxml2
     markdownlint-cli2
     pgformatter
+    kulala-fmt
   ];
 
   plugins.conform-nvim = {
@@ -27,10 +28,6 @@
           command = "npm-groovy-lint";
           stdin = false;
           args = [
-            # "--rulesets"
-            # "'Indentation{\"spacesPerIndentLevel\":2,\"severity\":\"warning\"}'"
-            # "--rulesetsoverridetype"
-            # "appendConfig"
             "--fix"
             "--nolintafter"
             "--failon"
@@ -52,6 +49,7 @@
           lsp_format = "prefer";
         };
         html = [ "prettierd" ];
+        http = [ "kulala-fmt" ];
         java = [ "google-java-format" ];
         javascript = [ "prettierd" ];
         javascriptreact = [ "prettierd" ];

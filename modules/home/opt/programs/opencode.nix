@@ -44,14 +44,14 @@ let
             "qwen3.6-27b" = {
               name = "Qwen3.6-27B (local)";
               limit = {
-                context = 131072;
-                output = 8192;
+                context = 200192;
+                output = 16384;
               };
             };
             "qwen3.6-35b-a3b" = {
               name = "Qwen3.6-35B-A3B (local)";
               limit = {
-                context = 131072;
+                context = 262144;
                 output = 16384;
               };
             };

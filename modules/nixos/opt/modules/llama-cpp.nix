@@ -10,20 +10,20 @@ let
       vulkanSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "8981";
+        version = "9012";
         src = prev.src.override {
-          tag = "b8981";
-          hash = "sha256-3VmuTkEVXmX7GMkEaCIdHjbP2KxmSDwMKTPyB7eTZc8=";
+          tag = "b9012";
+          hash = "sha256-NSMFAOyBIlJbiYXmQdkvhw3yDYY4nq7tS+3BmjP0NTM=";
         };
         npmDeps = pkgs.fetchNpmDeps {
-          name = "llama-cpp-8884-npm-deps";
+          name = "llama-cpp-9012-npm-deps";
           inherit (prev) patches;
           src = prev.src.override {
-            tag = "b8981";
-            hash = "sha256-3VmuTkEVXmX7GMkEaCIdHjbP2KxmSDwMKTPyB7eTZc8=";
+            tag = "b9012";
+            hash = "sha256-NSMFAOyBIlJbiYXmQdkvhw3yDYY4nq7tS+3BmjP0NTM=";
           };
           preBuild = "pushd tools/server/webui";
-          hash = "sha256-iYJB0z2YHG8OzEA9EwHUZrDa5obr5m2sbnIH+of28o0=";
+          hash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
         };
       })
   );
@@ -40,7 +40,7 @@ let
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "4096";
         cache-ram = "32768";
-        ctx-size = "131072";
+        ctx-size = "200000";
         fit-target = "512";
         fit = "on";
         keep = "-1";
@@ -54,6 +54,7 @@ let
         top-p = "0.95";
         batch-size = "2048";
         ubatch-size = "512";
+        spec-type = "ngram-mod";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };
@@ -65,7 +66,6 @@ let
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "4096";
         cache-ram = "32768";
-        ctx-size = "131072";
         fit-target = "256";
         fit = "on";
         keep = "-1";
@@ -79,6 +79,7 @@ let
         top-p = "0.95";
         batch-size = "4096";
         ubatch-size = "2048";
+        spec-type = "ngram-mod";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };

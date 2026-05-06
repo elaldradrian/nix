@@ -5,8 +5,7 @@
     ./grapple.nix
     ./kulala.nix
     ./neogit.nix
-    # TODO: enable only it builds
-    # ./neotest.nix
+    ./neotest.nix
     ./oil.nix
     ./repeat.nix
     ./telescope.nix
