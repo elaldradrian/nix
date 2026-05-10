@@ -44,7 +44,7 @@ let
             "qwen3.6-27b" = {
               name = "Qwen3.6-27B (local)";
               limit = {
-                context = 200192;
+                context = 262144;
                 output = 16384;
               };
             };
