@@ -65,8 +65,8 @@ let
         no-warmup = "true";
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "6144";
-        cache-ram = "45000";
-        # ctx-size = "140000";
+        cache-ram = "35000";
+        ctx-size = "240000";
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
         ngl = 99;
@@ -97,7 +97,7 @@ let
         no-warmup = "true";
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "6144";
-        cache-ram = "50000";
+        cache-ram = "35000";
         fit = "off";
         ngl = 99;
         keep = "-1";
