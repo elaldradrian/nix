@@ -1,9 +1,17 @@
 {
+  pkgs,
   config,
   lib,
   homeDir,
   ...
 }:
+let
+  onePasswordSign =
+    if pkgs.stdenv.isDarwin then
+      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    else
+      "${pkgs._1password-gui}/bin/op-ssh-sign";
+in
 {
   config = {
     sops = {
@@ -24,7 +32,7 @@
           };
           commit.gpgsign = true;
           gpg.format = "ssh";
-          "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          "gpg \"ssh\"".program = onePasswordSign;
         };
 
         # Work PC
@@ -37,7 +45,7 @@
             };
             commit.gpgsign = true;
             gpg.format = "ssh";
-            "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+            "gpg \"ssh\"".program = onePasswordSign;
           };
         };
       };
