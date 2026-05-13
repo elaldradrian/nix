@@ -10,13 +10,9 @@
       "microsoft-azure-storage-explorer"
       "homerow"
       "google-chrome"
-      "tailscale-app"
       "slack"
       "notunes"
       "android-studio"
-    ];
-    brews = [
-      "wasmcloud/wasmcloud/wash"
     ];
   };
 }
