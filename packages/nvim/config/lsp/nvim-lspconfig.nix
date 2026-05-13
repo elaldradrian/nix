@@ -37,6 +37,10 @@ let
 in
 {
   plugins = {
+    none-ls = {
+      enable = true;
+      sources.formatting.terraform_fmt.enable = true;
+    };
     helm.enable = true;
     lsp = {
       enable = true;
