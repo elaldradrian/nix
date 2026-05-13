@@ -2,71 +2,93 @@
   pkgs,
   lib,
   config,
+  user,
   ...
 }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
 
-  llama-server = "${pkgs.llama-cpp}/bin/llama-server";
+  pr22673Src = pkgs.fetchFromGitHub {
+    owner = "am17an";
+    repo = "llama.cpp";
+    rev = "5d5f1b46e4f56885801c86363d4677a5f72f83af";
+    hash = "sha256-2/3vfOqySdpM4vVvG+a0Tj0Fwi8dCy3KV3+JmdgOcs4=";
+  };
+
+  llama-pkgs = (
+    pkgs.llama-cpp.overrideAttrs (prev: {
+      version = "22673";
+      src = pr22673Src;
+      npmDeps = pkgs.fetchNpmDeps {
+        name = "llama-cpp-22673-npm-deps";
+        inherit (prev) patches;
+        src = pr22673Src;
+        preBuild = "pushd tools/server/webui";
+        hash = lib.fakeHash;
+      };
+    })
+  );
+
+  llama-server = "${llama-pkgs}/bin/llama-server";
 
   modelsIni = pkgs.writeText "models.ini" (
     lib.generators.toINI { } {
-      "qwen3.6-35b-a3b" = {
-        model = "/Users/rdb/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf";
+      "qwen3.6-27b" = {
+        model = "/Users/${user}/models/Qwen3.6-27B-MTP-UD-Q5_K_XL.gguf";
         jinja = "true";
-        c = "65536";
-        ctx-checkpoints = "1";
-        parallel = "1";
-        keep = "-1";
-        temp = "0.6";
-        top-p = "0.95";
-        top-k = "20";
-        min-p = "0.00";
-        presence-penalty = "0";
-        repeat-penalty = "1";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
-      };
-      "qwen3.5-27b" = {
-        model = "/Users/rdb/models/Qwen3.5-27B-UD-Q4_K_XL.gguf";
-        jinja = "true";
-        c = "65536";
-        ctx-checkpoints = "1";
-        parallel = "1";
+        no-warmup = "true";
+        ctx-checkpoints = "20";
+        checkpoint-every-n-tokens = "6144";
+        cache-ram = "4000";
+        ctx-size = "100000";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        ngl = 99;
+        fit = "off";
         keep = "-1";
-        temp = "0.6";
-        top-p = "0.95";
-        top-k = "20";
         min-p = "0.00";
+        no-mmap = "true";
+        parallel = "1";
         presence-penalty = "0";
         repeat-penalty = "1";
-      };
-      "gemma-4-26b-a4b" = {
-        model = "/Users/rdb/models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf";
-        jinja = "true";
-        c = "65536";
-        ctx-checkpoints = "1";
-        parallel = "1";
-        keep = "-1";
-        temp = "1";
+        temp = "0.6";
+        top-k = "20";
         top-p = "0.95";
-        top-k = "64";
-        repeat-penalty = "1";
+        batch-size = "2048";
+        ubatch-size = "512";
+        spec-type = "mtp";
+        spec-draft-n-max = "2";
+        no-mmproj-offload = "true";
       };
-      "gemma-4-31b" = {
-        model = "/Users/rdb/models/gemma-4-31B-it-UD-Q4_K_XL.gguf";
+      "qwen3.6-35b-a3b" = {
+        model = "/Users/${user}/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf";
         jinja = "true";
-        c = "65536";
-        ctx-checkpoints = "1";
-        parallel = "1";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        chat-template-kwargs = ''{"preserve_thinking": true}'';
+        no-warmup = "true";
+        ctx-checkpoints = "20";
+        checkpoint-every-n-tokens = "6144";
+        cache-ram = "4000";
+        fit = "off";
+        ngl = 99;
         keep = "-1";
-        temp = "1";
-        top-p = "0.95";
-        top-k = "64";
+        min-p = "0.00";
+        no-mmap = "true";
+        parallel = "1";
+        presence-penalty = "0";
         repeat-penalty = "1";
+        temp = "0.6";
+        top-k = "20";
+        top-p = "0.95";
+        batch-size = "4096";
+        ubatch-size = "2048";
+        spec-type = "ngram-mod";
+        no-mmproj-offload = "true";
       };
     }
   );
-
 in
 {
   config = lib.mkIf (config.opt.features.llama-cpp.enable) {

@@ -125,7 +125,6 @@ let
       --api-key-file ${config.sops.secrets.llama-cpp-api-key.path} \
       --metrics
   '';
-
 in
 {
   systemd.services.llama-cpp = {
