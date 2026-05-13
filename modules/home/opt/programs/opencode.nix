@@ -8,7 +8,7 @@ let
   opencodeConfig = pkgs.writeText "opencode.json" (
     builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
-      model = "llama-server/qwen3.6-27b";
+      model = "llama-server-local/qwen3.6-27b";
       permission = {
         bash = {
           "*" = "ask";
@@ -33,25 +33,49 @@ let
         doom_loop = "ask";
       };
       provider = {
-        "llama-server" = {
+        "llama-server-local" = {
           npm = "@ai-sdk/openai-compatible";
           name = "llama.cpp (local)";
           options = {
-            baseURL = "https://ai.dahl-billeskov.com/v1";
+            baseURL = "http://localhost:11434/v1";
             apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
           };
           models = {
             "qwen3.6-27b" = {
               name = "Qwen3.6-27B (local)";
               limit = {
-                context = 200192;
+                context = 240128;
                 output = 16384;
               };
             };
             "qwen3.6-35b-a3b" = {
               name = "Qwen3.6-35B-A3B (local)";
               limit = {
-                context = 262144;
+                context = 240128;
+                output = 16384;
+              };
+            };
+          };
+        };
+        "llama-server-remote" = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "llama.cpp (remote)";
+          options = {
+            baseURL = "http://10.17.16.121:11434/v1";
+            apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
+          };
+          models = {
+            "qwen3.6-27b" = {
+              name = "Qwen3.6-27B (remote)";
+              limit = {
+                context = 240128;
+                output = 16384;
+              };
+            };
+            "qwen3.6-35b-a3b" = {
+              name = "Qwen3.6-35B-A3B (remote)";
+              limit = {
+                context = 240128;
                 output = 16384;
               };
             };
