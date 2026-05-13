@@ -11,22 +11,25 @@ let
   pr22673Src = pkgs.fetchFromGitHub {
     owner = "am17an";
     repo = "llama.cpp";
-    rev = "5d5f1b46e4f56885801c86363d4677a5f72f83af";
-    hash = "sha256-2/3vfOqySdpM4vVvG+a0Tj0Fwi8dCy3KV3+JmdgOcs4=";
+    rev = "e7b4848151377395b1693d326d1cda3fcd61c2d9";
+    hash = "sha256-ScHAWQlFV5WSPgGONpX90CLXixejqzbT+bUqZHY3Zkg=";
   };
 
   llama-pkgs = (
-    pkgs.llama-cpp.overrideAttrs (prev: {
-      version = "22673";
-      src = pr22673Src;
-      npmDeps = pkgs.fetchNpmDeps {
-        name = "llama-cpp-22673-npm-deps";
-        inherit (prev) patches;
+    (pkgs.llama-cpp.override {
+      vulkanSupport = true;
+    }).overrideAttrs
+      (prev: {
+        version = "22673";
         src = pr22673Src;
-        preBuild = "pushd tools/server/webui";
-        hash = lib.fakeHash;
-      };
-    })
+        npmDeps = pkgs.fetchNpmDeps {
+          name = "llama-cpp-22673-npm-deps";
+          inherit (prev) patches;
+          src = pr22673Src;
+          preBuild = "pushd tools/server/webui";
+          hash = "sha256-cV3noOyKmst9vfxyvkCNhihPgwfVGhmPPT4UMloeWZM=";
+        };
+      })
   );
 
   llama-server = "${llama-pkgs}/bin/llama-server";
