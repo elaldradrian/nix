@@ -8,8 +8,8 @@ let
   pr22673Src = pkgs.fetchFromGitHub {
     owner = "am17an";
     repo = "llama.cpp";
-    rev = "3bdc61fe03299a84ade6f185819738c9a05200e7";
-    hash = "sha256-R8CmoW16ouWaEGLz9fYA5ikJvhUoPCs4AJu+0ekjY48=";
+    rev = "e7b4848151377395b1693d326d1cda3fcd61c2d9";
+    hash = "sha256-ScHAWQlFV5WSPgGONpX90CLXixejqzbT+bUqZHY3Zkg=";
   };
 
   llama-pkgs = (
