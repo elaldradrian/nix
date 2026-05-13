@@ -8,8 +8,8 @@ let
   pr22673Src = pkgs.fetchFromGitHub {
     owner = "am17an";
     repo = "llama.cpp";
-    rev = "5d5f1b46e4f56885801c86363d4677a5f72f83af";
-    hash = "sha256-2/3vfOqySdpM4vVvG+a0Tj0Fwi8dCy3KV3+JmdgOcs4=";
+    rev = "3bdc61fe03299a84ade6f185819738c9a05200e7";
+    hash = "sha256-R8CmoW16ouWaEGLz9fYA5ikJvhUoPCs4AJu+0ekjY48=";
   };
 
   llama-pkgs = (
@@ -24,7 +24,7 @@ let
           inherit (prev) patches;
           src = pr22673Src;
           preBuild = "pushd tools/server/webui";
-          hash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
+          hash = "sha256-cV3noOyKmst9vfxyvkCNhihPgwfVGhmPPT4UMloeWZM=";
         };
       })
   );
@@ -65,7 +65,7 @@ let
         no-warmup = "true";
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "6144";
-        cache-ram = "35000";
+        cache-ram = "25000";
         ctx-size = "240000";
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
@@ -97,7 +97,7 @@ let
         no-warmup = "true";
         ctx-checkpoints = "80";
         checkpoint-every-n-tokens = "6144";
-        cache-ram = "35000";
+        cache-ram = "25000";
         fit = "off";
         ngl = 99;
         keep = "-1";
