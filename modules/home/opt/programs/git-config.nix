@@ -9,7 +9,9 @@
     sops = {
       secrets = {
         private_email = { };
+        private_signingkey = { };
         work_email = lib.mkIf (config.opt.features.work-machine.enable) { };
+        work_signingkey = lib.mkIf (config.opt.features.work-machine.enable) { };
       };
 
       templates = {
@@ -18,7 +20,11 @@
           user = {
             email = config.sops.placeholder.private_email;
             name = "Rune Dahl Billeskov";
+            signingkey = config.sops.placeholder.private_signingkey;
           };
+          commit.gpgsign = true;
+          gpg.format = "ssh";
+          "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         # Work PC
@@ -27,7 +33,11 @@
             user = {
               email = config.sops.placeholder.work_email;
               name = "Rune Dahl Billeskov";
+              signingkey = config.sops.placeholder.work_signingkey;
             };
+            commit.gpgsign = true;
+            gpg.format = "ssh";
+            "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           };
         };
       };
