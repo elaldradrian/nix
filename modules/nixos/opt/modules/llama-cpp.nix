@@ -1,72 +1,50 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }:
 let
-  pr22673Src = pkgs.fetchFromGitHub {
-    owner = "am17an";
-    repo = "llama.cpp";
-    rev = "e7b4848151377395b1693d326d1cda3fcd61c2d9";
-    hash = "sha256-ScHAWQlFV5WSPgGONpX90CLXixejqzbT+bUqZHY3Zkg=";
-  };
-
-  llama-pkgs = (
+  llama-pkgs =
+    let
+      newSrc = pkgs.llama-cpp.src.override {
+        tag = "b9193";
+        hash = "sha256-HuYRPe2owXw0lLrX4hsfszmNxpG1H2/kroB2IeEBzVM=";
+      };
+    in
     (pkgs.llama-cpp.override {
       vulkanSupport = true;
+      rocmSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "22673";
-        src = pr22673Src;
+        version = "9193";
+        npmRoot = "tools/ui";
+        src = newSrc;
         npmDeps = pkgs.fetchNpmDeps {
-          name = "llama-cpp-22673-npm-deps";
+          name = "llama-cpp-9193-npm-deps";
           inherit (prev) patches;
-          src = pr22673Src;
-          preBuild = "pushd tools/server/webui";
-          hash = "sha256-cV3noOyKmst9vfxyvkCNhihPgwfVGhmPPT4UMloeWZM=";
+          src = newSrc;
+          preBuild = ''
+            pushd tools/ui
+          '';
+          hash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
         };
-      })
-  );
-
-  # Upstream
-  # llama-pkgs = (
-  #   (pkgs.llama-cpp.override {
-  #     vulkanSupport = true;
-  #     rocmSupport = true;
-  #   }).overrideAttrs
-  #     (prev: {
-  #       version = "9045";
-  #       src = prev.src.override {
-  #         tag = "b9045";
-  #         hash = "sha256-fdHGxJaMx/VG7twXdWvHdkThAOSFJTbjAnpRxsNx5l0=";
-  #       };
-  #       npmDeps = pkgs.fetchNpmDeps {
-  #         name = "llama-cpp-9045-npm-deps";
-  #         inherit (prev) patches;
-  #         src = prev.src.override {
-  #           tag = "b9045";
-  #           hash = "sha256-fdHGxJaMx/VG7twXdWvHdkThAOSFJTbjAnpRxsNx5l0=";
-  #         };
-  #         preBuild = "pushd tools/server/webui";
-  #         hash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
-  #       };
-  #     })
-  # );
+      });
 
   llama-server = "${llama-pkgs}/bin/llama-server";
 
   modelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { } {
+    lib.generators.toINI { listsAsDuplicateKeys = true; } {
       "qwen3.6-27b" = {
-        model = "/var/lib/llama/models/Qwen3.6-27B-MTP-UD-Q5_K_XL.gguf";
+        model = "/var/lib/llama/models/Qwen3.6-27B-Q6_K.gguf";
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "80";
-        checkpoint-every-n-tokens = "6144";
+        checkpoint-every-n-tokens = "4096";
         cache-ram = "25000";
-        ctx-size = "240000";
+        ctx-size = "120000";
+        # f16: 26.2 gb vs q8_0: 22.5 gb
+        # 734/49.6     vs 681/51.8
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
         ngl = 99;
@@ -82,8 +60,17 @@ let
         top-p = "0.95";
         batch-size = "2048";
         ubatch-size = "512";
-        spec-type = "mtp";
+        spec-type = [
+          "draft-mtp"
+          # "ngram-mod"
+          # "ngram-map-k4v"
+        ];
         spec-draft-n-max = "2";
+        # spec-ngram-mod-n-match = "24";
+        # spec-ngram-mod-n-min = "48";
+        # spec-ngram-mod-n-max = "64";
+        # spec-ngram-map-k4v-size-n = "12";
+        # spec-ngram-map-k4v-size-m = "48";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };
@@ -122,7 +109,6 @@ let
     exec ${llama-server} \
       --host 0.0.0.0 --port 11434 \
       --models-preset ${modelsIni} --models-max 1 \
-      --api-key-file ${config.sops.secrets.llama-cpp-api-key.path} \
       --metrics
   '';
 in
@@ -157,17 +143,6 @@ in
     group = "_llama-cpp";
   };
   users.groups._llama-cpp = { };
-
-  sops.secrets.llama-cpp-api-key = {
-    owner = "_llama-cpp";
-    group = "prometheus";
-    mode = "0440";
-    restartUnits = [
-      "llama-cpp.service"
-      "prometheus.service"
-      "llama-model-sd.service"
-    ];
-  };
 
   environment.systemPackages = [ llama-pkgs ];
 }

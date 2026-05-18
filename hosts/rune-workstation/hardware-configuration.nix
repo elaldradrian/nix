@@ -43,11 +43,7 @@
   networking = {
     useDHCP = lib.mkDefault true;
     firewall = {
-      allowedTCPPorts = [
-        9090
-        11434
-        50052
-      ];
+      allowedTCPPorts = [ ];
     };
   };
 

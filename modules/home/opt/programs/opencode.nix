@@ -8,6 +8,7 @@ let
   opencodeConfig = pkgs.writeText "opencode.json" (
     builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
+      plugin = [ "@simonwjackson/opencode-direnv" ];
       model = "llama-server-local/qwen3.6-27b";
       permission = {
         bash = {
@@ -38,7 +39,6 @@ let
           name = "llama.cpp (local)";
           options = {
             baseURL = "http://localhost:11434/v1";
-            apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
           };
           models = {
             "qwen3.6-27b" = {
@@ -62,7 +62,6 @@ let
           name = "llama.cpp (remote)";
           options = {
             baseURL = "http://10.17.16.121:11434/v1";
-            apiKey = "{file:${config.sops.secrets.llama-cpp-api-key.path}}";
           };
           models = {
             "qwen3.6-27b" = {
@@ -91,6 +90,5 @@ in
       source = opencodeConfig;
       force = true;
     };
-    sops.secrets.llama-cpp-api-key = { };
   };
 }
