@@ -9,7 +9,7 @@ let
     builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
       plugin = [ "@simonwjackson/opencode-direnv" ];
-      model = "llama-server-local/qwen3.6-27b";
+      model = "llama-server-remote/qwen3.6-27b";
       permission = {
         bash = {
           "*" = "ask";
@@ -44,14 +44,14 @@ let
             "qwen3.6-27b" = {
               name = "Qwen3.6-27B (local)";
               limit = {
-                context = 240128;
+                context = 64000;
                 output = 16384;
               };
             };
             "qwen3.6-35b-a3b" = {
               name = "Qwen3.6-35B-A3B (local)";
               limit = {
-                context = 240128;
+                context = 64000;
                 output = 16384;
               };
             };

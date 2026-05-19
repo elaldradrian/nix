@@ -18,6 +18,10 @@ let
   };
 in
 {
+  extraPackages = with pkgs; [
+    websocat
+  ];
+
   plugins = {
     treesitter = {
       grammarPackages = [
