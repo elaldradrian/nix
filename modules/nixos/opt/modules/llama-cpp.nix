@@ -33,7 +33,7 @@ let
   llama-server = "${llama-pkgs}/bin/llama-server";
 
   modelsIni = pkgs.writeText "models.ini" (
-    lib.generators.toINI { listsAsDuplicateKeys = true; } {
+    lib.generators.toINI { } {
       "qwen3.6-27b" = {
         model = "/var/lib/llama/models/Qwen3.6-27B-Q6_K.gguf";
         jinja = "true";
@@ -49,7 +49,7 @@ let
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
-        parallel = "1";
+        parallel = "2";
         presence-penalty = "0";
         repeat-penalty = "1";
         temp = "0.6";
@@ -59,11 +59,6 @@ let
         ubatch-size = "512";
         spec-type = "draft-mtp";
         spec-draft-n-max = "2";
-        # spec-ngram-mod-n-match = "24";
-        # spec-ngram-mod-n-min = "48";
-        # spec-ngram-mod-n-max = "64";
-        # spec-ngram-map-k4v-size-n = "12";
-        # spec-ngram-map-k4v-size-m = "48";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };
