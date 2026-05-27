@@ -38,12 +38,19 @@
     ];
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   networking = {
     useDHCP = lib.mkDefault true;
     firewall = {
-      allowedTCPPorts = [ ];
+      allowedTCPPorts = [
+        11434
+      ];
     };
   };
 
