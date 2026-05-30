@@ -21,8 +21,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "sudo-tee";
         repo = "opencode.nvim";
-        rev = "1db841b8e9d4dd75f9899b97efb98fc18fb730cd";
-        hash = "sha256-S3qJE5nzaJaItQ9GhnMAnyQClwdvsUa3syygKNqzaHk=";
+        rev = "3798e7f594c04112fb4ea6f9754520b959c5ed2e";
+        hash = "sha256-5ydT+QoDmZrHbdX3l3KNflS+LqB2/c2xoZBEWPmEj6s=";
       };
     }).overrideAttrs
       (_: {

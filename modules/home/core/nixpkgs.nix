@@ -9,6 +9,11 @@
           config.allowUnfree = true;
         };
       })
+      (final: prev: {
+        x3270 = prev.x3270.overrideAttrs (old: {
+          makeFlags = (old.makeFlags or [ ]) ++ [ "SOURCE_DATE_EPOCH=315532800" ];
+        });
+      })
     ];
   };
   nix = {

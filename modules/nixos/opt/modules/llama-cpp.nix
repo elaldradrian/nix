@@ -7,8 +7,8 @@ let
   llama-pkgs =
     let
       newSrc = pkgs.llama-cpp.src.override {
-        tag = "b9334";
-        hash = "sha256-/Cgmzb5B/t3HtE25XpmpsfI0A1IkVt5qGGpQvRuFzVk=";
+        tag = "b9432";
+        hash = "sha256-UhV2zZYhT3FE9i5Z8ejEgX3+ws07O1CwbKLFscosTlg=";
       };
     in
     (pkgs.llama-cpp.override {
@@ -16,11 +16,11 @@ let
       rocmSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "9334";
+        version = "9432";
         npmRoot = "tools/ui";
         src = newSrc;
         npmDeps = pkgs.fetchNpmDeps {
-          name = "llama-cpp-9334-npm-deps";
+          name = "llama-cpp-9432-npm-deps";
           inherit (prev) patches;
           src = newSrc;
           preBuild = ''
@@ -40,11 +40,8 @@ let
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "30";
-        checkpoint-min-step = "256";
         cache-ram = "30000";
         ctx-size = "240000";
-        # f16: 26.2 gb vs q8_0: 22.5 gb
-        # 734/49.6     vs 681/51.8
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
         ngl = 99;
@@ -68,13 +65,11 @@ let
       "qwen3.6-35b-a3b" = {
         model = "/var/lib/llama/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf";
         jinja = "true";
-        # ctx-size = "150000";
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "80";
-        checkpoint-min-step = "256";
         cache-ram = "25000";
         fit = "off";
         ngl = 99;

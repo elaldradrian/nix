@@ -11,22 +11,22 @@ let
   llama-pkgs =
     let
       newSrc = pkgs.llama-cpp.src.override {
-        tag = "b9193";
-        hash = "sha256-HuYRPe2owXw0lLrX4hsfszmNxpG1H2/kroB2IeEBzVM=";
+        tag = "b9432";
+        hash = "sha256-UhV2zZYhT3FE9i5Z8ejEgX3+ws07O1CwbKLFscosTlg=";
       };
     in
     pkgs.llama-cpp.overrideAttrs (prev: {
-      version = "9193";
+      version = "9432";
       npmRoot = "tools/ui";
       src = newSrc;
       npmDeps = pkgs.fetchNpmDeps {
-        name = "llama-cpp-9193-npm-deps";
+        name = "llama-cpp-9432-npm-deps";
         inherit (prev) patches;
         src = newSrc;
         preBuild = ''
           pushd tools/ui
         '';
-        hash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
+        hash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
       };
     });
 
@@ -39,7 +39,6 @@ let
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        checkpoint-every-n-tokens = "4096";
         cache-ram = "4000";
         ctx-size = "64000";
         cache-type-k = "q8_0";
@@ -65,7 +64,6 @@ let
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        checkpoint-every-n-tokens = "4096";
         cache-ram = "4000";
         ctx-size = "64000";
         cache-type-k = "q8_0";

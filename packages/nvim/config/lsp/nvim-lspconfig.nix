@@ -5,17 +5,17 @@
 let
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
-    version = "0.42.1";
+    version = "0.43.8";
 
     src = pkgs.fetchzip {
       url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
-      sha256 = "sha256-01R1y8Odomwl1PlySd+5YWr9Fqh6oFR+GvCnXoSXvbo=";
+      sha256 = "sha256-yz0QxveSsdZZU0zBJtPD3ILHVeRnZQROeJq0V9TiKYk=";
       stripRoot = false;
     };
 
     buildInputs = with pkgs; [
       which
-      dotnet-sdk
+      dotnet-sdk_10
     ];
 
     installPhase = # Bash

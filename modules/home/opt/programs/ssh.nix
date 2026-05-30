@@ -16,15 +16,15 @@ in
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      extraConfig = "IdentityAgent \"${onePasswordSock}\"";
+      extraConfig = ''IdentityAgent "${onePasswordSock}"'';
 
-      matchBlocks."*" = { };
-      matchBlocks.private = {
+      settings."*" = { };
+      settings.private = {
         host = "private";
         hostname = "github.com";
         identityFile = "~/.ssh/private.pub";
       };
-      matchBlocks.work = (lib.mkIf config.opt.features.work-machine.enable) {
+      settings.work = lib.mkIf config.opt.features.work-machine.enable {
         host = "github.com";
         identityFile = "~/.ssh/work.pub";
       };

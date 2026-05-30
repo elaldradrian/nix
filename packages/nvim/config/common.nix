@@ -23,9 +23,10 @@
     register = "unnamedplus";
     providers = {
       wl-copy = {
-        enable = true;
-        package = pkgs.stable.wl-clipboard;
+        enable = pkgs.stdenv.isLinux;
+        package = pkgs.wl-clipboard;
       };
+      pbcopy.enable = pkgs.stdenv.isDarwin;
     };
   };
 

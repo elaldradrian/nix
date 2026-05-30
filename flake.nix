@@ -36,7 +36,13 @@
       url = "github:Mic92/direnv-instant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
+
+    kulala-fmt = {
+      url = "github:mistweaverco/kulala-fmt/v2.11.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
