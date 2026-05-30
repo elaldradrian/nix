@@ -64,7 +64,6 @@ let
         jinja = "true";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        checkpoint-every-n-tokens = "4096";
         cache-ram = "4000";
         ctx-size = "64000";
         cache-type-k = "q8_0";
