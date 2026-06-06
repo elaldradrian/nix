@@ -27,11 +27,12 @@
     };
     networking.firewall = {
       allowedTCPPorts = [
-        6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
-        2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
-        2380 # k3s, etcd peers: required if using a "High Availability Embedded etcd" configuration
+        6443 # k3s API server
+        2379 # etcd clients (HA embedded)
+        2380 # etcd peers (HA embedded)
+        10250 # kubelet metrics — metrics-server scrapes /metrics/resource here
       ];
-      allowedUDPPorts = [ 8472 ]; # k3s, flannel
+      allowedUDPPorts = [ 8472 ]; # flannel VXLAN
     };
   };
 }
