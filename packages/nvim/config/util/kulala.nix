@@ -2,41 +2,22 @@
   pkgs,
   ...
 }:
-let
-  kulala-http = pkgs.tree-sitter.buildGrammar {
-    language = "kulala_http";
-    version = "5.3.2";
-    src = pkgs.fetchFromGitHub {
-      owner = "mistweaverco";
-      repo = "kulala.nvim";
-      rev = "6656c9d332735ca6a27725e0fb45a1715c4372d9";
-      hash = "sha256-e+6kEOW0lCFYgaju6DWeDHkX28wplR0H5O8T7nOWWjU=";
-    };
-    location = "lua/tree-sitter";
-
-    meta.homepage = "https://github.com/mistweaverco/kulala.nvim";
-  };
-in
 {
   extraPackages = with pkgs; [
     websocat
   ];
 
   plugins = {
-    treesitter = {
-      grammarPackages = [
-        kulala-http
-      ];
-    };
     kulala = {
       enable = true;
       lazyLoad.settings.ft = "http";
       settings = {
-        ui.disable_script_print_output = 327680;
+        ui.disable_script_print_output = 655360;
         display_mode = "split";
         split_direction = "horizontal";
         default_view = "headers_body";
         debug = true;
+        default_keymaps = false;
       };
     };
   };
