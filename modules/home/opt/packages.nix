@@ -12,7 +12,6 @@ let
       (btop.override { rocmSupport = !pkgs.stdenv.isDarwin; })
       dig
       p7zip
-      gh
       fzf
       fd
       jq
@@ -52,6 +51,7 @@ let
 
   work = with pkgs; [
     dbeaver-bin
+    x3270
   ];
 in
 {
