@@ -76,7 +76,7 @@
               "qwen3.6-27b" = {
                 name = "Qwen3.6-27B (remote)";
                 limit = {
-                  context = 95000;
+                  context = 190000;
                   output = 16384;
                 };
               };
