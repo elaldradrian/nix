@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   extraPackages = with pkgs; [
     prettierd
@@ -9,7 +9,7 @@
     libxml2
     markdownlint-cli2
     pgformatter
-    kulala-fmt
+    inputs.kulala-fmt.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   plugins.conform-nvim = {

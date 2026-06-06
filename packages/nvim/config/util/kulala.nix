@@ -18,6 +18,10 @@ let
   };
 in
 {
+  extraPackages = with pkgs; [
+    websocat
+  ];
+
   plugins = {
     treesitter = {
       grammarPackages = [
@@ -37,6 +41,7 @@ in
     };
   };
   keymaps = [
+    # Sending
     {
       mode = "n";
       key = "<leader>hr";
@@ -48,19 +53,38 @@ in
     }
     {
       mode = "n";
-      key = "<leader>hh";
-      action = "<cmd>lua require('kulala').toggle_view()<cr>";
+      key = "<leader>ha";
+      action = "<cmd>lua require('kulala').run_all()<cr>";
       options = {
-        desc = "Toggle between body and headers";
+        desc = "Run all requests";
         silent = true;
       };
     }
     {
       mode = "n";
-      key = "<leader>hi";
-      action = "<cmd>lua require('kulala').inspect()<cr>";
+      key = "<leader>hh";
+      action = "<cmd>lua require('kulala').replay()<cr>";
       options = {
-        desc = "Inspect the current request";
+        desc = "Replay last request";
+        silent = true;
+      };
+    }
+    # UI
+    {
+      mode = "n";
+      key = "<leader>ho";
+      action = "<cmd>lua require('kulala').open()<cr>";
+      options = {
+        desc = "Open Kulala UI";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>ht";
+      action = "<cmd>lua require('kulala').toggle_view()<cr>";
+      options = {
+        desc = "Toggle headers/body view";
         silent = true;
       };
     }
@@ -69,10 +93,20 @@ in
       key = "<leader>hs";
       action = "<cmd>lua require('kulala').show_stats()<cr>";
       options = {
-        desc = "Show stat for the last request";
+        desc = "Show stats for the last request";
         silent = true;
       };
     }
+    {
+      mode = "n";
+      key = "<leader>hq";
+      action = "<cmd>lua require('kulala').close()<cr>";
+      options = {
+        desc = "Close Kulala window";
+        silent = true;
+      };
+    }
+    # Navigation
     {
       mode = "n";
       key = "[r";
@@ -93,10 +127,30 @@ in
     }
     {
       mode = "n";
+      key = "<leader>hf";
+      action = "<cmd>lua require('kulala').search()<cr>";
+      options = {
+        desc = "Search named requests";
+        silent = true;
+      };
+    }
+    # Inspect
+    {
+      mode = "n";
+      key = "<leader>hi";
+      action = "<cmd>lua require('kulala').inspect()<cr>";
+      options = {
+        desc = "Inspect the current request";
+        silent = true;
+      };
+    }
+    # Clipboard
+    {
+      mode = "n";
       key = "<leader>hy";
       action = "<cmd>lua require('kulala').copy()<cr>";
       options = {
-        desc = "Copy the current request as a curl command";
+        desc = "Copy as curl command";
         silent = true;
       };
     }
@@ -106,6 +160,63 @@ in
       action = "<cmd>lua require('kulala').from_curl()<cr>";
       options = {
         desc = "Paste curl from clipboard as http request";
+        silent = true;
+      };
+    }
+    # Environment
+    {
+      mode = "n";
+      key = "<leader>he";
+      action = "<cmd>lua require('kulala').set_selected_env()<cr>";
+      options = {
+        desc = "Select environment";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>hj";
+      action = "<cmd>lua require('kulala').open_cookies_jar()<cr>";
+      options = {
+        desc = "Open cookies jar";
+        silent = true;
+      };
+    }
+    # GraphQL
+    {
+      mode = "n";
+      key = "<leader>hg";
+      action = "<cmd>lua require('kulala').download_graphql_schema()<cr>";
+      options = {
+        desc = "Download GraphQL schema";
+        silent = true;
+      };
+    }
+    # Utility
+    {
+      mode = "n";
+      key = "<leader>hb";
+      action = "<cmd>lua require('kulala').scratchpad()<cr>";
+      options = {
+        desc = "Open scratchpad";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>hx";
+      action = "<cmd>lua require('kulala').scripts_clear_global()<cr>";
+      options = {
+        desc = "Clear global script variables";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>HX";
+      action = "<cmd>lua require('kulala').clear_cached_files()<cr>";
+      options = {
+        desc = "Clear cached files";
         silent = true;
       };
     }

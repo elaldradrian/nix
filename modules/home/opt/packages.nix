@@ -52,7 +52,6 @@ let
 
   work = with pkgs; [
     dbeaver-bin
-    pkgs.stable.x3270
   ];
 in
 {
