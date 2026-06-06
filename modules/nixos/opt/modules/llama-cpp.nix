@@ -7,26 +7,25 @@ let
   llama-pkgs =
     let
       newSrc = pkgs.llama-cpp.src.override {
-        tag = "b9432";
-        hash = "sha256-UhV2zZYhT3FE9i5Z8ejEgX3+ws07O1CwbKLFscosTlg=";
+        tag = "b9496";
+        hash = "sha256-1jAowfGVzrrHDwWWzKESY7aV82whnuIg1N37fmtcgyw=";
       };
     in
     (pkgs.llama-cpp.override {
       vulkanSupport = true;
-      rocmSupport = true;
     }).overrideAttrs
       (prev: {
-        version = "9432";
+        version = "9496";
         npmRoot = "tools/ui";
         src = newSrc;
         npmDeps = pkgs.fetchNpmDeps {
-          name = "llama-cpp-9432-npm-deps";
+          name = "llama-cpp-9496-npm-deps";
           inherit (prev) patches;
           src = newSrc;
           preBuild = ''
             pushd tools/ui
           '';
-          hash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+          hash = "sha256-1iM0LGeI9e+gZEHk46lkBe51DxIhiimfAm9o3Z3m9Ik=";
         };
       });
 
@@ -41,7 +40,7 @@ let
         no-warmup = "true";
         ctx-checkpoints = "30";
         cache-ram = "30000";
-        ctx-size = "240000";
+        ctx-size = "190000";
         cache-type-k = "q8_0";
         cache-type-v = "q8_0";
         ngl = 99;
@@ -49,7 +48,7 @@ let
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
-        parallel = "2";
+        parallel = "1";
         presence-penalty = "0";
         repeat-penalty = "1";
         temp = "0.6";
@@ -69,7 +68,7 @@ let
         cache-type-v = "q8_0";
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
-        ctx-checkpoints = "80";
+        ctx-checkpoints = "30";
         cache-ram = "25000";
         fit = "off";
         ngl = 99;
@@ -84,7 +83,7 @@ let
         top-p = "0.95";
         batch-size = "4096";
         ubatch-size = "2048";
-        spec-type = "ngram-mod";
+        spec-type = "draft-mtp";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };
