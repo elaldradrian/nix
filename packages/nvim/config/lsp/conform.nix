@@ -9,7 +9,7 @@
     libxml2
     markdownlint-cli2
     pgformatter
-    inputs.kulala-fmt.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (inputs.kulala-fmt.packages.${pkgs.stdenv.hostPlatform.system}.default)
   ];
 
   plugins.conform-nvim = {
