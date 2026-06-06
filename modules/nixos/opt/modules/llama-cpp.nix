@@ -13,6 +13,7 @@ let
     in
     (pkgs.llama-cpp.override {
       vulkanSupport = true;
+      rocmSupport = true;
     }).overrideAttrs
       (prev: {
         version = "9496";
@@ -48,7 +49,7 @@ let
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
-        parallel = "1";
+        parallel = "2";
         presence-penalty = "0";
         repeat-penalty = "1";
         temp = "0.6";
