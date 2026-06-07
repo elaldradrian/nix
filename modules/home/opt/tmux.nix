@@ -28,6 +28,11 @@
       set -s extended-keys on
       set-option -g renumber-windows on
 
+      # Multi-client sharing: follow the client you last touched, and size
+      # each window only to the clients actually viewing it.
+      set -g window-size latest
+      setw -g aggressive-resize on
+
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
