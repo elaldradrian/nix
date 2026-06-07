@@ -28,6 +28,7 @@
         serverAddr = "";
       };
       vpn.enable = false;
+      llama-cpp.enable = false;
       prometheus.enable = false;
     };
     programs.steam.enable = false;

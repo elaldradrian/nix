@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -13,7 +14,6 @@ let
     in
     (pkgs.llama-cpp.override {
       vulkanSupport = true;
-      rocmSupport = true;
     }).overrideAttrs
       (prev: {
         version = "9496";
@@ -99,36 +99,38 @@ let
   '';
 in
 {
-  systemd.services.llama-cpp = {
-    enable = true;
-    description = "llama.cpp server (models.ini)";
-    after = [ "network.target" ];
-    wants = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
+  config = lib.mkIf config.opt.features.llama-cpp.enable {
+    systemd.services.llama-cpp = {
+      enable = true;
+      description = "llama.cpp server (models.ini)";
+      after = [ "network.target" ];
+      wants = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
 
-    serviceConfig = {
-      ExecStart = "${run-llama-cpp}";
-      Restart = "on-failure";
-      LimitMEMLOCK = "infinity";
-      Type = "simple";
-      User = "_llama-cpp";
-      Group = "_llama-cpp";
-      DynamicUser = false;
-      ReadWritePaths = [ "/var/lib/llama/models/" ];
-      StandardOutput = "journal";
-      StandardError = "journal";
+      serviceConfig = {
+        ExecStart = "${run-llama-cpp}";
+        Restart = "on-failure";
+        LimitMEMLOCK = "infinity";
+        Type = "simple";
+        User = "_llama-cpp";
+        Group = "_llama-cpp";
+        DynamicUser = false;
+        ReadWritePaths = [ "/var/lib/llama/models/" ];
+        StandardOutput = "journal";
+        StandardError = "journal";
+      };
+
+      preStart = ''
+        useradd -r -s /usr/bin/nologin -d /var/lib/llama-cpp _llama-cpp 2>/dev/null || true
+      '';
     };
 
-    preStart = ''
-      useradd -r -s /usr/bin/nologin -d /var/lib/llama-cpp _llama-cpp 2>/dev/null || true
-    '';
-  };
+    users.users._llama-cpp = {
+      isSystemUser = true;
+      group = "_llama-cpp";
+    };
+    users.groups._llama-cpp = { };
 
-  users.users._llama-cpp = {
-    isSystemUser = true;
-    group = "_llama-cpp";
+    environment.systemPackages = [ llama-pkgs ];
   };
-  users.groups._llama-cpp = { };
-
-  environment.systemPackages = [ llama-pkgs ];
 }
