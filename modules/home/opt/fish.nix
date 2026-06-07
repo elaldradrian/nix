@@ -13,6 +13,10 @@
     ];
     interactiveShellInit = # fish
       ''
+        # Pin the tmux socket dir so a local Sway terminal and an SSH login
+        # always connect to the same server (avoids XDG_RUNTIME_DIR mismatch).
+        set -gx TMUX_TMPDIR /tmp
+
         # Vi keybindings and cursor settings
         fish_vi_key_bindings
         set fish_vi_force_cursor 1
