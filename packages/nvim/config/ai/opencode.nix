@@ -38,6 +38,9 @@ in
   extraConfigLua = # Lua
     ''
       require("opencode").setup({
+        ui = {
+          window_width = 0.50,
+        },
         keymap = {
           input_window = {
             ["<esc>"] = false,
