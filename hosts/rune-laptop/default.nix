@@ -33,6 +33,7 @@
       docker.enable = true;
       k3s.enable = false;
       vpn.enable = true;
+      llama-cpp.enable = false;
       prometheus.enable = false;
     };
     programs.steam = {
