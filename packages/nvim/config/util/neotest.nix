@@ -1,17 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 {
   plugins.neotest = {
     enable = true;
     lazyLoad.settings.event = "DeferredUIEnter";
-    package = pkgs.vimPlugins.neotest.overrideAttrs (_: {
-      src = pkgs.fetchFromGitHub {
-        owner = "nvim-neotest";
-        repo = "neotest";
-        rev = "52fca6717ef972113ddd6ca223e30ad0abb2800c";
-        hash = "sha256-7CZ1BN9sxOQsn+6wPfdboMTYXeOf7Z98HjhQeqVMo0U=";
-      };
-      version = "git-52fca67"; # optional, cosmetic
-    });
     settings = {
       status.virtual_text = true;
       discovery.filter_dir.__raw = # Lua
