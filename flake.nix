@@ -41,7 +41,7 @@
     proxmox-nixos.url = "github:elaldradrian/proxmox-nixos/feature/sanctuary-cluster";
 
     kulala-fmt = {
-      url = "github:mistweaverco/kulala-fmt/v2.11.0";
+      url = "github:mistweaverco/kulala-fmt/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

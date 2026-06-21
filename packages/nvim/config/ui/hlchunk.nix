@@ -6,8 +6,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "shellRaining";
         repo = "hlchunk.nvim";
-        rev = "3bc2bd7aef28fbed6643534a0fdd0f19966544bc";
-        hash = "sha256-3B9j0O6sUXeOXxYmDlJb/nywHq6Q2kmbG3LkfLEaQt8=";
+        rev = "06f51922ca43d5cdacf96725c106405fe064c59e";
+        hash = "sha256-ETsuiYjTR4JF/4RVqRXJHLtcoalEaFinHxxD4Ww34xU=";
       };
     })
   ];

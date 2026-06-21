@@ -11,13 +11,16 @@
     kulala = {
       enable = true;
       lazyLoad.settings.ft = "http";
-      settings = {
+     settings = {
         ui.disable_script_print_output = 655360;
         display_mode = "split";
         split_direction = "horizontal";
         default_view = "headers_body";
         debug = true;
-        default_keymaps = false;
+        kulala_keymaps = {
+          "Previous tab" = false;
+          "Next tab" = false;
+        };
       };
     };
   };
