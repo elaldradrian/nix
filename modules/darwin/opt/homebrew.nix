@@ -4,6 +4,7 @@
     onActivation.cleanup = "uninstall";
     casks = [
       "1Password"
+      "sol"
       "scroll-reverser"
       "microsoft-teams"
       "microsoft-outlook"
