@@ -5,11 +5,11 @@
 let
   bicepLsp = pkgs.stdenv.mkDerivation rec {
     pname = "bicep-langserver";
-    version = "0.43.8";
+    version = "0.44.1";
 
     src = pkgs.fetchzip {
       url = "https://github.com/Azure/bicep/releases/download/v${version}/bicep-langserver.zip";
-      sha256 = "sha256-yz0QxveSsdZZU0zBJtPD3ILHVeRnZQROeJq0V9TiKYk=";
+      sha256 = "sha256-maqpJYPQQmeVziYSt4lu2AWG9+oRuLqm3imMf7zpOko=";
       stripRoot = false;
     };
 
