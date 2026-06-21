@@ -3,7 +3,7 @@
     enable = true;
     lazyLoad.settings.ft = [
       "markdown"
-      "codecompanion"
+      "opencode_output"
     ];
     settings = {
       file_types = [
