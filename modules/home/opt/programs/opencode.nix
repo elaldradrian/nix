@@ -59,7 +59,7 @@
               "qwen3.6-35b-a3b" = {
                 name = "Qwen3.6-35B-A3B (local)";
                 limit = {
-                  context = 64000;
+                  context = 250000;
                   output = 16384;
                 };
               };
@@ -77,6 +77,13 @@
                 name = "Qwen3.6-27B (remote)";
                 limit = {
                   context = 190000;
+                  output = 16384;
+                };
+              };
+              "qwen3.6-35b-a3b" = {
+                name = "Qwen3.6-35B-A3B (local)";
+                limit = {
+                  context = 250000;
                   output = 16384;
                 };
               };
