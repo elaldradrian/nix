@@ -49,7 +49,7 @@ let
         keep = "-1";
         min-p = "0.00";
         no-mmap = "true";
-        parallel = "2";
+        parallel = "1";
         presence-penalty = "0";
         repeat-penalty = "1";
         temp = "0.6";
@@ -70,7 +70,7 @@ let
         chat-template-kwargs = ''{"preserve_thinking": true}'';
         no-warmup = "true";
         ctx-checkpoints = "30";
-        cache-ram = "25000";
+        cache-ram = "30000";
         fit = "off";
         ngl = 99;
         keep = "-1";
@@ -85,6 +85,7 @@ let
         batch-size = "4096";
         ubatch-size = "2048";
         spec-type = "draft-mtp";
+        spec-draft-n-max = "2";
         no-mmproj-offload = "true";
         device = "Vulkan0";
       };
