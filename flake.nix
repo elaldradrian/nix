@@ -2,8 +2,7 @@
   description = "Runes flake";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     nix-darwin = {
@@ -73,9 +72,9 @@
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = [
-              (_self: _super: {
+              (self: _super: {
                 stable = import inputs.nixpkgs-stable {
-                  localSystem = { inherit system; };
+                  inherit (self.stdenv.hostPlatform) system;
                   config.allowUnfree = true;
                 };
               })
