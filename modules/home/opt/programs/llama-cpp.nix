@@ -11,22 +11,22 @@ let
   llama-pkgs =
     let
       newSrc = pkgs.llama-cpp.src.override {
-        tag = "b9432";
-        hash = "sha256-UhV2zZYhT3FE9i5Z8ejEgX3+ws07O1CwbKLFscosTlg=";
+        tag = "b9789";
+        hash = "sha256-G6e50Vf1lh68R87hE8dTeqmyVHTiMywG0hYHSbGlbWo=";
       };
     in
     pkgs.llama-cpp.overrideAttrs (prev: {
-      version = "9432";
+      version = "9789";
       npmRoot = "tools/ui";
       src = newSrc;
       npmDeps = pkgs.fetchNpmDeps {
-        name = "llama-cpp-9432-npm-deps";
+        name = "llama-cpp-9789-npm-deps";
         inherit (prev) patches;
         src = newSrc;
         preBuild = ''
           pushd tools/ui
         '';
-        hash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+        hash = "sha256-X1DZgmhS/zHTqDT5zq0kywwntthcJ9vRXeqyO3zz6UU=";
       };
     });
 

@@ -21,8 +21,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "sudo-tee";
         repo = "opencode.nvim";
-        rev = "6ab7d2fa0167ee81f1e22af712aaaaea4b64488a";
-        hash = "sha256-EI3VthUFvy11EY8zrhTVhx0OQBbHqKPs1ys+GNAtS94=";
+        rev = "604eb62ed26dca112982adfbb511244807216245";
+        hash = "sha256-d6OpGv7ZpUzmw87hOq9g2eSt9Svxv1//jfP2WAo4AvQ=";
       };
     }).overrideAttrs
       (_: {
@@ -57,9 +57,9 @@ in
             enabled = false,
           },
           diagnostics = {
-            info = true,
-            warning = true,
-            error = true,
+            info = false,
+            warning = false,
+            error = false,
           },
         },
       })
