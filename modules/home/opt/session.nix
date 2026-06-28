@@ -15,6 +15,7 @@
     "$HOME/bin"
     "$HOME/.nix-profile/bin"
     "/opt/homebrew/bin"
+    "${homeDir}/.npm-packages/bin"
   ]
   ++ (if config.opt.features.work-machine.enable then [ "${pkgs.x3270}" ] else [ ]);
 }
