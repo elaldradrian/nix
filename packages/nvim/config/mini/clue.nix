@@ -1,5 +1,10 @@
 {
   plugins.mini.modules.clue = {
+    content = {
+      hide = {
+        buftype = [];
+      };
+    };
     window = {
       delay = 500;
       config = {

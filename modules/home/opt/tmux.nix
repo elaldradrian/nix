@@ -25,7 +25,8 @@
       set -g display-time 4000
       set -g status-interval 5
       set -g xterm-keys on
-      set -s extended-keys on
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
       set-option -g renumber-windows on
 
       # Multi-client sharing: follow the client you last touched, and size
@@ -67,7 +68,7 @@
       bind-key -n 'M-C-k' if-shell "$is_vim" { send-keys M-C-k } { resize-pane -U 2 }
       bind-key -n 'M-C-l' if-shell "$is_vim" { send-keys M-C-l } { resize-pane -R 2 }
 
-      bind-key -n 'M-C-t' new-session -c "#{pane_current_path}"
+      bind-key -n 'M-C-t' new-session -c "#{env:HOME}"
       bind-key -n 'M-C-c' new-window -c "#{pane_current_path}"
       bind-key -n 'M-C-s' split-window -c "#{pane_current_path}"
       bind-key -n 'M-C-v' split-window -h -c "#{pane_current_path}"
