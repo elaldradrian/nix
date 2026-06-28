@@ -8,6 +8,7 @@
     ./llama-cpp.nix
     ./npmrc.nix
     ./opencode.nix
+    ./pi.nix
     ./ssh.nix
     ./sway.nix
     ./vpn.nix
