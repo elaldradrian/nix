@@ -2,7 +2,7 @@
   plugins.mini.modules.clue = {
     content = {
       hide = {
-        buftype = [];
+        buftype = [ ];
       };
     };
     window = {
@@ -117,6 +117,11 @@
         mode = "n";
         keys = "<Leader>c";
         desc = "+code";
+      }
+      {
+        mode = "n";
+        keys = "<Leader>p";
+        desc = "+pi";
       }
       { __raw = "require('mini.clue').gen_clues.builtin_completion()"; }
       { __raw = "require('mini.clue').gen_clues.g()"; }

@@ -59,7 +59,7 @@ in
             dwt = "disabled";
             tap = "enabled";
             natural_scroll = "enabled";
-            scroll_factor = "0.50";
+            scroll_factor = "0.40";
             drag = "enabled";
             drag_lock = "disabled";
           };
