@@ -97,6 +97,9 @@
           "spell"
           "ripgrep"
         ];
+        per_filetype = {
+          "pi-chat-prompt" = [ "pi" ];
+        };
         providers = {
           emoji = {
             module = "blink-emoji";
@@ -133,6 +136,10 @@
                 search_casing = "--ignore-case";
               };
             };
+          };
+          pi = {
+            module = "pi.completion.blink";
+            name = "Pi";
           };
         };
       };
