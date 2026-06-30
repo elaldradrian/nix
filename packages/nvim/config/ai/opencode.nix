@@ -38,6 +38,7 @@ in
   extraConfigLua = # Lua
     ''
       require("opencode").setup({
+        default_mode = "orchestrator";
         ui = {
           window_width = 0.50,
         },

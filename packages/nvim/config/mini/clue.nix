@@ -14,7 +14,7 @@
         '';
         row = "auto";
         col = "auto";
-        anchor = "SE";
+        anchor = "se";
       };
     };
     triggers = [
@@ -28,7 +28,7 @@
       }
       {
         mode = "i";
-        keys = "<C-x>";
+        keys = "<c-x>";
       }
       {
         mode = "n";
@@ -72,15 +72,15 @@
       }
       {
         mode = "i";
-        keys = "<C-r>";
+        keys = "<c-r>";
       }
       {
         mode = "c";
-        keys = "<C-r>";
+        keys = "<c-r>";
       }
       {
         mode = "n";
-        keys = "<C-w>";
+        keys = "<c-w>";
       }
       {
         mode = "n";
@@ -94,33 +94,33 @@
     clues = [
       {
         mode = "n";
-        keys = "<Leader>f";
+        keys = "<leader>f";
         desc = "+find/file";
       }
       {
         mode = "n";
-        keys = "<Leader>q";
+        keys = "<leader>q";
         desc = "+quit/session";
       }
       {
         mode = "n";
-        keys = "<Leader>g";
+        keys = "<leader>g";
         desc = "+git";
-        postkeys = "<Leader>g";
+        postkeys = "<leader>g";
       }
       {
         mode = "n";
-        keys = "<Leader>u";
+        keys = "<leader>u";
         desc = "+ui";
       }
       {
         mode = "n";
-        keys = "<Leader>c";
+        keys = "<leader>c";
         desc = "+code";
       }
       {
         mode = "n";
-        keys = "<Leader>p";
+        keys = "<leader>p";
         desc = "+pi";
       }
       { __raw = "require('mini.clue').gen_clues.builtin_completion()"; }

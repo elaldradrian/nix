@@ -29,7 +29,7 @@
       k3s.enable = false;
       vpn.enable = true;
       llama-cpp.enable = true;
-      prometheus.enable = true;
+      prometheus.enable = false;
     };
     programs.steam = {
       enable = true;
