@@ -41,6 +41,9 @@ in
         default_mode = "orchestrator";
         ui = {
           window_width = 0.50,
+          output = {
+            use_folds = true,
+          };
         },
         keymap = {
           input_window = {
